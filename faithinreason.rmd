@@ -118,7 +118,7 @@ Feng GC, Guo SZ (2012) Support for censorship: a multilevel meta-analysis of the
 
 Altay, S., & Acerbi, A. (2023). People believe misinformation is a threat because they assume others are gullible. New Media & Society, 0(0). https://doi.org/10.1177/14614448231153379
 
-Confidence in their abilities, friends’ and family’s abilities, and people’s abilities to spot misinformation was measured with three statements (αUK = .54, αUS = .53) adapted from Corbu et al. (2020) and the European Commission (2018):
+Confidence in their abilities, friends’ and family’s abilities, and people’s abilities to spot misinformation was measured with three statements adapted from Corbu et al. (2020) and the European Commission (2018):
 “I am able to identify news or information that misrepresent reality or is even false”
 “My friends and family are able to identify news or information that misrepresent reality or is even false”
 “People in general are able to identify news or information that misrepresent reality or is even false”
@@ -157,14 +157,14 @@ items <- c("The typical person is often irrational",
 nums <- c("1","2","3","4","5","6","A","7","8")
 
 df <- data.frame(nums,items)
-#column.names(df) <- c("a","Item")
+#column.names(df) <- c("#","Item")
 
 apa_table(
   df
   , caption = "Scale item wording"
   , note = "Response was on a 7 point Likert scale from (1 = \"Strong Disagree\", 7 = \"Strongly Agree\"). Items 1,2,3 and 4 reverse coded so that for all items higher scores represented stronger faith in reason."
   , escape = TRUE
-  , span_text_columns = FALSE
+  , span_text_columns = TRUE
 )
 
 ```
