@@ -86,10 +86,10 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, fig.height=2, 
 
 What we believe about other people matters. It is not enough that others are trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well intentioned.
 
-Generalised trust
+## Generalised trust
 
 
-Second order effexcts of Disinfo
+## Second order effexcts of Disinfo
 
 Karpf D (2019) On digital disinformation and democratic myths. Mediawell. Available at: https://mediawell.ssrc.org/expert-reflections/on-digital-disinformation-and-democratic-myths/
 
@@ -104,7 +104,7 @@ Nisbet EC, Mortenson C, Li Q (2021) The presumed influence of election misinform
 Nyhan B (2020) Facts and myths about misperceptions. Journal of Economic Perspectives 34(3): 220–236.
 
 
-Third person effect
+## Third person effect
 
 
 - Some part of the TPE may be driven by accurate perception of others
@@ -114,7 +114,7 @@ Lyons B (2022) Why we should rethink the third-person effect: Disentangling bias
 Olshansky A, Landrum AR (2020) Third-person perceptions and calls for censorship of Flat Earth videos on YouTube. Media and Communication 8(2): 387–400.
 Feng GC, Guo SZ (2012) Support for censorship: a multilevel meta-analysis of the third-person effect. Communication Reports 25(1): 40–50.
 
-Gulibility
+## Gullibility
 
 Altay, S., & Acerbi, A. (2023). People believe misinformation is a threat because they assume others are gullible. New Media & Society, 0(0). https://doi.org/10.1177/14614448231153379
 
@@ -123,14 +123,54 @@ Confidence in their abilities, friends’ and family’s abilities, and people�
 “My friends and family are able to identify news or information that misrepresent reality or is even false”
 “People in general are able to identify news or information that misrepresent reality or is even false”
 
+- negatively conceived
+- unidimensional: influence
+
+## Rationality
+
+Dawson, N. V., & Gregory, F. (2009). Correspondence and coherence in science: A brief historical perspective. Judgment and decision making, 4(2), 126-133.
+
+
+
 # Method
 
-Rmarkdown also lets us track figure labels, and updates them automatically. Look! Kittens! Illustrated in Figure \@ref(fig:examplefigurename). And if I add other figures it will sort out the numbering and references automatically
+Part of a larger survey
 
-```{r examplefigurename, fig.cap="Example figure caption", fig.align="center", out.width="75%"}
-#knitr::include_graphics("figs/kittens.jpg")
+
+## Sample
+
+## Item development
+
+See Table \@ref(tab:items)
+
+```{r items, echo = FALSE, results = 'asis'}
+items <- c("The typical person is often irrational",
+           "People are often misinformed on important issues",
+           "People are too easily manipulated",
+           "People often act for reasons they don’t understand or endorse",
+           "The average person can be persuaded to change their mind if given good reasons",
+           "Most people hold accurate views about the world",
+           "For this question please click the middle option, ‘neutral’, to show you are paying attention",
+           "An individual's beliefs about the world are generally coherent",
+           "People's behaviour is generally consistent with their beliefs")
+
+nums <- c("1","2","3","4","5","6","A","7","8")
+
+df <- data.frame(nums,items)
+#column.names(df) <- c("a","Item")
+
+apa_table(
+  df
+  , caption = "Scale item wording"
+  , note = "Response was on a 7 point Likert scale from (1 = \"Strong Disagree\", 7 = \"Strongly Agree\"). Items 1,2,3 and 4 reverse coded so that for all items higher scores represented stronger faith in reason."
+  , escape = TRUE
+  , span_text_columns = FALSE
+)
+
 ```
 
+
+## Prereg
 
 
 # Results

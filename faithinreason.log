@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.15)  20 FEB 2023 07:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.2.20)  20 FEB 2023 22:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **faithinreason.tex
 (./faithinreason.tex
 LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2022-12-17> (/home/tom/.TinyTeX/texmf-dist/tex/latex/apa6/apa6.cls
+L3 programming layer <2023-02-07> (/home/tom/.TinyTeX/texmf-dist/tex/latex/apa6/apa6.cls
 Document Class: apa6 2020/01/13 v2.34 APA formatting (6th edition)
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
@@ -338,7 +338,7 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count285
 \calc@Cskip=\skip75
 ) (/home/tom/.TinyTeX/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2022/12/26 3.84 The Babel package
+Package: babel 2023/02/13 3.86 The Babel package
 \babel@savecnt=\count286
 \U@D=\dimen184
 \l@unhyphenated=\language3
@@ -346,17 +346,15 @@ Package: babel 2022/12/26 3.84 The Babel package
 \bbl@readstream=\read2
 \bbl@dirlevel=\count287
 Package babel Info: You haven't specified a language as a class or package
-(babel)             option. I'll load 'nil'. Reported on input line 4406.
+(babel)             option. I'll load 'nil'. Reported on input line 4422.
 (/home/tom/.TinyTeX/texmf-dist/tex/generic/babel/nil.ldf
-Language: nil 2022/12/26 3.84 Nil language
+Language: nil 2023/02/13 3.86 Nil language
 \l@nil=\language4
 ))
 \everypar=\toks25
 (/home/tom/.TinyTeX/texmf-dist/tex/generic/babel/locale/en/babel-english.tex)
 Package babel Info: Importing data for english
 (babel)             from babel-en.ini. Reported on input line 90.
-Package babel Info: Hyphen rules for 'english' set to \l@english
-(babel)             (\language0). Reported on input line 90.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/was/upgreek.sty
 Package: upgreek 2003/02/12 v2.0 (WaS)
 Package upgreek Info: Using Euler Roman for upright Greek on input line 31.
@@ -421,15 +419,15 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 Failed to patch abstract.
 Failed to patch title.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/xpatch/xpatch.sty (/home/tom/.TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2022-12-17 L3 programming layer (loader) 
+Package: expl3 2023-02-07 L3 programming layer (loader) 
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
+File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count295
 \l__pdf_internal_box=\box65
 ))
 Package: xpatch 2020/03/25 v0.3a Extending etoolbox patching commands
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2022-12-17 L3 Experimental document command parser
+Package: xparse 2023-02-02 L3 Experimental document command parser
 )) (/home/tom/.TinyTeX/texmf-dist/tex/latex/dblfloatfix/dblfloatfix.sty
 Package: dblfloatfix 2012/12/31 v1.0a (JAW)
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/base/fixltx2e.sty
@@ -461,7 +459,7 @@ Package csquotes Info: ... configuration file loaded successfully.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/csquotes/csquotes.cfg
 File: csquotes.cfg 
 )) (/home/tom/.TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2022-11-13 v7.00u Hypertext links for LaTeX
+Package: hyperref 2023-02-07 v7.00v Hypertext links for LaTeX
 (/home/tom/.TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 ) (/home/tom/.TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
@@ -499,7 +497,7 @@ Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 \Hy@linkcounter=\count305
 \Hy@pagecounter=\count306
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2022-11-13 v7.00u Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2023-02-07 v7.00v Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 ) (/home/tom/.TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
@@ -509,24 +507,24 @@ Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
 \Hy@SavedSpaceFactor=\count307
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2022-11-13 v7.00u Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2023-02-07 v7.00v Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `unicode' set `true' on input line 4045.
-Package hyperref Info: Hyper figures OFF on input line 4162.
-Package hyperref Info: Link nesting OFF on input line 4167.
-Package hyperref Info: Hyper index ON on input line 4170.
-Package hyperref Info: Plain pages OFF on input line 4177.
-Package hyperref Info: Backreferencing OFF on input line 4182.
+Package hyperref Info: Option `unicode' set `true' on input line 4060.
+Package hyperref Info: Hyper figures OFF on input line 4177.
+Package hyperref Info: Link nesting OFF on input line 4182.
+Package hyperref Info: Hyper index ON on input line 4185.
+Package hyperref Info: Plain pages OFF on input line 4192.
+Package hyperref Info: Backreferencing OFF on input line 4197.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4410.
+Package hyperref Info: Bookmarks ON on input line 4425.
 \c@Hy@tempcnt=\count308
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4748.
+LaTeX Info: Redefining \url on input line 4763.
 \XeTeXLinkMargin=\dimen195
 (/home/tom/.TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -536,13 +534,13 @@ Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 \Fld@menulength=\count309
 \Field@Width=\dimen196
 \Fld@charsize=\dimen197
-Package hyperref Info: Hyper figures OFF on input line 6027.
-Package hyperref Info: Link nesting OFF on input line 6032.
-Package hyperref Info: Hyper index ON on input line 6035.
-Package hyperref Info: backreferencing OFF on input line 6042.
-Package hyperref Info: Link coloring OFF on input line 6047.
-Package hyperref Info: Link coloring with OCG OFF on input line 6052.
-Package hyperref Info: PDF/A mode OFF on input line 6057.
+Package hyperref Info: Hyper figures OFF on input line 6042.
+Package hyperref Info: Link nesting OFF on input line 6047.
+Package hyperref Info: Hyper index ON on input line 6050.
+Package hyperref Info: backreferencing OFF on input line 6057.
+Package hyperref Info: Link coloring OFF on input line 6062.
+Package hyperref Info: Link coloring with OCG OFF on input line 6067.
+Package hyperref Info: PDF/A mode OFF on input line 6072.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
@@ -553,7 +551,7 @@ package with kernel methods
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2022-11-13 v7.00u Hyperref driver for pdfTeX
+File: hpdftex.def 2023-02-07 v7.00v Hyperref driver for pdfTeX
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
@@ -573,7 +571,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
-(./faithinreason.aux)
+No file faithinreason.aux.
 \openout1 = `faithinreason.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 204.
@@ -644,7 +642,6 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring OFF on input line 204.
-(./faithinreason.out) (./faithinreason.out)
 \@outlinefile=\write3
 \openout3 = `faithinreason.out'.
 
@@ -691,39 +688,30 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 206.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 206.
-
-LaTeX Warning: Reference `fig:examplefigurename' on page 1 undefined on input line 213.
-
-<faithinreason_files/figure-latex/ourhistogram-1.pdf, id=26, 289.08pt x 289.08pt>
-File: faithinreason_files/figure-latex/ourhistogram-1.pdf Graphic file (type pdf)
-<use faithinreason_files/figure-latex/ourhistogram-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/ourhistogram-1.pdf  used on input line 224.
-(pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-[1{/home/tom/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 235.
+(/home/tom/.TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [1{/home/tom/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
- <./faithinreason_files/figure-latex/ourhistogram-1.pdf>] [2
+]
 
-] (./faithinreason.aux)
+! LaTeX Error: Unicode character α (U+03B1)
+               not set up for use with LaTeX.
 
-LaTeX Warning: There were undefined references.
-
-Package rerunfilecheck Info: File `faithinreason.out' has not changed.
-(rerunfilecheck)             Checksum: 9B38D8F394A227A99DA436AE92D541D2;445.
- ) 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.248 ...on was measured with three statements (α
+                                                  UK = .54, αUS = .... 
 Here is how much of TeX's memory you used:
- 15514 strings out of 478053
- 252008 string characters out of 5840948
- 1870793 words of memory out of 5000000
- 35329 multiletter control sequences out of 15000+600000
- 563580 words of font info for 114 fonts, out of 8000000 for 9000
+ 15483 strings out of 477989
+ 251404 string characters out of 5839529
+ 1874346 words of memory out of 5000000
+ 35378 multiletter control sequences out of 15000+600000
+ 558450 words of font info for 111 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 72i,11n,77p,481b,543s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/home/tom/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}</home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on faithinreason.pdf (2 pages, 55694 bytes).
-PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
- 21 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 75i,8n,77p,481b,500s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
+!  ==> Fatal error occurred, no output PDF file produced!
