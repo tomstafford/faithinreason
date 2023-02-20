@@ -88,10 +88,40 @@ What we believe about other people matters. It is not enough that others are tru
 
 Generalised trust
 
+
+Second order effexcts of Disinfo
+
+Karpf D (2019) On digital disinformation and democratic myths. Mediawell. Available at: https://mediawell.ssrc.org/expert-reflections/on-digital-disinformation-and-democratic-myths/
+
+Hoes E, Clemm B, Gessler T, et al. (2022) The Cure Worse Than the Disease? PsyArXiv. Available at: https://doi.org/10.31234/osf.io/4m92p
+
+Jungherr A, Rauchfleisch A (2022) Negative downstream effects of disinformation discourse: evidence from the US. SocArXiv.
+
+Lee T (2021) How people perceive influence of fake news and why it matters. Communication Quarterly 69(4): 431–453.
+
+Nisbet EC, Mortenson C, Li Q (2021) The presumed influence of election misinformation on others reduces our own satisfaction with democracy. The Harvard Kennedy School (HKS) Misinformation Review. Available at: https://misinforeview.hks.harvard.edu/article/the-presumed-influence-of-election-misinformation-on-others-reduces-our-own-satisfaction-with-democracy/
+
+Nyhan B (2020) Facts and myths about misperceptions. Journal of Economic Perspectives 34(3): 220–236.
+
+
 Third person effect
 
 
+- Some part of the TPE may be driven by accurate perception of others
+Lyons B (2022) Why we should rethink the third-person effect: Disentangling bias and earned confidence. Available at: https://www.dropbox.com/s/tpzy6e1ovfi0y1o/Why%20we%20should%20rethink%20TPE%20%28v2%2C%202022%29.pdf?dl=0
 
+- driving calls for censorship
+Olshansky A, Landrum AR (2020) Third-person perceptions and calls for censorship of Flat Earth videos on YouTube. Media and Communication 8(2): 387–400.
+Feng GC, Guo SZ (2012) Support for censorship: a multilevel meta-analysis of the third-person effect. Communication Reports 25(1): 40–50.
+
+Gulibility
+
+Altay, S., & Acerbi, A. (2023). People believe misinformation is a threat because they assume others are gullible. New Media & Society, 0(0). https://doi.org/10.1177/14614448231153379
+
+Confidence in their abilities, friends’ and family’s abilities, and people’s abilities to spot misinformation was measured with three statements (αUK = .54, αUS = .53) adapted from Corbu et al. (2020) and the European Commission (2018):
+“I am able to identify news or information that misrepresent reality or is even false”
+“My friends and family are able to identify news or information that misrepresent reality or is even false”
+“People in general are able to identify news or information that misrepresent reality or is even false”
 
 # Method
 
