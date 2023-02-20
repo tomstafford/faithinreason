@@ -84,8 +84,11 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, fig.height=2, 
 
 # Introduction
 
+What we believe about other people matters. It is not enough that others are trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well intentioned.
 
+Generalised trust
 
+Third person effect
 
 
 
