@@ -261,7 +261,11 @@ Our data consist of `r nrow(df)` participants who completed our online survey. `
 #cribbing from https://www.statmethods.net/graphs/density.html
 p <- ggplot(data = df,mapping= aes(Q19_1))
 #p + geom_bar(fill="red") + scale_x_binned()
-p + geom_histogram(fill="red",color="black",binwidth=1) + scale_x_continuous(breaks=1:7)
+#p + geom_histogram(fill="red",color="black",binwidth=1) + scale_x_continuous(breaks=1:7)
+p + geom_histogram(fill="firebrick",color="black",binwidth=1) + scale_x_continuous(breaks = 1:7,
+    labels = c("7 Strongly agree","6","5","4 neutral","3","2","1 Strongly disagree")) +
+    labs(x = "Response")
+
 ```
 
 
