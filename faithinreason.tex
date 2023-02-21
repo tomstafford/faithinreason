@@ -193,7 +193,7 @@ Correspondence concerning this article should be addressed to Tom Stafford, Depa
 
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Department of Psychology, University of Sheffield, UK\\\textsuperscript{2} Department of Politics and International Relations, University of Sheffield, UK}
 
-\note{\textcolor{red}{Preprint 2023-02-20}}
+\note{\textcolor{red}{Preprint 2023-02-21}}
 
 \abstract{%
 abstract goes here
@@ -240,8 +240,18 @@ Nyhan B (2020) Facts and myths about misperceptions. Journal of Economic Perspec
   Feng GC, Guo SZ (2012) Support for censorship: a multilevel meta-analysis of the third-person effect. Communication Reports 25(1): 40--50.
 \end{itemize}
 
-\hypertarget{gullibility}{%
-\subsection{Gullibility}\label{gullibility}}
+\hypertarget{rationality}{%
+\subsection{Rationality}\label{rationality}}
+
+Dawson, N. V., \& Gregory, F. (2009). Correspondence and coherence in science: A brief historical perspective. Judgment and decision making, 4(2), 126-133.
+
+\hypertarget{insight}{%
+\subsubsection{Insight}\label{insight}}
+
+Nisbett, R. E., \& Wilson, T. D. (1977). Telling more than we can know: Verbal reports on mental processes. Psychological review, 84(3), 231.
+
+\hypertarget{influence-gullibility}{%
+\subsubsection{Influence / Gullibility}\label{influence-gullibility}}
 
 Altay, S., \& Acerbi, A. (2023). People believe misinformation is a threat because they assume others are gullible. New Media \& Society, 0(0). \url{https://doi.org/10.1177/14614448231153379}
 
@@ -258,11 +268,6 @@ Confidence in their abilities, friends' and family's abilities, and people's abi
   unidimensional: influence
 \end{itemize}
 
-\hypertarget{rationality}{%
-\subsection{Rationality}\label{rationality}}
-
-Dawson, N. V., \& Gregory, F. (2009). Correspondence and coherence in science: A brief historical perspective. Judgment and decision making, 4(2), 126-133.
-
 \hypertarget{method}{%
 \section{Method}\label{method}}
 
@@ -273,6 +278,12 @@ Part of a larger survey
 
 \hypertarget{item-development}{%
 \subsection{Item development}\label{item-development}}
+
+correspondance (items 2 and 6)
+coherance (items 7 and 8)
+influence (items 3 and 5)
+insight into behaviour (4)
+naive endorsement (item 1)
 
 See Table \ref{tab:items}
 
@@ -312,12 +323,17 @@ A & For this question please click the middle option, ‘neutral’, to show you
 \hypertarget{prereg}{%
 \subsection{Prereg}\label{prereg}}
 
+\hypertarget{reproducibility}{%
+\subsection{Reproducibility}\label{reproducibility}}
+
+Code and data is open
+
+Reproducible manuscript, origin files at \url{https://github.com/tomstafford/faithinreason}
+
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-Now let's integrate some R code to generate/import some data, run and analyse and integrate it into the document:
-
-You can't see it in the PDF, but in between this paragraph and the last we asked R to generate some random data and save it to a CSV file. Now we're going to import the data from the CSV file, as if it was independently created data - from an experiment or similar - and plot a graph.
+Our data consist of 1875 participants who completed our online survey. 6 failed an attention check and were removed.
 
 \begin{figure}
 
@@ -325,45 +341,16 @@ You can't see it in the PDF, but in between this paragraph and the last we asked
 
 }
 
-\caption{Histogram of all data, grouped}\label{fig:ourhistogram}
+\caption{Histogram of responses to Item 1 ("The typical person is often irrational")}\label{fig:ourhistogram}
 \end{figure}
-
-See Figure \ref{fig:ourhistogram}. Of course we could draw all sorts of things, but this is a proof-of-concept. Finally, let's run a t-test and integrate the results into the text.
-
-We found there was a statistically significant difference between the two groups (t=-5.92 (588.25), p = 0.00). Note how the exact values in the previous sentence change every time we re-make the document (because the document also re-generates the underlying data).
-
-The above paragraph does the integration of statistics longform, because I didn't know a better way (and because I think it is still useful to show). apa\_print() exists as a helper function: \url{http://frederikaust.com/papaja_man/reporting.html}.
-
-\begin{table}[tbp]
-
-\begin{center}
-\begin{threeparttable}
-
-\caption{\label{tab:asrssub}Item grouping to subscales}
-
-\begin{tabular}{lll}
-\toprule
- & \multicolumn{1}{c}{Hyperactivity} & \multicolumn{1}{c}{Inattention}\\
-\midrule
-ASRS-18 & 5,6,12,13,14 & 1,2,3,4,7,8\\
-ASRS-6 & 5,6 & 1,2,3,4\\
-\bottomrule
-\addlinespace
-\end{tabular}
-
-\begin{tablenotes}[para]
-\normalsize{\textit{Note.} This table was created with apa\_table().}
-\end{tablenotes}
-
-\end{threeparttable}
-\end{center}
-
-\end{table}
-
-Also, everyone loves tables. See Table \ref{tab:asrssub}. I feel obliged to mention that the actual items reported in this table \textbf{do not} correctly reflect the actual subscales for the ASRS short and long scales. Note illustration of \textbf{bold} and \emph{italics} formatting in this para.
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
+
+\hypertarget{normative-models}{%
+\subsection{Normative models}\label{normative-models}}
+
+arguably our scale doesn't touch on normative models of rationality as captured by T\&K. Bias, prejudice
 
 \hypertarget{references}{%
 \section*{References}\label{references}}

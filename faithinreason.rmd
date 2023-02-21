@@ -75,12 +75,33 @@ output            : papaja::apa6_pdf
 ---
 
 ```{r setup,}
+# ENVIRONMENT
+#Once you've installed R/RStudio
+#install.packages('tinytex')
+#tinytex::install_tinytex()
+#install.packages("devtools") 
+#devtools::install_github("crsh/papaja")
+
+#Frederick recommends using 
+#remotes::install_github()
+# because it has a smaller dependency tree, but I am not going to uninstall everything to find out if that works better
+
+#imo computational reproducibility / dependency management in R is a mess, but there we are
+
+# LOAD LIBRARIES
+# this for the manuscript
 library(knitr)
 library(papaja) #need this for,e.g. apa_table to work later
 knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, fig.height=2, fig.width=4)
-```
 
-`r figsize<-'68%'`
+# this for the data analysis
+library(tidyverse)
+library(here)
+
+# parameters for figures etc
+figsize<-'68%'
+
+```
 
 # Introduction
 
@@ -114,7 +135,21 @@ Lyons B (2022) Why we should rethink the third-person effect: Disentangling bias
 Olshansky A, Landrum AR (2020) Third-person perceptions and calls for censorship of Flat Earth videos on YouTube. Media and Communication 8(2): 387–400.
 Feng GC, Guo SZ (2012) Support for censorship: a multilevel meta-analysis of the third-person effect. Communication Reports 25(1): 40–50.
 
-## Gullibility
+
+
+## Rationality
+
+
+
+Dawson, N. V., & Gregory, F. (2009). Correspondence and coherence in science: A brief historical perspective. Judgment and decision making, 4(2), 126-133.
+
+### Insight 
+
+Nisbett, R. E., & Wilson, T. D. (1977). Telling more than we can know: Verbal reports on mental processes. Psychological review, 84(3), 231.
+
+
+
+### Influence / Gullibility
 
 Altay, S., & Acerbi, A. (2023). People believe misinformation is a threat because they assume others are gullible. New Media & Society, 0(0). https://doi.org/10.1177/14614448231153379
 
@@ -126,12 +161,6 @@ Confidence in their abilities, friends’ and family’s abilities, and people�
 - negatively conceived
 - unidimensional: influence
 
-## Rationality
-
-Dawson, N. V., & Gregory, F. (2009). Correspondence and coherence in science: A brief historical perspective. Judgment and decision making, 4(2), 126-133.
-
-
-
 # Method
 
 Part of a larger survey
@@ -140,6 +169,13 @@ Part of a larger survey
 ## Sample
 
 ## Item development
+
+correspondance (items 2 and 6)
+coherance (items 7 and 8)
+influence (items 3 and 5)
+insight into behaviour (4)
+naive endorsement (item 1)
+
 
 See Table \@ref(tab:items)
 
@@ -172,103 +208,69 @@ apa_table(
 
 ## Prereg
 
+## Reproducibility
+
+Code and data is open
+
+Reproducible manuscript, origin files at https://github.com/tomstafford/faithinreason
 
 # Results
-
-Now let's integrate some R code to generate/import some data, run and analyse and integrate it into the document:
 
 ```{r results='hide'}
 #copying from https://bookdown.org/yihui/rmarkdown/r-code.html
 #this is some R code which evaluates when you make the document
 #
 
-#----------------Code for generating some random data
+#----------------Data loading & Preprocessing
 
-#parameters of our variables
-meanA <- 100
-sdA <- 15
-d <- .5
-sdB <- sdA
-pooledSD <- sdA
-meanB <- meanA + (d * pooledSD)
-n1 <- 300
-n2 <- 300
+file='wp1_num.tsv'
 
-#create random data, put into dataframe
-groupA <- rnorm(n1, meanA, sdA)
-groupB <- rnorm(n2, meanB, sdB)
-sub <- 1:length(n1+n2)
-group <- c(rep(0,n1) ,rep(1,n2))
-values <- c(groupA, groupB)
-df <- data.frame(sub, group, values)
+df <- read.csv(here('data',file), sep="\t",fileEncoding="UTF-16LE",header=T)[-1:-2,]
 
-#add some missing values
-index <- sample(1:(n1+n2),5)
-df[index, 3] <- NA
+#remove people who don't finish
+df <- df %>% dplyr::filter(Progress == 100)
 
-#export to a file
-write.csv(df, file = "generateddata.csv")
+#just the columns we're interested in
+df <- df[grepl("Q19|Q17|Q16|Q11",colnames(df))]
+
+#check types
+sapply(df, class)
+
+i <- c(1,3:13)      #  columns to change
+
+#use the apply function to change these columns to numeric:
+df[ , i] <- apply(df[ , i], 2, function(x) as.numeric(x))
+
+#Some items are reverse coded. Let's code all so higher scores = high faith in rationality
+#Q19_1 to Q19_4
+df <- df %>% dplyr::mutate(across(Q19_1:Q19_4, ~ 8 - .))
+
+#Q19_7 - attention check
+before=nrow(df)
+df <- df %>% dplyr::filter(Q19_7 == 4) #remove 6 people
+removed_by_attn_check=before-nrow(df)
 ```
 
-You can't see it in the PDF, but in between this paragraph and the last we asked R to generate some random data and save it to a CSV file. Now we're going to import the data from the CSV file, as if it was independently created data - from an experiment or similar - and plot a graph.
 
-```{r ourhistogram, fig.cap="Histogram of all data, grouped", fig.align="center", out.width="75%",fig.height=4}
-#load data
-df=read.csv("generateddata.csv")
+Our data consist of `r nrow(df)` participants who completed our online survey. `r removed_by_attn_check` failed an attention check and were removed.
 
+
+```{r ourhistogram, fig.cap="Histogram of responses to Item 1 (\"The typical person is often irrational\")", fig.align="center", out.width="75%",fig.height=4}
 
 #make histogram
 #cribbing from https://www.statmethods.net/graphs/density.html
-x <- df$values
-x <- na.omit(x) #drop missing values
-h<-hist(x, breaks=20, col="red", xlab="value")
-xfit<-seq(min(x),max(x),length=40)
-yfit<-dnorm(xfit,mean=mean(x),sd=sd(x))
-yfit <- yfit*diff(h$mids[1:2])*length(x)
-lines(xfit, yfit, col="blue", lwd=2) 
+p <- ggplot(data = df,mapping= aes(Q19_1))
+#p + geom_bar(fill="red") + scale_x_binned()
+p + geom_histogram(fill="red",color="black",binwidth=1) + scale_x_continuous(breaks=1:7)
 ```
 
-See Figure \@ref(fig:ourhistogram). Of course we could draw all sorts of things, but this is a proof-of-concept. Finally, let's run a t-test and integrate the results into the text.
 
-```{r}
-#note that seperate code chunks remember variables from previous chunks, so we don't need to reload the data
-df$group <- as.factor(df$group)
-model1<-t.test(df$values ~ df$group)
-
-p<- model1$p.value
-t<- model1$statistic
-df<- model1$parameter
-if(p<0.05){
-  word<-"a"
-} else {
-  word<-"no"
-}
-    
-```
-
-We found there was `r word` statistically significant difference between the two groups (t=`r t` (`r df`), p = `r p`). Note how the exact values in the previous sentence change every time we re-make the document (because the document also re-generates the underlying data).
-
-The above paragraph does the integration of statistics longform, because I didn't know a better way (and because I think it is still useful to show). apa_print() exists as a helper function: [http://frederikaust.com/papaja_man/reporting.html](http://frederikaust.com/papaja_man/reporting.html).
-
-```{r asrssub, echo = FALSE, results = 'asis'}
-Hyperactivity <- c("5,6,12,13,14", "5,6")
-Inattention <- c("1,2,3,4,7,8", "1,2,3,4")
-
-df <- data.frame(Hyperactivity, Inattention)
-row.names(df) <- c("ASRS-18","ASRS-6")
-
-apa_table(
-  df
-  , caption = "Item grouping to subscales"
-  , note = "This table was created with apa_table()."
-  , escape = TRUE
-  , span_text_columns = FALSE
-)
-```
-
-Also, everyone loves tables. See Table \@ref(tab:asrssub). I feel obliged to mention that the actual items reported in this table **do not** correctly reflect the actual subscales for the ASRS short and long scales. Note illustration of **bold** and *italics* formatting in this para.
 
 # Discussion
+
+## Normative models
+
+arguably our scale doesn't touch on normative models of rationality as captured by T&K. Bias, prejudice
 
 
 ```{r results="hide"}
