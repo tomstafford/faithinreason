@@ -268,7 +268,32 @@ p + geom_histogram(fill="firebrick",color="black",binwidth=1) + scale_x_continuo
 
 ```
 
+We asked 8 questions about rationality in the survey. To determine the homogeneity and the
+fitness of the responses, I use Stata to perform Mokken scaling analysis. Testing all 8
+rationality variables, the Mokken analysis yields one scale of 6 items. The items with low
+Loevinger’s coefficient of homogeneity (H i ), a criterion for scalability, are dropped. If the
+overall H&lt;0.3, it means the items in the scale are unrelated, thus cannot be accepted to form a
+cumulative scale. As a rule of thumb, H i must be higher than 0.3 to be kept in the scale.
+Therefore, there are 6 fitting items in the scale: rationality_1, rationality_2, rationality_3,
+rationality_4, rationality_6, and rationality_7. The overall H coefficient is 0.41, indicating a
+medium-strong scalability. The individual critical values in the scale are all lower than 80, so
+the variables are double monotonous and there is no model violation.
+Code: loevh rationality_1 rationality_2 rationality_3 rationality_4 rationality_6 rationality_7,
+pair monotonicity(*) ppp pmm nipmatrix(minvi(0.03) siglevel(0.01))
+We can thus generate a rationality variable by aggregating those six variables. Cronbach’s α
+is 0.78, indicating an acceptable internal consistency.
 
+Based on the statistical results, it looks to me that rationality_5 (The average person can be
+persuaded to change if given good reasons) is a real problem, it doesn’t fit at all with other items
+
+3
+and must be removed. Rationality_8 (People&#39;s behaviour is generally consistent with their beliefs)
+has a poor fitness, but it is not as bad as rationality_5.
+
+Next, I try to scale the remaining two items that are not included in the above scale –
+rationality_5 and rationality_8. As expected, these two items doesn’t form a separate scale.
+Empirically, these items are excluded from the rationality measure by Mokken scaling likely
+because persuasion effect is not a robust indication of rationality?
 
 # Discussion
 
