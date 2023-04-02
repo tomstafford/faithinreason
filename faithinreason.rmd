@@ -249,6 +249,10 @@ df <- df %>% dplyr::mutate(across(Q19_1:Q19_4, ~ 8 - .))
 before=nrow(df)
 df <- df %>% dplyr::filter(Q19_7 == 4) #remove 6 people
 removed_by_attn_check=before-nrow(df)
+
+
+write_csv(df,'data/items.csv')
+
 ```
 
 
@@ -268,6 +272,60 @@ p + geom_histogram(fill="firebrick",color="black",binwidth=1) + scale_x_continuo
 
 ```
 
+```{r mokkenanalysis, results='hide'}
+#https://cran.r-project.org/package=mokken
+#https://sites.google.com/a/tilburguniversity.edu/avdrark/mokken
+#install.packages("mokken")
+
+library(mokken) #for mokken scale analysis
+library(ltm) #for cronbach's alpha
+
+#select items
+Ritems <- dplyr::select(df,c(Q19_1:Q19_6,Q19_8:Q19_9))
+
+ltm::cronbach.alpha(Ritems, CI=TRUE)
+
+#cronbach leave one out
+cols <- colnames(Ritems)
+for (col in cols) {
+  sample <- cols[cols != col]
+  cat(col, "\n")
+  #cat(round(alpha(df[sample])$total$raw_alpha, 2), "\n")
+  cat(round(ltm::cronbach.alpha(Ritems[sample])$alpha,2),"\n")
+}
+
+# Compute scalability coefficients
+mokken::coefH(Ritems)
+
+# Partition the the scale into mokken scales
+
+for (criterion in seq(0.05,0.55,by=0.05)){
+  print(mokken::aisp(Ritems,criterion))
+}
+
+mokken::aisp(Ritems,0.3)
+
+#suggests 1,2,3,4,6,8
+#select items
+Ritems <- dplyr::select(df,c(Q19_1:Q19_4,Q19_6,Q19_8))
+
+ltm::cronbach.alpha(Ritems, CI=TRUE) #CI is bootstrapped https://rdrr.io/cran/ltm/man/cronbach.alpha.html
+
+library(psych)
+scree(Ritems, pc=FALSE)
+```
+
+```
+#pdf("rplot.pdf") 
+png("plot_base_R.png", width = 480, height = 480, res = 120)
+boot.bell <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
+                             type = "resampling", typicalStructure = TRUE, 
+                             plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
+dev.off()
+```
+
+## Junyan
+
 We asked 8 questions about rationality in the survey. To determine the homogeneity and the
 fitness of the responses, I use Stata to perform Mokken scaling analysis. Testing all 8
 rationality variables, the Mokken analysis yields one scale of 6 items. The items with low
@@ -280,7 +338,7 @@ medium-strong scalability. The individual critical values in the scale are all l
 the variables are double monotonous and there is no model violation.
 Code: loevh rationality_1 rationality_2 rationality_3 rationality_4 rationality_6 rationality_7,
 pair monotonicity(*) ppp pmm nipmatrix(minvi(0.03) siglevel(0.01))
-We can thus generate a rationality variable by aggregating those six variables. Cronbach’s α
+We can thus generate a rationality variable by aggregating those six variables. Cronbach’s $\alpha$
 is 0.78, indicating an acceptable internal consistency.
 
 Based on the statistical results, it looks to me that rationality_5 (The average person can be
@@ -294,6 +352,14 @@ Next, I try to scale the remaining two items that are not included in the above 
 rationality_5 and rationality_8. As expected, these two items doesn’t form a separate scale.
 Empirically, these items are excluded from the rationality measure by Mokken scaling likely
 because persuasion effect is not a robust indication of rationality?
+
+## Tom
+
+Obviously 5 is weakly correlated. Omitting gives biggest boost to Cronbach's alpha, EEGnet suggests weakly related to all other items, 
+
+EEGnet suggets two commuities
+Scree plot of factors suggests border of unidimension and bidimensional
+mokken analysis suggests 1 domension, BUT if you remove items 5 and 9 you then find 2 dim3nsions at 0.35
 
 # Discussion
 
