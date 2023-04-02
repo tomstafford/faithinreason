@@ -324,6 +324,19 @@ boot.bell <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
 dev.off()
 ```
 
+## TODO
+
+Methods for assessing dimensionality
+cronbach's alpha + leave on out
+scree plots and EFA
+Mokken scale analysis
+EGA
+
+Write up all of them?
+
+Look at items and make sensible decisions. A single scale of 6 items and 2 subscales?
+
+
 ## Junyan
 
 We asked 8 questions about rationality in the survey. To determine the homogeneity and the
