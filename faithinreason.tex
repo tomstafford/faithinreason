@@ -193,7 +193,7 @@ Correspondence concerning this article should be addressed to Tom Stafford, Depa
 
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Department of Psychology, University of Sheffield, UK\\\textsuperscript{2} Department of Politics and International Relations, University of Sheffield, UK}
 
-\note{\textcolor{red}{Preprint 2023-04-01}}
+\note{\textcolor{red}{Preprint 2023-04-03}}
 
 \abstract{%
 abstract goes here
@@ -207,17 +207,12 @@ abstract goes here
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-What we believe about other people matters. It is not enough that others are trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also \emph{perceive} others as trustworthy, reasonable or well intentioned.
-
-\hypertarget{generalised-trust}{%
-\subsection{Generalised trust}\label{generalised-trust}}
+What we believe about other people matters. It is not enough that others \emph{are} trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also \emph{perceive} others as trustworthy, reasonable or well intentioned.
 
 \hypertarget{second-order-effexcts-of-disinfo}{%
 \subsection{Second order effexcts of Disinfo}\label{second-order-effexcts-of-disinfo}}
 
-Karpf D (2019) On digital disinformation and democratic myths. Mediawell. Available at: \url{https://mediawell.ssrc.org/expert-reflections/on-digital-disinformation-and-democratic-myths/}
-
-Hoes E, Clemm B, Gessler T, et al.~(2022) The Cure Worse Than the Disease? PsyArXiv. Available at: \url{https://doi.org/10.31234/osf.io/4m92p}
+The generalised belief that others are well informed and reasonable is foundational to democracy. Recent concerns around misinformation may have second order effect, undermining democracy not by generating a misinformed populace, but by generating a populate that believes others are misunformed Hoes, Clemm von Hohenberg, Gessler, Wojcieszak, \& Qian (2022)
 
 Jungherr A, Rauchfleisch A (2022) Negative downstream effects of disinformation discourse: evidence from the US. SocArXiv.
 
@@ -267,6 +262,9 @@ Confidence in their abilities, friends' and family's abilities, and people's abi
 \item
   unidimensional: influence
 \end{itemize}
+
+\hypertarget{generalised-trust}{%
+\subsection{Generalised trust}\label{generalised-trust}}
 
 \hypertarget{method}{%
 \section{Method}\label{method}}
@@ -344,6 +342,60 @@ Our data consist of 1875 participants who completed our online survey. 6 failed 
 \caption{Histogram of responses to Item 1 ("The typical person is often irrational")}\label{fig:ourhistogram}
 \end{figure}
 
+\includegraphics{faithinreason_files/figure-latex/mokkenanalysis-1.pdf}
+
+\begin{verbatim}
+library (qgraph)
+library (EGAnet) # requires install.packages('sna')
+
+boot.all <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
+                             type = "resampling", typicalStructure = TRUE, 
+                             plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
+
+png(here('plots','reason_ega.png'),height=1500, width=2400,res=360)
+plot(boot.all, 
+      layout = 'spring', 
+      palette = 'colorblind', 
+      height = 5, 
+      width = 8,
+      plot.args=list(alpha=1,edge.color = c("black","black")))
+dev.off()
+
+
+
+Ritems <- dplyr::select(df,c(Q19_1:Q19_4,Q19_6,Q19_8))
+
+
+boot.six <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
+                             type = "resampling", typicalStructure = TRUE, 
+                             plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
+
+png(here('plots','reason6_ega.png'),height=1500, width=2400,res=360)
+plot(boot.six, 
+      layout = 'spring', 
+      palette = 'colorblind', 
+      height = 5, 
+      width = 8,
+      plot.args=list(alpha=1,edge.color = c("black","black")))
+dev.off()
+\end{verbatim}
+
+\hypertarget{todo}{%
+\subsection{TODO}\label{todo}}
+
+Methods for assessing dimensionality
+cronbach's alpha + leave on out
+scree plots and EFA
+Mokken scale analysis
+EGA
+
+Write up all of them?
+
+Look at items and make sensible decisions. A single scale of 6 items and 2 subscales?
+
+\hypertarget{junyan}{%
+\subsection{Junyan}\label{junyan}}
+
 We asked 8 questions about rationality in the survey. To determine the homogeneity and the
 fitness of the responses, I use Stata to perform Mokken scaling analysis. Testing all 8
 rationality variables, the Mokken analysis yields one scale of 6 items. The items with low
@@ -371,6 +423,15 @@ rationality\_5 and rationality\_8. As expected, these two items doesn't form a s
 Empirically, these items are excluded from the rationality measure by Mokken scaling likely
 because persuasion effect is not a robust indication of rationality?
 
+\hypertarget{tom}{%
+\subsection{Tom}\label{tom}}
+
+Obviously 5 is weakly correlated. Omitting gives biggest boost to Cronbach's alpha, EEGnet suggests weakly related to all other items,
+
+EEGnet suggets two commuities
+Scree plot of factors suggests border of unidimension and bidimensional
+mokken analysis suggests 1 domension, BUT if you remove items 5 and 9 you then find 2 dim3nsions at 0.35
+
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
@@ -391,8 +452,14 @@ Allaire, J., Xie, Y., McPherson, J., Luraschi, J., Ushey, K., Atkins, A., \ldots
 \leavevmode\vadjust pre{\hypertarget{ref-aust2020}{}}%
 Aust, F., \& Barth, M. (2020). \emph{{papaja}: {Create} {APA} manuscripts with {R Markdown}}. Retrieved from \url{https://github.com/crsh/papaja}
 
+\leavevmode\vadjust pre{\hypertarget{ref-hoes2022}{}}%
+Hoes, E., Clemm von Hohenberg, B., Gessler, T., Wojcieszak, M., \& Qian, S. (2022). \emph{The cure worse than the disease? How the media's attention to misinformation decreases trust}. PsyArXiv. \url{https://doi.org/10.31234/osf.io/4m92p}
+
 \leavevmode\vadjust pre{\hypertarget{ref-holcombe2020documenting}{}}%
 Holcombe, A. O., Kovacs, M., Aust, F., \& Aczel, B. (2020). Documenting contributions to scholarly articles using CRediT and tenzing. \emph{PLoS One}, \emph{15}(12), e0244611.
+
+\leavevmode\vadjust pre{\hypertarget{ref-karpf2019}{}}%
+Karpf, D. (2019). On digital disinformation and democratic myths. Retrieved from \url{https://mediawell.ssrc.org/expert-reflections/on-digital-disinformation-and-democratic-myths/}
 
 \end{CSLReferences}
 

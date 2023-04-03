@@ -105,18 +105,11 @@ figsize<-'68%'
 
 # Introduction
 
-What we believe about other people matters. It is not enough that others are trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well intentioned.
-
-## Generalised trust
-
+What we believe about other people matters. It is not enough that others *are* trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well intentioned.
 
 ## Second order effexcts of Disinfo
 
-Karpf D (2019) On digital disinformation and democratic myths. Mediawell. Available at: https://mediawell.ssrc.org/expert-reflections/on-digital-disinformation-and-democratic-myths/
-
-Hoes E, Clemm B, Gessler T, et al. (2022) The Cure Worse Than the Disease? PsyArXiv. Available at: https://doi.org/10.31234/osf.io/4m92p
-
-Jungherr A, Rauchfleisch A (2022) Negative downstream effects of disinformation discourse: evidence from the US. SocArXiv.
+The generalised belief that others are well informed and reasonable is foundational to democracy. Recent concerns around misinformation may have second order effect, undermining democracy not by generating a misinformed populace, but by generating a populate that believes others are misunformed [@karpf2019; @hoes2022; @jungherr2022]
 
 Lee T (2021) How people perceive influence of fake news and why it matters. Communication Quarterly 69(4): 431–453.
 
@@ -160,6 +153,8 @@ Confidence in their abilities, friends’ and family’s abilities, and people�
 
 - negatively conceived
 - unidimensional: influence
+
+## Generalised trust
 
 # Method
 
@@ -315,13 +310,41 @@ library(psych)
 scree(Ritems, pc=FALSE)
 ```
 
-```
-#pdf("rplot.pdf") 
-png("plot_base_R.png", width = 480, height = 480, res = 120)
-boot.bell <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
+```{r results="hide"}
+library (qgraph)
+library (EGAnet) # requires install.packages('sna')
+
+boot.all <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
                              type = "resampling", typicalStructure = TRUE, 
                              plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
+
+png(here('plots','reason_ega.png'),height=1500, width=2400,res=360)
+plot(boot.all, 
+      layout = 'spring', 
+      palette = 'colorblind', 
+      height = 5, 
+      width = 8,
+      plot.args=list(alpha=1,edge.color = c("black","black")))
 dev.off()
+
+
+
+Ritems <- dplyr::select(df,c(Q19_1:Q19_4,Q19_6,Q19_8))
+
+
+boot.six <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
+                             type = "resampling", typicalStructure = TRUE, 
+                             plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
+
+png(here('plots','reason6_ega.png'),height=1500, width=2400,res=360)
+plot(boot.six, 
+      layout = 'spring', 
+      palette = 'colorblind', 
+      height = 5, 
+      width = 8,
+      plot.args=list(alpha=1,edge.color = c("black","black")))
+dev.off()
+
 ```
 
 ## TODO
