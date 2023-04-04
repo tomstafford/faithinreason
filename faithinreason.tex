@@ -193,7 +193,7 @@ Correspondence concerning this article should be addressed to Tom Stafford, Depa
 
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Department of Psychology, University of Sheffield, UK\\\textsuperscript{2} Department of Politics and International Relations, University of Sheffield, UK}
 
-\note{\textcolor{red}{Preprint 2023-04-03}}
+\note{\textcolor{red}{Preprint 2023-04-04}}
 
 \abstract{%
 abstract goes here
@@ -212,27 +212,20 @@ What we believe about other people matters. It is not enough that others \emph{a
 \hypertarget{second-order-effexcts-of-disinfo}{%
 \subsection{Second order effexcts of Disinfo}\label{second-order-effexcts-of-disinfo}}
 
-The generalised belief that others are well informed and reasonable is foundational to democracy. Recent concerns around misinformation may have second order effect, undermining democracy not by generating a misinformed populace, but by generating a populate that believes others are misunformed Hoes, Clemm von Hohenberg, Gessler, Wojcieszak, \& Qian (2022)
-
-Jungherr A, Rauchfleisch A (2022) Negative downstream effects of disinformation discourse: evidence from the US. SocArXiv.
-
-Lee T (2021) How people perceive influence of fake news and why it matters. Communication Quarterly 69(4): 431--453.
-
-Nisbet EC, Mortenson C, Li Q (2021) The presumed influence of election misinformation on others reduces our own satisfaction with democracy. The Harvard Kennedy School (HKS) Misinformation Review. Available at: \url{https://misinforeview.hks.harvard.edu/article/the-presumed-influence-of-election-misinformation-on-others-reduces-our-own-satisfaction-with-democracy/}
-
-Nyhan B (2020) Facts and myths about misperceptions. Journal of Economic Perspectives 34(3): 220--236.
+The generalised belief that others are well informed and reasonable is foundational to democracy. Recent concerns around misinformation may have second order effects, undermining democracy not by generating a misinformed populace, but by generating a populace that believes others are misunformed or unreasonable (Karpf, 2019). Alarmism around misinformation may potentially lower trust in institutions (Hoes, Clemm von Hohenberg, Gessler, Wojcieszak, \& Qian, 2022), increase skepticism about democracy (Jungherr \& Rauchfleisch, 2022; Nisbet, Mortenson, \& Li, 2021), or foster calls of tighter media regulation (Lee, 2021).
 
 \hypertarget{third-person-effect}{%
 \subsection{Third person effect}\label{third-person-effect}}
 
+There is an established literature of the perception of media influence on others. The `third person effect' was proposed by (\textbf{davidson1983?}), that phenomnenon whereby many people believe others are more surceptible to influence that themselves. The third person effect was proposed as a root cause of censorship instincts and this has been confirmed by subsequent empricial investigations (Feng \& Guo, 2012; Olshansky \& Landrum, 2020).
+
+Two caveats around the third person effect. Lyons (2022) has recently argued that - for many people - a third person effect of greater media influence on others rather than the self will be an accurate perception
+
 \begin{itemize}
+\tightlist
 \item
   Some part of the TPE may be driven by accurate perception of others
   Lyons B (2022) Why we should rethink the third-person effect: Disentangling bias and earned confidence. Available at: \url{https://www.dropbox.com/s/tpzy6e1ovfi0y1o/Why\%20we\%20should\%20rethink\%20TPE\%20\%28v2\%2C\%202022\%29.pdf?dl=0}
-\item
-  driving calls for censorship
-  Olshansky A, Landrum AR (2020) Third-person perceptions and calls for censorship of Flat Earth videos on YouTube. Media and Communication 8(2): 387--400.
-  Feng GC, Guo SZ (2012) Support for censorship: a multilevel meta-analysis of the third-person effect. Communication Reports 25(1): 40--50.
 \end{itemize}
 
 \hypertarget{rationality}{%
@@ -344,41 +337,7 @@ Our data consist of 1875 participants who completed our online survey. 6 failed 
 
 \includegraphics{faithinreason_files/figure-latex/mokkenanalysis-1.pdf}
 
-\begin{verbatim}
-library (qgraph)
-library (EGAnet) # requires install.packages('sna')
-
-boot.all <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
-                             type = "resampling", typicalStructure = TRUE, 
-                             plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
-
-png(here('plots','reason_ega.png'),height=1500, width=2400,res=360)
-plot(boot.all, 
-      layout = 'spring', 
-      palette = 'colorblind', 
-      height = 5, 
-      width = 8,
-      plot.args=list(alpha=1,edge.color = c("black","black")))
-dev.off()
-
-
-
-Ritems <- dplyr::select(df,c(Q19_1:Q19_4,Q19_6,Q19_8))
-
-
-boot.six <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
-                             type = "resampling", typicalStructure = TRUE, 
-                             plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
-
-png(here('plots','reason6_ega.png'),height=1500, width=2400,res=360)
-plot(boot.six, 
-      layout = 'spring', 
-      palette = 'colorblind', 
-      height = 5, 
-      width = 8,
-      plot.args=list(alpha=1,edge.color = c("black","black")))
-dev.off()
-\end{verbatim}
+\includegraphics{faithinreason_files/figure-latex/unnamed-chunk-2-1.pdf} \includegraphics{faithinreason_files/figure-latex/unnamed-chunk-2-2.pdf}
 
 \hypertarget{todo}{%
 \subsection{TODO}\label{todo}}
@@ -440,6 +399,8 @@ mokken analysis suggests 1 domension, BUT if you remove items 5 and 9 you then f
 
 arguably our scale doesn't touch on normative models of rationality as captured by T\&K. Bias, prejudice
 
+Deflationary accounts of misinformation (Mercier, 2020; Nyhan, 2020)
+
 \hypertarget{references}{%
 \section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
@@ -452,14 +413,38 @@ Allaire, J., Xie, Y., McPherson, J., Luraschi, J., Ushey, K., Atkins, A., \ldots
 \leavevmode\vadjust pre{\hypertarget{ref-aust2020}{}}%
 Aust, F., \& Barth, M. (2020). \emph{{papaja}: {Create} {APA} manuscripts with {R Markdown}}. Retrieved from \url{https://github.com/crsh/papaja}
 
+\leavevmode\vadjust pre{\hypertarget{ref-feng2012}{}}%
+Feng, G. C., \& Guo, S. Z. (2012). Support for censorship: A multilevel meta-analysis of the third-person effect. \emph{Communication Reports}, \emph{25}(1), 40--50.
+
 \leavevmode\vadjust pre{\hypertarget{ref-hoes2022}{}}%
 Hoes, E., Clemm von Hohenberg, B., Gessler, T., Wojcieszak, M., \& Qian, S. (2022). \emph{The cure worse than the disease? How the media's attention to misinformation decreases trust}. PsyArXiv. \url{https://doi.org/10.31234/osf.io/4m92p}
 
 \leavevmode\vadjust pre{\hypertarget{ref-holcombe2020documenting}{}}%
 Holcombe, A. O., Kovacs, M., Aust, F., \& Aczel, B. (2020). Documenting contributions to scholarly articles using CRediT and tenzing. \emph{PLoS One}, \emph{15}(12), e0244611.
 
+\leavevmode\vadjust pre{\hypertarget{ref-jungherr2022}{}}%
+Jungherr, A., \& Rauchfleisch, A. (2022). \emph{Negative downstream effects of disinformation discourse: Evidence from the US}. SocArXiv.
+
 \leavevmode\vadjust pre{\hypertarget{ref-karpf2019}{}}%
 Karpf, D. (2019). On digital disinformation and democratic myths. Retrieved from \url{https://mediawell.ssrc.org/expert-reflections/on-digital-disinformation-and-democratic-myths/}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lee2021}{}}%
+Lee, T. (2021). How people perceive influence of fake news and why it matters. \emph{Communication Quarterly}, \emph{69}(4), 431--453.
+
+\leavevmode\vadjust pre{\hypertarget{ref-lyons2022}{}}%
+Lyons, B. A. (2022). Why we should rethink the third-person effect: Disentangling bias and earned confidence using behavioral data. \emph{Journal of Communication}, \emph{72}(5), 565--577.
+
+\leavevmode\vadjust pre{\hypertarget{ref-mercier2020}{}}%
+Mercier, H. (2020). \emph{Not born yesterday}. Princeton: Princeton University Press.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nisbet2021}{}}%
+Nisbet, E. C., Mortenson, C., \& Li, Q. (2021). The presumed influence of election misinformation on others reduces our own satisfaction with democracy. \emph{Harvard Kennedy School Misinformation Review}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-nyhan2020facts}{}}%
+Nyhan, B. (2020). Facts and myths about misperceptions. \emph{Journal of Economic Perspectives}, \emph{34}(3), 220--236.
+
+\leavevmode\vadjust pre{\hypertarget{ref-olshansky2020}{}}%
+Olshansky, A., \& Landrum, A. R. (2020). Third-person perceptions and calls for censorship of flat earth videos on YouTube. \emph{Media and Communication}, \emph{8}(2), 387--400.
 
 \end{CSLReferences}
 

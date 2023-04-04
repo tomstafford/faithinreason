@@ -109,24 +109,16 @@ What we believe about other people matters. It is not enough that others *are* t
 
 ## Second order effexcts of Disinfo
 
-The generalised belief that others are well informed and reasonable is foundational to democracy. Recent concerns around misinformation may have second order effect, undermining democracy not by generating a misinformed populace, but by generating a populate that believes others are misunformed [@karpf2019; @hoes2022; @jungherr2022]
-
-Lee T (2021) How people perceive influence of fake news and why it matters. Communication Quarterly 69(4): 431–453.
-
-Nisbet EC, Mortenson C, Li Q (2021) The presumed influence of election misinformation on others reduces our own satisfaction with democracy. The Harvard Kennedy School (HKS) Misinformation Review. Available at: https://misinforeview.hks.harvard.edu/article/the-presumed-influence-of-election-misinformation-on-others-reduces-our-own-satisfaction-with-democracy/
-
-Nyhan B (2020) Facts and myths about misperceptions. Journal of Economic Perspectives 34(3): 220–236.
+The generalised belief that others are well informed and reasonable is foundational to democracy. Recent concerns around misinformation may have second order effects, undermining democracy not by generating a misinformed populace, but by generating a populace that believes others are misunformed or unreasonable [@karpf2019]. Alarmism around misinformation may potentially lower trust in institutions [@hoes2022], increase skepticism about democracy [@jungherr2022; @nisbet2021], or foster calls of tighter media regulation [@lee2021].
 
 
 ## Third person effect
 
+There is an established literature of the perception of media influence on others [@perloff2002; @sun2008]. The `third person effect', proposed by @davison1983, is the phenomenon whereby many people believe others are more susceptible to influence than themselves. The third person effect was proposed as a root cause of censorship instincts and this has been confirmed by subsequent empricial investigations [@olshansky2020; @feng2012].
 
-- Some part of the TPE may be driven by accurate perception of others
-Lyons B (2022) Why we should rethink the third-person effect: Disentangling bias and earned confidence. Available at: https://www.dropbox.com/s/tpzy6e1ovfi0y1o/Why%20we%20should%20rethink%20TPE%20%28v2%2C%202022%29.pdf?dl=0
+Two caveats around the third person effect. Lyons [-@lyons2022] has recently argued that - for many people - a third person effect of greater media influence on others rather than the self will be an accurate perception. @chung2016 have argued that the driving factor in many so-called third person effects is the perception of others (as highly influenced), rather than the discrepancy with first person perception per se.
 
-- driving calls for censorship
-Olshansky A, Landrum AR (2020) Third-person perceptions and calls for censorship of Flat Earth videos on YouTube. Media and Communication 8(2): 387–400.
-Feng GC, Guo SZ (2012) Support for censorship: a multilevel meta-analysis of the third-person effect. Communication Reports 25(1): 40–50.
+
 
 
 
@@ -402,6 +394,9 @@ mokken analysis suggests 1 domension, BUT if you remove items 5 and 9 you then f
 ## Normative models
 
 arguably our scale doesn't touch on normative models of rationality as captured by T&K. Bias, prejudice
+
+
+Deflationary accounts of misinformation [@nyhan2020facts; @mercier2020]
 
 
 ```{r results="hide"}
