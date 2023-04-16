@@ -192,6 +192,32 @@ apa_table(
 
 ```
 
+```{r notes}
+# Q17
+# 
+# Generally speaking, would you say that most people can be trusted?
+# 
+# 1 strongly disagree
+# 
+# Q16
+# 
+# How important is it for you to live in a country that is governed democratically?
+# What position would you place yourself on a scale from 1 “not at all important” to 7 “absolutely important”?
+# 
+# 
+# Q11
+# 
+# What is the highest educational or work-related qualification you have, or are working towards? - Selected Choice
+# 
+# 8 other
+# 5 Postgraduate (e.g. M.Sc, Ph.D)
+# 4 Undergraduate University (e.g. BA, B.Sc, B.Ed)
+# 3 A-level, or equivalent
+# 2 GCSE level, or equivalent
+# 1 No formal qualifications
+
+```
+
 
 ## Prereg
 
@@ -242,6 +268,7 @@ write_csv(df,'data/items.csv')
 
 ```
 
+## Initial characterisations
 
 Our data consist of `r nrow(df)` participants who completed our online survey. `r removed_by_attn_check` failed an attention check and were removed.
 
@@ -258,6 +285,8 @@ p + geom_histogram(fill="firebrick",color="black",binwidth=1) + scale_x_continuo
     labs(x = "Response")
 
 ```
+
+## scale development / item selection
 
 ```{r mokkenanalysis, results='hide'}
 #https://cran.r-project.org/package=mokken
@@ -291,7 +320,9 @@ for (criterion in seq(0.05,0.55,by=0.05)){
 }
 
 mokken::aisp(Ritems,0.3)
+```
 
+```{r, factors, results='hide', fig.cap="Factor analysis", fig.align="center", out.width="100%"}
 #suggests 1,2,3,4,6,8
 #select items
 Ritems <- dplyr::select(df,c(Q19_1:Q19_4,Q19_6,Q19_8))
@@ -302,43 +333,91 @@ library(psych)
 scree(Ritems, pc=FALSE)
 ```
 
-```{r results="hide"}
-library (qgraph)
-library (EGAnet) # requires install.packages('sna')
+```{r, egaanalysis, include=FALSE}
+#In this repo we call an external file to run the analysis and generate the plots
+#if you want to regenerate plots, uncomment this line
+#source("fir_results.R", local = knitr::knit_global())
+```
 
-boot.all <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
-                             type = "resampling", typicalStructure = TRUE, 
-                             plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
+```{r egafull, fig.cap="Exploratory Graph Analysis (EGA) of all items.", fig.align="center", out.width="100%"}
+knitr::include_graphics(here("plots","reason_ega.png"))
+```
 
-png(here('plots','reason_ega.png'),height=1500, width=2400,res=360)
-plot(boot.all, 
-      layout = 'spring', 
-      palette = 'colorblind', 
-      height = 5, 
-      width = 8,
-      plot.args=list(alpha=1,edge.color = c("black","black")))
-dev.off()
+```{r egasix, fig.cap="The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).", fig.align="center", out.width="100%"}
+knitr::include_graphics(here("plots","reason6_ega.png"))
+```
 
 
+## Scale analysis
 
+```{r meanhistogram, fig.cap="Histogram of mean of responses to all rationality items", fig.align="center", out.width="75%",fig.height=4}
+
+#select items
+Ritems <- dplyr::select(df,c(Q19_1:Q19_6,Q19_8:Q19_9))
 Ritems <- dplyr::select(df,c(Q19_1:Q19_4,Q19_6,Q19_8))
 
+Ritems <- Ritems %>% rowwise() %>% mutate(mean = mean(c_across(everything())))
+#make histogram
+#cribbing from https://www.statmethods.net/graphs/density.html
+p <- ggplot(data = Ritems,mapping= aes(mean))
+#p + geom_bar(fill="red") + scale_x_binned()
+#p + geom_histogram(fill="red",color="black",binwidth=1) + scale_x_continuous(breaks=1:7)
+p + geom_histogram(fill="darkorchid2",color="black",binwidth=0.5) + scale_x_continuous(breaks = 1:7,
+    labels = c("1 Strongly disagree","2","3","4 neutral","5","6","7 Strongly agree")) +
+    labs(x = "Faith in reason")
+```
 
-boot.six <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
-                             type = "resampling", typicalStructure = TRUE, 
-                             plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
+The average score across these six  items was `r round(mean(Ritems$mean),2)`, a summary statistic which suggests that the typical view of other people weighted to being slightly less, rather than slightly more, reasonable. The distribution is shown in Figure \@ref(fig:meanhistogram).
 
-png(here('plots','reason6_ega.png'),height=1500, width=2400,res=360)
-plot(boot.six, 
-      layout = 'spring', 
-      palette = 'colorblind', 
-      height = 5, 
-      width = 8,
-      plot.args=list(alpha=1,edge.color = c("black","black")))
-dev.off()
+```{r education, fig.cap="Education level and mean FIR", fig.align="center", out.width="75%",fig.height=4}
+
+#calculate mean from six items
+df <- df %>% rowwise() %>% mutate(mean = mean(c_across(c(Q19_1,Q19_2,Q19_3,Q19_4,Q19_6,Q19_8))))
+
+# calculate mean of y for each value of x
+mean_df <- df %>% group_by(Q11) %>% summarize(mean_fir = mean(mean))
+
+# create bar chart
+ggplot(mean_df, aes(Q11, mean_fir)) + 
+  geom_bar(stat = "identity", fill = "blue") + 
+  labs(x = "Education Level", y = "Mean FIR")
+  
+```
+```{r democract, fig.cap="How important is it for you to live in a country that is governed democratically? and mean FIR", fig.align="center", out.width="75%",fig.height=4}
+#df  <-  df%>% filter (Q16<6 # thisline shows that lack of correlation holds even for people who don't answer 7
+
+p <- ggplot(df,aes(x=mean,y=Q16))
+p + 
+  geom_point(position = position_jitter(height = 0.1))+
+  geom_smooth(method=lm) +
+  labs(x = "Faith in reason",
+       y = "Importance of democracy")
 
 ```
 
+```{r generalisetrust, fig.cap="Generally speaking, would you say that most people can be trusted? and mean FIR", fig.align="center", out.width="75%",fig.height=4}
+
+p <- ggplot(df,aes(x=mean,y=Q17))
+p + 
+  geom_point(position = position_jitter(height = 0.1))+
+  geom_smooth(method=lm) +
+    labs(x = "Faith in reason",
+       y = "Generalised trust")
+
+```
+
+Correlation between Q17 and FIR
+
+```{r correlations}
+
+cor_items <- df %>% dplyr::select(mean,Q16,Q17)
+
+# calculate correlation matrix
+cor_matrix <- round(cor(cor_items),2)
+
+# display correlation matrix as table
+kable(cor_matrix, caption = "Correlation Matrix")
+```
 ## TODO
 
 Methods for assessing dimensionality

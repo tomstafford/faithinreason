@@ -193,7 +193,7 @@ Correspondence concerning this article should be addressed to Tom Stafford, Depa
 
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Department of Psychology, University of Sheffield, UK\\\textsuperscript{2} Department of Politics and International Relations, University of Sheffield, UK}
 
-\note{\textcolor{red}{Preprint 2023-04-04}}
+\note{\textcolor{red}{Preprint 2023-04-16}}
 
 \abstract{%
 abstract goes here
@@ -217,16 +217,9 @@ The generalised belief that others are well informed and reasonable is foundatio
 \hypertarget{third-person-effect}{%
 \subsection{Third person effect}\label{third-person-effect}}
 
-There is an established literature of the perception of media influence on others. The `third person effect' was proposed by (\textbf{davidson1983?}), that phenomnenon whereby many people believe others are more surceptible to influence that themselves. The third person effect was proposed as a root cause of censorship instincts and this has been confirmed by subsequent empricial investigations (Feng \& Guo, 2012; Olshansky \& Landrum, 2020).
+There is an established literature of the perception of media influence on others (Perloff, 2002; Sun, Pan, \& Shen, 2008). The `third person effect', proposed by Davison (1983), is the phenomenon whereby many people believe others are more susceptible to influence than themselves. The third person effect was proposed as a root cause of censorship instincts and this has been confirmed by subsequent empricial investigations (Feng \& Guo, 2012; Olshansky \& Landrum, 2020).
 
-Two caveats around the third person effect. Lyons (2022) has recently argued that - for many people - a third person effect of greater media influence on others rather than the self will be an accurate perception
-
-\begin{itemize}
-\tightlist
-\item
-  Some part of the TPE may be driven by accurate perception of others
-  Lyons B (2022) Why we should rethink the third-person effect: Disentangling bias and earned confidence. Available at: \url{https://www.dropbox.com/s/tpzy6e1ovfi0y1o/Why\%20we\%20should\%20rethink\%20TPE\%20\%28v2\%2C\%202022\%29.pdf?dl=0}
-\end{itemize}
+Two caveats around the third person effect. Lyons (2022) has recently argued that - for many people - a third person effect of greater media influence on others rather than the self will be an accurate perception. Chung and Moon (2016) have argued that the driving factor in many so-called third person effects is the perception of others (as highly influenced), rather than the discrepancy with first person perception per se.
 
 \hypertarget{rationality}{%
 \subsection{Rationality}\label{rationality}}
@@ -324,6 +317,9 @@ Reproducible manuscript, origin files at \url{https://github.com/tomstafford/fai
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
+\hypertarget{initial-characterisations}{%
+\subsection{Initial characterisations}\label{initial-characterisations}}
+
 Our data consist of 1875 participants who completed our online survey. 6 failed an attention check and were removed.
 
 \begin{figure}
@@ -335,9 +331,94 @@ Our data consist of 1875 participants who completed our online survey. 6 failed 
 \caption{Histogram of responses to Item 1 ("The typical person is often irrational")}\label{fig:ourhistogram}
 \end{figure}
 
-\includegraphics{faithinreason_files/figure-latex/mokkenanalysis-1.pdf}
+\hypertarget{scale-development-item-selection}{%
+\subsection{scale development / item selection}\label{scale-development-item-selection}}
 
-\includegraphics{faithinreason_files/figure-latex/unnamed-chunk-2-1.pdf} \includegraphics{faithinreason_files/figure-latex/unnamed-chunk-2-2.pdf}
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{faithinreason_files/figure-latex/factors-1} 
+
+}
+
+\caption{Factor analysis}\label{fig:factors}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{plots/reason_ega} 
+
+}
+
+\caption{Exploratory Graph Analysis (EGA) of all items.}\label{fig:egafull}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{plots/reason6_ega} 
+
+}
+
+\caption{The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).}\label{fig:egasix}
+\end{figure}
+
+\hypertarget{scale-analysis}{%
+\subsection{Scale analysis}\label{scale-analysis}}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{faithinreason_files/figure-latex/meanhistogram-1} 
+
+}
+
+\caption{Histogram of mean of responses to all rationality items}\label{fig:meanhistogram}
+\end{figure}
+
+The average score across these six items was 3.29, a summary statistic which suggests that the typical view of other people weighted to being slightly less, rather than slightly more, reasonable. The distribution is shown in Figure \ref{fig:meanhistogram}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{faithinreason_files/figure-latex/education-1} 
+
+}
+
+\caption{Education level and mean FIR}\label{fig:education}
+\end{figure}
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{faithinreason_files/figure-latex/democract-1} 
+
+}
+
+\caption{How important is it for you to live in a country that is governed democratically? and mean FIR}\label{fig:democract}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{faithinreason_files/figure-latex/generalisetrust-1} 
+
+}
+
+\caption{Generally speaking, would you say that most people can be trusted? and mean FIR}\label{fig:generalisetrust}
+\end{figure}
+
+Correlation between Q17 and FIR
+
+\begin{table}
+
+\caption{\label{tab:correlations}Correlation Matrix}
+\centering
+\begin{tabular}[t]{l|r|r|r}
+\hline
+  & mean & Q16 & Q17\\
+\hline
+mean & 1.00 & -0.02 & 0.40\\
+\hline
+Q16 & -0.02 & 1.00 & 0.26\\
+\hline
+Q17 & 0.40 & 0.26 & 1.00\\
+\hline
+\end{tabular}
+\end{table}
 
 \hypertarget{todo}{%
 \subsection{TODO}\label{todo}}
@@ -413,6 +494,12 @@ Allaire, J., Xie, Y., McPherson, J., Luraschi, J., Ushey, K., Atkins, A., \ldots
 \leavevmode\vadjust pre{\hypertarget{ref-aust2020}{}}%
 Aust, F., \& Barth, M. (2020). \emph{{papaja}: {Create} {APA} manuscripts with {R Markdown}}. Retrieved from \url{https://github.com/crsh/papaja}
 
+\leavevmode\vadjust pre{\hypertarget{ref-chung2016}{}}%
+Chung, S., \& Moon, S.-I. (2016). Is the third-person effect real? A critical examination of rationales, testing methods, and previous findings of the third-person effect on censorship attitudes. \emph{Human Communication Research}, \emph{42}(2), 312--337.
+
+\leavevmode\vadjust pre{\hypertarget{ref-davison1983}{}}%
+Davison, W. P. (1983). The third-person effect in communication. \emph{Public Opinion Quarterly}, \emph{47}(1), 1--15.
+
 \leavevmode\vadjust pre{\hypertarget{ref-feng2012}{}}%
 Feng, G. C., \& Guo, S. Z. (2012). Support for censorship: A multilevel meta-analysis of the third-person effect. \emph{Communication Reports}, \emph{25}(1), 40--50.
 
@@ -445,6 +532,12 @@ Nyhan, B. (2020). Facts and myths about misperceptions. \emph{Journal of Economi
 
 \leavevmode\vadjust pre{\hypertarget{ref-olshansky2020}{}}%
 Olshansky, A., \& Landrum, A. R. (2020). Third-person perceptions and calls for censorship of flat earth videos on YouTube. \emph{Media and Communication}, \emph{8}(2), 387--400.
+
+\leavevmode\vadjust pre{\hypertarget{ref-perloff2002}{}}%
+Perloff, R. M. (2002). The third-person effect. In \emph{Media effects} (pp. 499--516). Routledge.
+
+\leavevmode\vadjust pre{\hypertarget{ref-sun2008}{}}%
+Sun, Y., Pan, Z., \& Shen, L. (2008). Understanding the third-person perception: Evidence from a meta-analysis. \emph{Journal of Communication}, \emph{58}(2), 280--300.
 
 \end{CSLReferences}
 
