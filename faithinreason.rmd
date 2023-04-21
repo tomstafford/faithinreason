@@ -161,7 +161,7 @@ Two caveats around the third person effect. Lyons [-@lyons2022] has recently arg
 
 TK we directly measured the TPE!!
 
-## Generalised trust
+## Generalised trust & value of democracy
 
 
 social capital, dropped wallets, democracy
@@ -176,17 +176,19 @@ Part of a larger survey
 
 ## Item development
 
+naive endorsement (item 1)
 correspondance (items 2 and 6)
 coherance (items 7 and 8)
 influence (items 3 and 5)
 insight into behaviour (4)
-naive endorsement (item 1)
+
+negative and positive (reverse coded)
 
 
 See Table \@ref(tab:items)
 
 ```{r items, echo = FALSE, results = 'asis'}
-items <- c("The typical person is often irrational",
+Wording <- c("The typical person is often irrational",
            "People are often misinformed on important issues",
            "People are too easily manipulated",
            "People often act for reasons they don’t understand or endorse",
@@ -196,11 +198,22 @@ items <- c("The typical person is often irrational",
            "An individual's beliefs about the world are generally coherent",
            "People's behaviour is generally consistent with their beliefs")
 
-nums <- c("1","2","3","4","5","6","A","7","8")
+Item <- c("1","2","3","4","5","6","A","7","8")
+Framing <- c(rep('negative',4),rep('positive',2),'NA',rep('positive',2))
+Aspect <- c('general',
+            'corresponence',
+            'influence',
+            'insight',
+            'influence',
+            'correspondence',
+            'ATTN CHECK',
+            'coherance',
+            'coherance')
 
-df <- data.frame(nums,items)
+df <- data.frame(Item,Framing,Aspect,Wording)
 #column.names(df) <- c("#","Item")
 
+#does APA style allow left justify of column headers?
 apa_table(
   df
   , caption = "Scale item wording"
@@ -440,6 +453,13 @@ cor_matrix <- round(cor(cor_items),2)
 kable(cor_matrix, caption = "Correlation Matrix")
 ```
 ## TODO
+
+```{r regressions}
+
+#Q11 needs sanitising
+m <- lm(mean~1+Q16+Q17+Q11,data=df)
+summary(m)
+```
 
 Methods for assessing dimensionality
 cronbach's alpha + leave on out
