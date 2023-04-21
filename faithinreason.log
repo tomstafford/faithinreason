@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.19)  16 APR 2023 20:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.19)  21 APR 2023 09:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -693,70 +693,73 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
 
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 247.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 249.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-<faithinreason_files/figure-latex/ourhistogram-1.pdf, id=112, 289.08pt x 289.08pt>
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 338.
+(/home/tom/.TinyTeX/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+)
+<faithinreason_files/figure-latex/ourhistogram-1.pdf, id=120, 289.08pt x 289.08pt>
 File: faithinreason_files/figure-latex/ourhistogram-1.pdf Graphic file (type pdf)
 <use faithinreason_files/figure-latex/ourhistogram-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/ourhistogram-1.pdf  used on input line 327.
+Package pdftex.def Info: faithinreason_files/figure-latex/ourhistogram-1.pdf  used on input line 350.
 (pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-<faithinreason_files/figure-latex/factors-1.pdf, id=113, 289.08pt x 144.54pt>
-File: faithinreason_files/figure-latex/factors-1.pdf Graphic file (type pdf)
-<use faithinreason_files/figure-latex/factors-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/factors-1.pdf  used on input line 339.
-(pdftex.def)             Requested size: 241.74043pt x 120.8702pt.
-<plots/reason_ega.png, id=114, 481.8pt x 301.125pt>
+<plots/reason_scree6.png, id=121, 481.8pt x 301.125pt>
+File: plots/reason_scree6.png Graphic file (type png)
+<use plots/reason_scree6.png>
+Package pdftex.def Info: plots/reason_scree6.png  used on input line 362.
+(pdftex.def)             Requested size: 241.73749pt x 151.08592pt.
+[2 <./faithinreason_files/figure-latex/ourhistogram-1.pdf>]
+<plots/reason_ega.png, id=147, 481.8pt x 301.125pt>
 File: plots/reason_ega.png Graphic file (type png)
 <use plots/reason_ega.png>
-Package pdftex.def Info: plots/reason_ega.png  used on input line 348.
+Package pdftex.def Info: plots/reason_ega.png  used on input line 371.
 (pdftex.def)             Requested size: 241.73749pt x 151.08592pt.
-<plots/reason6_ega.png, id=115, 481.8pt x 301.125pt>
+<plots/reason6_ega.png, id=148, 481.8pt x 301.125pt>
 File: plots/reason6_ega.png Graphic file (type png)
 <use plots/reason6_ega.png>
-Package pdftex.def Info: plots/reason6_ega.png  used on input line 357.
+Package pdftex.def Info: plots/reason6_ega.png  used on input line 380.
 (pdftex.def)             Requested size: 241.73749pt x 151.08592pt.
-<faithinreason_files/figure-latex/meanhistogram-1.pdf, id=116, 289.08pt x 289.08pt>
+<faithinreason_files/figure-latex/meanhistogram-1.pdf, id=149, 289.08pt x 289.08pt>
 File: faithinreason_files/figure-latex/meanhistogram-1.pdf Graphic file (type pdf)
 <use faithinreason_files/figure-latex/meanhistogram-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/meanhistogram-1.pdf  used on input line 369.
+Package pdftex.def Info: faithinreason_files/figure-latex/meanhistogram-1.pdf  used on input line 392.
 (pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-[2 <./faithinreason_files/figure-latex/ourhistogram-1.pdf> <./faithinreason_files/figure-latex/factors-1.pdf> <./plots/reason_ega.png (PNG copy)>]
-<faithinreason_files/figure-latex/education-1.pdf, id=150, 289.08pt x 289.08pt>
+[3 <./plots/reason_scree6.png> <./plots/reason_ega.png (PNG copy)> <./plots/reason6_ega.png (PNG copy)> <./faithinreason_files/figure-latex/meanhistogram-1.pdf>]
+<faithinreason_files/figure-latex/education-1.pdf, id=167, 289.08pt x 289.08pt>
 File: faithinreason_files/figure-latex/education-1.pdf Graphic file (type pdf)
 <use faithinreason_files/figure-latex/education-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/education-1.pdf  used on input line 380.
+Package pdftex.def Info: faithinreason_files/figure-latex/education-1.pdf  used on input line 403.
 (pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-<faithinreason_files/figure-latex/democract-1.pdf, id=151, 289.08pt x 289.08pt>
+<faithinreason_files/figure-latex/democract-1.pdf, id=168, 289.08pt x 289.08pt>
 File: faithinreason_files/figure-latex/democract-1.pdf Graphic file (type pdf)
 <use faithinreason_files/figure-latex/democract-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/democract-1.pdf  used on input line 388.
+Package pdftex.def Info: faithinreason_files/figure-latex/democract-1.pdf  used on input line 411.
 (pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-<faithinreason_files/figure-latex/generalisetrust-1.pdf, id=152, 289.08pt x 289.08pt>
+<faithinreason_files/figure-latex/generalisetrust-1.pdf, id=169, 289.08pt x 289.08pt>
 File: faithinreason_files/figure-latex/generalisetrust-1.pdf Graphic file (type pdf)
 <use faithinreason_files/figure-latex/generalisetrust-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/generalisetrust-1.pdf  used on input line 397.
+Package pdftex.def Info: faithinreason_files/figure-latex/generalisetrust-1.pdf  used on input line 420.
 (pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-[3 <./plots/reason6_ega.png (PNG copy)> <./faithinreason_files/figure-latex/meanhistogram-1.pdf> <./faithinreason_files/figure-latex/education-1.pdf>] [4 <./faithinreason_files/figure-latex/democract-1.pdf> <./faithinreason_files/figure-latex/generalisetrust-1.pdf>] [5
-
-] (./faithinreason.aux)
+[4 <./faithinreason_files/figure-latex/education-1.pdf> <./faithinreason_files/figure-latex/democract-1.pdf> <./faithinreason_files/figure-latex/generalisetrust-1.pdf>] [5] (./faithinreason.aux)
 Package rerunfilecheck Info: File `faithinreason.out' has not changed.
-(rerunfilecheck)             Checksum: 4B922522C14774C78F08CAE0A5314E36;2718.
+(rerunfilecheck)             Checksum: D25AB7E92F21E69335BB0619F0362F24;3151.
  ) 
 Here is how much of TeX's memory you used:
- 15715 strings out of 477984
- 256767 string characters out of 5839381
+ 15758 strings out of 477984
+ 257245 string characters out of 5839381
  1871388 words of memory out of 5000000
- 35526 multiletter control sequences out of 15000+600000
- 564224 words of font info for 116 fonts, out of 8000000 for 9000
+ 35560 multiletter control sequences out of 15000+600000
+ 564845 words of font info for 118 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,11n,77p,665b,546s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/home/tom/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}</home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on faithinreason.pdf (5 pages, 781916 bytes).
+ 75i,11n,77p,674b,546s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/home/tom/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}</home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on faithinreason.pdf (5 pages, 820808 bytes).
 PDF statistics:
- 272 PDF objects out of 1000 (max. 8388607)
- 240 compressed objects within 3 object streams
- 80 named destinations out of 1000 (max. 500000)
- 217 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 281 PDF objects out of 1000 (max. 8388607)
+ 247 compressed objects within 3 object streams
+ 84 named destinations out of 1000 (max. 500000)
+ 233 words of extra memory for PDF output out of 10000 (max. 10000000)
 
