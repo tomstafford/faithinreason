@@ -24,8 +24,6 @@ author:
       - Data curation
       - Formal analysis
       - Methodology
-      - Visualization
-      - Writing - original draft
       - Writing - review & editing
     email: junyan.zhu@sheffield.ac.uk
   - name: Katharine Dommett
@@ -52,10 +50,10 @@ authornote: |
 
 
 abstract: |
- abstract goes here
+ What we believe about other people matters. It is not enough that others *are* trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well intentioned. While standard measures of trust and benevolence exist, there is no standard measure of the generalised belief in the rationality or reasonableness of other people. Here, we present the development and testing of a scale to directly measure this attitude. Using a representative sample of 1869 UK adults, we test dimensionality and consistency of the scale items. We show that the refine, six-item, scale is associated with, but not entirely determined by, generalised trust in other people. Our "Faith in Reason" shows large individual differences, but the average tendency is slightly on the side of endorsing, rather than rejecting, sentiments such as "The typical person is often irrational".
 
 
-note              : \textcolor{red}{Preprint `r Sys.Date()`}
+note              : \textcolor{red}{Draft `r Sys.Date()`}
 
 
 
@@ -105,53 +103,38 @@ figsize<-'68%'
 
 # Introduction
 
-What we believe about other people matters. It is not enough that others *are* trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well intentioned.
 
 
 ## Rationality
 
-The nature of human reason is a perennial topic. Human rationality has been praised ("a thinking reed") and condemned ("TK") by different thinkers. The so-called 'Rationality Wars' (TK) centered around the definition of rationality that might reasonably used as a standard against which to judge human reasoning
+>*All our dignity consists then in thought. By it we must elevate ourselves, and not by space and time which we cannot fill. Let us endeavour then to think well; this is the principle of morality.*
+>@pascal1910
 
-An influential research programme is the heuristics and biases programme in psychology (TK), which uses the ideal of economic rationality as a standard to define actual human reasoning against. From this perspective human reasoning appears riddled with biases, but much work is done by the adoption of the standards of utility theory, formal logic and precise statistical reasoning. 
+The nature of human reason is a perennial topic. Human rationality has often been praised ["Man is but a reed, the most feeble thing in nature, but he is a thinking reed", @pascal1910], but so have its failures condemned been by many different thinkers. 
 
-Mercier and Sperber's argumentative theory of reasons provides an account TK
-TK cite my Frontiers paper, BBC commentary
+An influential account of human reasoning is provided by the heuristics and biases programme [@kahneman1982], which uses the ideal of economic rationality as a standard to define actual human reasoning against. From this perspective human reasoning appears riddled with biases, but much of this effect is due to the adoption of the standards of utility theory, formal logic and precise statistical reasoning against which to define error. Critics have questions the appropriateness of these standards [e.g. @gigerenzer2011]. The logic of controlled experiments allows researchers to isolate and emphasise quirks in human reasoning, while backgrounding reason-responsiveness [@stafford2014]. Accordingly, the psychology literature may overemphasise the role of error, bias and motivated reasoning [@stafford2020evidence]. The debate has been so heated in the cognitive sciences that 'Rationality Wars' [@samuels2002] have been declared over the definition of rationality that might reasonably used as a standard against which to judge human reasoning.
+
+Mercier and Sperber's [-@mercier2011] Argumentative Theory of Reason provides an interactionist, rather than individualist account of human reasoning, which emphasises the social context in which human reasoning evolved. This account suggests, among other things, the importance of dialogue based argumentation in changing beliefs [@brand2022;@karadzhov2022] and the validity of incorporating social factors like the status, trustworthiness or expertise of a source of information in the reasoning process [@eiser2009].  
 
 ## Criteria of reason
 
-So rationality is not a unitary concept, nor one around which there is consensus on the definition of, despite the way it is often evoked in discussion (and particularly in discussion of its negation e.g.  "they are being irrational").
+So rationality is not a unitary concept, nor one around which there is consensus on the definition of, despite the way it is often evoked in discussion (and particularly in discussion of its negation e.g.  "they are being irrational"). That said, core features of rationality have been proposed, and it may be  possible to test these as aspects of the 'folk theory' of rationality that exists in the common understanding. 
 
-That said, core features of rationality have been proposed.
+Two primary criteria are '**correspondence**', where beliefs are aligned with reality (in the form of the state of the world or their behaviour), and '**coherence**', where beliefs are aligned with each other (i.e. consistent, but see @sommer2022). For more on corresponence and coherance see @dawson2009.
 
-Dawson, N. V., & Gregory, F. (2009). Correspondence and coherence in science: A brief historical perspective. Judgment and decision making, 4(2), 126-133.
+Another criteria of rationalty which can be identified is **insight** into your own beliefs and how they guide behaviour. The rhetorical power of certain celebrated demonstrations of irrationality [e.g. @nisbett1977] relies on the surprise that people can act, supposedly, unaware of the causes of their behaviour [but see @stafford2020evidence].
 
-### Insight 
+Finally, susceptibility to **influence** is a key aspect of rationality [@mercier2020]. This can be positively construed - to be rational is to be responsive to reasons, persuadable by evidence and so on. And it can be negative construed - to be irrational is to be gullible, or stubborn in the face of good reasons to change your mind.
 
-Nisbett, R. E., & Wilson, T. D. (1977). Telling more than we can know: Verbal reports on mental processes. Psychological review, 84(3), 231.
-
-
-
-### Influence / Gullibility
-
-Altay, S., & Acerbi, A. (2023). People believe misinformation is a threat because they assume others are gullible. New Media & Society, 0(0). https://doi.org/10.1177/14614448231153379
-
-Confidence in their abilities, friends’ and family’s abilities, and people’s abilities to spot misinformation was measured with three statements adapted from Corbu et al. (2020) and the European Commission (2018):
-“I am able to identify news or information that misrepresent reality or is even false”
-“My friends and family are able to identify news or information that misrepresent reality or is even false”
-“People in general are able to identify news or information that misrepresent reality or is even false”
-
-- negatively conceived
-- unidimensional: influence
-
-
-Summary: so core features of rationality include coherance, correspondence, surceptibility to influence and insight into causes of ones actions. The extent to which these features form a coherent whole in the minds of the general public, and can meaningfully be asked about questions about is the primary topic of this paper.
+So core features of rationality include coherence, correspondence, susceptibility to influence and insight into causes of ones actions. The extent to which these features form a coherent whole in the minds of the general public, and can meaningfully be asked about questions about is a primary question of this paper.
 
 ## Consequence of a lack of faith in reason
 
-### Second order effexcts of Disinfo
+Investigating folk conceptions of rationality is not just interesting in its own right, individual's beliefs about the rationality of others may be important for a number of other core beliefs and behaviours.
 
-The generalised belief that others are well informed and reasonable is foundational to democracy. Recent concerns around misinformation may have second order effects, undermining democracy not by generating a misinformed populace, but by generating a populace that believes others are misunformed or unreasonable [@karpf2019]. Alarmism around misinformation may potentially lower trust in institutions [@hoes2022], increase skepticism about democracy [@jungherr2022; @nisbet2021], or foster calls of tighter media regulation [@lee2021].
+### Second order effects of disinformation
 
+The generalised belief that others are well informed and reasonable is foundational to democracy. Recent concerns around misinformation may have second order effects, undermining democracy not by generating a misinformed populace, but by generating a populace that believes others are misunformed or unreasonable [@karpf2019]. Alarmism around misinformation may potentially lower trust in institutions [@hoes2022], increase skepticism about democracy [@jungherr2022; @nisbet2021], or foster calls of tighter media regulation [@lee2021]. @altay2023 have shown that the threat of misinformation is directly related to the perceptions of others' gullibility.
 
 ### Third person effect
 
@@ -159,17 +142,27 @@ There is an established literature of the perception of media influence on other
 
 Two caveats around the third person effect. Lyons [-@lyons2022] has recently argued that - for many people - a third person effect of greater media influence on others rather than the self will be an accurate perception. @chung2016 have argued that the driving factor in many so-called third person effects is the perception of others (as highly influenced), rather than the discrepancy with first person perception per se.
 
-TK we directly measured the TPE!!
-
 ## Generalised trust & value of democracy
 
+Generalised trust is the belief that, 'most people can be trusted' [@brehm1997; @paxton1999]. It is reflected in standard items in long running time series surveys such as the World Values Survey [@wvs] an the General Social Survey [@gss]. Generalised trust is an aspect of social capital, broadly conceived [@putnam2000] and as such as an important aspect of wellbeing and the health of society [@cohn2019]. Given the recognised importance of generalised trust, it is nature to ask how other beliefs feed into this belief. Why do we trust others? Do we trust them intellectually as well as morally? Do we think other people are able to work things out for themselves, to display good judgement? Do we trust the typical person to avoid being manipulated, to respond to arguments, to reason their way to good enough decisions? In short, is generalised trust informed by beliefs about the rationality or reasonableness of others?
 
-social capital, dropped wallets, democracy
+Similarly, attitudes to demoracy may mutually inform beliefs about the reasonableness of one's fellow citizens. One standardised measure of attitude to democracy is the item from the World Values Survey [@wvs] which asks 'How important is it for you to live in a country that is governed democratically?'.
 
+## Lack of existing measures
+
+To our knowledge, no existing scale directly measures belief in reasoning. There are scales which measure related concepts, or concepts which are plausible antecedents or consequences of belief in the reasonableness of our fellow citizens. In addition to the measures of generalised trust discussed above, there are also measures of conspiracy beliefs or mentality [see @swami2017 for a brief review] including those which explicitly try to distinguish conspiracist from rational skepticism [@stojanov2019;@stojanov2020]. These do not direct assess rationality, and again could be viewed a more alike to measuring a consequence of rationality or a lack of it (i.e. due to manipulation or credulity).
+
+Some researchers have looked at what they call ‘cynical beliefs about human nature’ [e.g. @stavrova2016], but these, again, do not touch on reason or rationality as a cause of cynicism. Instead, scale items are similar to generalised trust/distrust measures.
+
+Other studies have looked at beliefs about human nature [e.g. @furnham1985]. These have questions which focus on the role of biology, genetics and/or heredity on psychological traits. For example, asking if participants believe personality is entirely caused by a person’s genetics. Again, these scales do not directly assess beliefs about human reason, although they do assess beliefs which may plausibly affect beliefs about human reason.
+
+## Summary
+
+In summary, generalised belief in the rationality or reasonableness of others is interesting in its own right, in relation to longstanding debates in the cognitive sciences about the definition of rationality and due to plausible relation to other atittudes recognised of importance, such as generalised trust. To our knowledge, no scale exists which directly measures this generalised belief. To develop, refine and explore such a scale is the purpose of the current study.
 
 # Method
 
-Part of a larger survey
+Part of a larger survey [@zhu2023]
 
 
 ## Sample
@@ -255,9 +248,10 @@ apa_table(
 
 ## Reproducibility
 
-Data availability: The analysis code and anonymised response data which support the results here are openly available https://github.com/tomstafford/faithinreason 
+Data availability: The analysis code and anonymised response data which support the results here are openly available https://github.com/tomstafford/faithinreason
 
-This repository contains the files used to generate this report, which is in the form of a `reproducible manuscript`, a document which generates the analysis it reports, and so combines sharing, documenting and reporting an analysis in a single set of project files.
+
+This repository contains the files used to generate this report, which is in the form of a 'reproducible manuscript', a document which generates the analysis it reports, and so combines sharing, documenting and reporting an analysis in a single set of project files.
 
 # Results
 
@@ -440,26 +434,31 @@ p +
 
 ```
 
-Correlation between Q17 and FIR
+Relation to other variables
+Regressions and corellations
 
-```{r correlations}
+```{r, regressions, include=FALSE}
 
-cor_items <- df %>% dplyr::select(mean,Q16,Q17)
+#recode education question to set "other" respnose to NA
+df <- df %>% mutate(Q11r = case_match(Q11,8 ~ NA, .default = Q11))
+
+cor_items <- df %>% dplyr::select(mean,Q16,Q17,Q11r)
 
 # calculate correlation matrix
-cor_matrix <- round(cor(cor_items),2)
+cor_matrix <- round(cor(cor_items,method = "pearson", use = "pairwise.complete.obs"),2)
 
 # display correlation matrix as table
 kable(cor_matrix, caption = "Correlation Matrix")
+
+#regression
+m <- lm(mean~1+Q16+Q17+Q11r,data=df)
+summary(m)
+
 ```
 ## TODO
 
-```{r regressions}
 
-#Q11 needs sanitising
-m <- lm(mean~1+Q16+Q17+Q11,data=df)
-summary(m)
-```
+Analyse TPE
 
 Methods for assessing dimensionality
 cronbach's alpha + leave on out
@@ -510,6 +509,14 @@ Scree plot of factors suggests border of unidimension and bidimensional
 mokken analysis suggests 1 domension, BUT if you remove items 5 and 9 you then find 2 dim3nsions at 0.35
 
 # Discussion
+
+This paper arose out of a note published online [@stafford2022] which we cite for completeness and by way of allowed it to be checked that the intention of the study has been consistent between conceptualisation and publication.
+
+## scale development
+
+Usefully reviewed in @flake2020; @clark2019; @boateng2018
+
+We do not pretend to have completed scale development and testing, but aim to present the beginnings here.
 
 ## Normative models
 
