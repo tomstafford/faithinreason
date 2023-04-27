@@ -50,7 +50,7 @@ authornote: |
 
 
 abstract: |
- What we believe about other people matters. It is not enough that others *are* trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well intentioned. While standard measures of trust and benevolence exist, there is no standard measure of the generalised belief in the rationality or reasonableness of other people. Here, we present the development and testing of a scale to directly measure this attitude. Using a representative sample of 1869 UK adults, we test dimensionality and consistency of the scale items. We show that the refine, six-item, scale is associated with, but not entirely determined by, generalised trust in other people. Our "Faith in Reason" shows large individual differences, but the average tendency is slightly on the side of endorsing, rather than rejecting, sentiments such as "The typical person is often irrational".
+ What we believe about other people matters. It is not enough that others *are* trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well intentioned. While standard measures of trust and benevolence exist, there is no standard measure of the generalised belief in the rationality or reasonableness of other people. Here, we present the development and testing of a scale to directly measure this attitude. Using a representative sample of 1869 UK adults, we test dimensionality and consistency of the scale items. We show that the refined, six-item, scale is associated with, but not entirely determined by, generalised trust in other people. Our "Faith in Reason" scale shows large individual differences, but the average tendency is slightly on the side of endorsing, rather than rejecting, sentiments such as "The typical person is often irrational".
 
 
 note              : \textcolor{red}{Draft `r Sys.Date()`}
@@ -162,23 +162,14 @@ In summary, generalised belief in the rationality or reasonableness of others is
 
 # Method
 
-Part of a larger survey [@zhu2023]
-
-
 ## Sample
+
+The questions were asked as part of a larger survey experiment [@zhu2023], in which participants were asked to view adverts which appeared on Facebook during the 2019 UK general election. Participants were recruited via the online platform Prolific. In terms of age, gender, regional dispersion and political affiliations participants reflected a representative sample of UK adults. Data was collected on 2022-08-20. Full details are give in @zhu2023.
+
 
 ## Item development
 
-naive endorsement (item 1)
-correspondance (items 2 and 6)
-coherance (items 7 and 8)
-influence (items 3 and 5)
-insight into behaviour (4)
-
-negative and positive (reverse coded)
-
-
-See Table \@ref(tab:items)
+In order to develop the scale items, we developed eight items, informed by the debates in cognitive science around the nature of rationality (see introduction). Half of these were positively framed, to reflect endorsement of human's tendency towards rationality and reasonableness. Half were negatively framed, to reflect endorsement of a tendency towards irrationality and unreasonableness. Items, their framing (positive/negative) and the aspect of rationality they were designed to capture are shown in Table \@ref(tab:items).
 
 ```{r items, echo = FALSE, results = 'asis'}
 Wording <- c("The typical person is often irrational",
@@ -210,12 +201,20 @@ df <- data.frame(Item,Framing,Aspect,Wording)
 apa_table(
   df
   , caption = "Scale item wording"
-  , note = "Response was on a 7 point Likert scale from (1 = \"Strong Disagree\", 7 = \"Strongly Agree\"). Items 1,2,3 and 4 reverse coded so that for all items higher scores represented stronger faith in reason."
+  , note = "Response was on a 7 point Likert scale from (1 = \"Strongly Disagree\", 7 = \"Strongly Agree\"). Items 1,2,3 and 4 reverse coded so that for all items higher scores represented stronger faith in reason."
   , escape = TRUE
   , span_text_columns = TRUE
 )
 
 ```
+
+In all analyses negatively framed items were reverse coded, so that numerically higher scores always reflect greater endorsement of human rationality, across all items. An attention check item was included in the scale (also shown in Table \@ref(tab:items)).
+
+
+
+## Other items
+
+Other items we report from the original survey are a measure of generalised trust ('Generally speaking, would you say that most people can be trusted?'), support for democracy ('How important is it for you to live in a country that is governed democratically?') and a measure of the Third Person Effect in the context of political advertising. This was calculated as the average response to six linked items about the influence of election advertising on the typical voter, with wording of the form specifically "Thinking about the impact of political parties’ election messages on the typical voter, to what extent do you agree or disagree that it helps to: - Raise their awareness of political issues; Raise their awareness of political candidates or parties; Prompt them to share messages related to the election; Prompt them to vote/ register to vote; Persuade them to change who you are planning to vote for; Influence how they feel about political opponents'. We also report demographic questions (age, sex, education) 
 
 ```{r notes}
 # Q17
@@ -241,17 +240,26 @@ apa_table(
 # 2 GCSE level, or equivalent
 # 1 No formal qualifications
 
+
+# Q22_1	Q22_2	Q22_3	Q22_4	Q22_5	Q22_6
+# Thinking about the impact of political parties’ election messages on the typical voter, to what extent do you agree or disagree that it helps to: - Raise their awareness of political issues	Thinking about the impact of political parties’ election messages on the typical voter, to what extent do you agree or disagree that it helps to: - Raise their awareness of political candidates or parties	Thinking about the impact of political parties’ election messages on the typical voter, to what extent do you agree or disagree that it helps to: - Prompt them to share messages related to the election	Thinking about the impact of political parties’ election messages on the typical voter, to what extent do you agree or disagree that it helps to: - Prompt them to vote/ register to vote	Thinking about the impact of political parties’ election messages on the typical voter, to what extent do you agree or disagree that it helps to: - Persuade them to change who you are planning to vote for	Thinking about the impact of political parties’ election messages on the typical voter, to what extent do you agree or disagree that it helps to: - Influence how they feel about political opponents
+
+
 ```
 
 
-## Prereg
+## Preregistration
+
+Our analysis is supported by formal preregistration of hypothesis and data analyses practices
+(OSF pre-registration link: https://osf.io/y9kjg/?view_only=609cd46aab534e4c866c16b3ef29c510). Note that the bulk of this preregistration concerns the analyses reported in @zhu2023. 
+
+Preregistration supports the correct marking of confirmatory versus exploratory analyses. The nature of scale development is exploratory, but the preregistration allows readers confirm what was intended before data was collected.
 
 ## Reproducibility
 
-Data availability: The analysis code and anonymised response data which support the results here are openly available https://github.com/tomstafford/faithinreason
+Data availability: The analysis code and anonymised response data which supports all results are openly available https://github.com/tomstafford/faithinreason
 
-
-This repository contains the files used to generate this report, which is in the form of a 'reproducible manuscript', a document which generates the analysis it reports, and so combines sharing, documenting and reporting an analysis in a single set of project files.
+This repository contains the files used to generate this report, which is in the form of a 'reproducible manuscript', a document which generates the analysis it reports, and so combines sharing, documenting and reporting an analysis in a single set of project files [@rmarkdowncite ;@aust2020].
 
 # Results
 
@@ -270,12 +278,12 @@ df <- read.csv(here('data',file), sep="\t",fileEncoding="UTF-16LE",header=T)[-1:
 df <- df %>% dplyr::filter(Progress == 100)
 
 #just the columns we're interested in
-df <- df[grepl("Q19|Q17|Q16|Q11",colnames(df))]
+df <- df[grepl("Q22|Q19|Q17|Q16|Q11",colnames(df))]
 
 #check types
 sapply(df, class)
 
-i <- c(1,3:13)      #  columns to change
+i <- c(1,3:19)      #  columns to change
 
 #use the apply function to change these columns to numeric:
 df[ , i] <- apply(df[ , i], 2, function(x) as.numeric(x))
@@ -283,6 +291,13 @@ df[ , i] <- apply(df[ , i], 2, function(x) as.numeric(x))
 #Some items are reverse coded. Let's code all so higher scores = high faith in rationality
 #Q19_1 to Q19_4
 df <- df %>% dplyr::mutate(across(Q19_1:Q19_4, ~ 8 - .))
+
+#TPE items are coded 1 (storngly disagree) to 7 (strongly agree), but qualtrics coded all 7s as 8s)
+df <- df %>% mutate_at(vars(Q22_1:Q22_6), recode, '8' = 7)
+
+#sanity check, there should be no 8s left
+df %>% count(Q22_6)
+
 
 #Q19_7 - attention check
 before=nrow(df)
