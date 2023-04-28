@@ -2,14 +2,14 @@ library (qgraph)
 library (EGAnet) # requires install.packages('sna')
 library(psych) #for scree plot
 
-df <- read.csv(here('data','items.csv'))
+df <- read.csv(here('data','our_items.csv'))
 
 
 
 #full set
 Ritems <- dplyr::select(df,c(Q19_1:Q19_6,Q19_8:Q19_9))
 
-png(here('plots','reason_scree.png'),height=1500, width=2400,res=360)
+png(here('plots','reason_scree8.png'),height=1500, width=2400,res=360)
 scree(Ritems, main='',pc=FALSE)
 dev.off()
 

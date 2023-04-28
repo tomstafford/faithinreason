@@ -193,7 +193,7 @@ Correspondence concerning this article should be addressed to Tom Stafford, Depa
 
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Department of Psychology, University of Sheffield, UK\\\textsuperscript{2} Department of Politics and International Relations, University of Sheffield, UK}
 
-\note{\textcolor{red}{Draft 2023-04-27}}
+\note{\textcolor{red}{Draft 2023-04-28}}
 
 \abstract{%
 What we believe about other people matters. It is not enough that others \emph{are} trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also \emph{perceive} others as trustworthy, reasonable or well intentioned. While standard measures of trust and benevolence exist, there is no standard measure of the generalised belief in the rationality or reasonableness of other people. Here, we present the development and testing of a scale to directly measure this attitude. Using a representative sample of 1869 UK adults, we test dimensionality and consistency of the scale items. We show that the refined, six-item, scale is associated with, but not entirely determined by, generalised trust in other people. Our ``Faith in Reason'' scale shows large individual differences, but the average tendency is slightly on the side of endorsing, rather than rejecting, sentiments such as ``The typical person is often irrational''.
@@ -329,9 +329,9 @@ Other items we report from the original survey are a measure of generalised trus
 \subsection{Preregistration}\label{preregistration}}
 
 Our analysis is supported by formal preregistration of hypothesis and data analyses practices
-(OSF pre-registration link: \url{https://osf.io/y9kjg/?view_only=609cd46aab534e4c866c16b3ef29c510}). Note that the bulk of this preregistration confirms the analyses reported in Zhu et al. (submitted).
+(OSF pre-registration link: \url{https://osf.io/y9kjg/?view_only=609cd46aab534e4c866c16b3ef29c510}). Note that the bulk of this preregistration concerns the analyses reported in Zhu et al. (submitted).
 
-Preregistration supports the correct marking of confirmatory versus exploratory analyses. The nature of scale development is exploratory, but the preregistration allows readers confirm what was intended before data was collected.
+Preregistration supports the accurate identification of confirmatory versus exploratory analyses. The nature of scale development is necessarily exploratory, but the preregistration allows readers confirm what was intended and expected before data was collected.
 
 \hypertarget{reproducibility}{%
 \subsection{Reproducibility}\label{reproducibility}}
@@ -346,19 +346,40 @@ This repository contains the files used to generate this report, which is in the
 \hypertarget{initial-characterisations}{%
 \subsection{Initial characterisations}\label{initial-characterisations}}
 
-Our data consist of 1875 participants who completed our online survey. 6 failed an attention check and were removed.
+Our data consist of 1875 participants who completed our online survey. 6 failed an attention check and were removed. Inital inspection suggested that a range of responses were obtain. For example, Figure \ref{fig:Q19item1} shows that the first item of the scale received the full range of responses from ``Strongly disagree'' to ``Strongly agree''.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.75\linewidth]{faithinreason_files/figure-latex/ourhistogram-1} 
+{\centering \includegraphics[width=0.75\linewidth]{faithinreason_files/figure-latex/Q19item1-1} 
 
 }
 
-\caption{Histogram of responses to Item 1 ("The typical person is often irrational")}\label{fig:ourhistogram}
+\caption{Histogram of responses to Item 1 ("The typical person is often irrational")}\label{fig:Q19item1}
 \end{figure}
 
-\hypertarget{scale-development-item-selection}{%
-\subsection{scale development / item selection}\label{scale-development-item-selection}}
+\hypertarget{scale-development-assessing-dimensionality-item-selection}{%
+\subsection{Scale development: assessing dimensionality \& item selection}\label{scale-development-assessing-dimensionality-item-selection}}
+
+\begin{verbatim}
+## Q19_1 
+## 0.67 
+## Q19_2 
+## 0.67 
+## Q19_3 
+## 0.68 
+## Q19_4 
+## 0.68 
+## Q19_5 
+## 0.78 
+## Q19_6 
+## 0.67 
+## Q19_8 
+## 0.67 
+## Q19_9 
+## 0.7
+\end{verbatim}
+
+Cronbach's alpha is 0.72
 
 \begin{figure}
 
@@ -415,7 +436,7 @@ The average score across these six items was 3.29, a summary statistic which sug
 
 }
 
-\caption{How important is it for you to live in a country that is governed democratically? and mean FIR}\label{fig:democract}
+\caption{How important is it for you to live in a country that is governed democratically? and mean FIR. Note 0.1 jitter applied to x-axes values to allow visualisation of point density.}\label{fig:democract}
 \end{figure}
 
 \begin{figure}
@@ -424,11 +445,20 @@ The average score across these six items was 3.29, a summary statistic which sug
 
 }
 
-\caption{Generally speaking, would you say that most people can be trusted? and mean FIR}\label{fig:generalisetrust}
+\caption{Generally speaking, would you say that most people can be trusted? and mean FIR. Note 0.1 jitter applied to x-axes values to allow visualisation of point density}\label{fig:generalisetrust}
 \end{figure}
 
 Relation to other variables
 Regressions and corellations
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth]{faithinreason_files/figure-latex/tpe-1} 
+
+}
+
+\caption{Scatterplot of Faith in Reason scores against Third Person Effect score. Note 0.1 jitter applied to x-axes values to allow visualisation of point density}\label{fig:tpe}
+\end{figure}
 
 \hypertarget{todo}{%
 \subsection{TODO}\label{todo}}

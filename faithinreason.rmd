@@ -95,10 +95,12 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, fig.height=2, 
 # this for the data analysis
 library(tidyverse)
 library(here)
+library(ltm) #for cronbach's alpha
+library(mokken) #for mokken scale analysis
 
 # parameters for figures etc
 figsize<-'68%'
-
+figdpi <- 320 #when saving
 ```
 
 # Introduction
@@ -253,7 +255,7 @@ Other items we report from the original survey are a measure of generalised trus
 Our analysis is supported by formal preregistration of hypothesis and data analyses practices
 (OSF pre-registration link: https://osf.io/y9kjg/?view_only=609cd46aab534e4c866c16b3ef29c510). Note that the bulk of this preregistration concerns the analyses reported in @zhu2023. 
 
-Preregistration supports the correct marking of confirmatory versus exploratory analyses. The nature of scale development is exploratory, but the preregistration allows readers confirm what was intended before data was collected.
+Preregistration supports the accurate identification of confirmatory versus exploratory analyses. The nature of scale development is necessarily exploratory, but the preregistration allows readers confirm what was intended and expected before data was collected.
 
 ## Reproducibility
 
@@ -264,14 +266,13 @@ This repository contains the files used to generate this report, which is in the
 # Results
 
 ```{r results='hide'}
-#copying from https://bookdown.org/yihui/rmarkdown/r-code.html
-#this is some R code which evaluates when you make the document
+#this is R code evaluates when you make the document but none of it displayed right now
 #
 
 #----------------Data loading & Preprocessing
 
-file='wp1_num.tsv'
-
+#load data
+file='wp1_num.tsv' #data file, numerical answers, downloaded from Qualtrics
 df <- read.csv(here('data',file), sep="\t",fileEncoding="UTF-16LE",header=T)[-1:-2,]
 
 #remove people who don't finish
@@ -280,41 +281,37 @@ df <- df %>% dplyr::filter(Progress == 100)
 #just the columns we're interested in
 df <- df[grepl("Q22|Q19|Q17|Q16|Q11",colnames(df))]
 
-#check types
+#check types -> some are character, not numeric
 sapply(df, class)
 
-i <- c(1,3:19)      #  columns to change
-
 #use the apply function to change these columns to numeric:
+i <- c(1,3:19)      #  columns to change
 df[ , i] <- apply(df[ , i], 2, function(x) as.numeric(x))
 
 #Some items are reverse coded. Let's code all so higher scores = high faith in rationality
 #Q19_1 to Q19_4
 df <- df %>% dplyr::mutate(across(Q19_1:Q19_4, ~ 8 - .))
 
-#TPE items are coded 1 (storngly disagree) to 7 (strongly agree), but qualtrics coded all 7s as 8s)
-df <- df %>% mutate_at(vars(Q22_1:Q22_6), recode, '8' = 7)
+#TPE items are coded 1 (strongly disagree) to 7 (strongly agree), but qualtrics coded all 7s as 8s)
+df <- df %>% mutate_at(vars(Q22_1:Q22_6), recode, '8' = 7) #correct this
 
 #sanity check, there should be no 8s left
 df %>% count(Q22_6)
-
 
 #Q19_7 - attention check
 before=nrow(df)
 df <- df %>% dplyr::filter(Q19_7 == 4) #remove 6 people
 removed_by_attn_check=before-nrow(df)
 
-
-write_csv(df,'data/items.csv')
+write_csv(df,'data/our_items.csv') #export the items which are the focus of this paper
 
 ```
 
 ## Initial characterisations
 
-Our data consist of `r nrow(df)` participants who completed our online survey. `r removed_by_attn_check` failed an attention check and were removed.
+Our data consist of `r before` participants who completed our online survey. `r removed_by_attn_check` failed an attention check and were removed, leaving a final sample of `r nrow(df)`. Inital inspection suggested that a range of responses were obtain. For example, Figure \@ref(fig:Q19item1) shows that the first item of the scale received the full range of responses from "Strongly disagree" to "Strongly agree".
 
-
-```{r ourhistogram, fig.cap="Histogram of responses to Item 1 (\"The typical person is often irrational\")", fig.align="center", out.width="75%",fig.height=4}
+```{r Q19item1, fig.cap="Histogram of responses to Item 1 (\"The typical person is often irrational\")", fig.align="center", out.width="75%",fig.height=4}
 
 #make histogram
 #cribbing from https://www.statmethods.net/graphs/density.html
@@ -325,31 +322,54 @@ p + geom_histogram(fill="firebrick",color="black",binwidth=1) + scale_x_continuo
     labels = c("7 Strongly agree","6","5","4 neutral","3","2","1 Strongly disagree")) +
     labs(x = "Response")
 
+ggsave(here('plots','histogram_item1.png'),dpi=figdpi)
 ```
 
-## scale development / item selection
+## Scale development: assessing dimensionality & item selection
+
+```{r, analysis, include=FALSE}
+#Some of the analysis we hand off to an external file, in particular to generate some of the plots
+
+#if you want to regenerate plots, uncomment this line
+#source("fir_results.R", local = knitr::knit_global())
+```
+
+```{r, cronbach, results='hide'}
+#select items
+Ritems <- dplyr::select(df,c(Q19_1:Q19_6,Q19_8:Q19_9))
+
+c <- ltm::cronbach.alpha(Ritems, CI=TRUE)
+
+#cronbach leave one out
+cols <- colnames(Ritems)
+alps <- list()
+i <- 0
+for (col in cols) {
+  i <- i +1
+  sample <- cols[cols != col]
+  cat(col, "\n")
+  #cat(round(alpha(df[sample])$total$raw_alpha, 2), "\n")
+  alps[[i]] <- ltm::cronbach.alpha(Ritems[sample])$alpha
+  cat(round(ltm::cronbach.alpha(Ritems[sample])$alpha,2),"\n")
+}
+```
+
+Cronbach's alpha for all eight items is `r c$alpha`, which is often taken to reflect good-to-acceptable scale consistency. A leave-one-out procedure suggests that Cronbach's Alpha decreases for omission of all items except item 5, without which the Cronbach's Alpha of the remaining 7 items is `r alps[[5]] `. The caveat to this is that, properly, Cronbach's Alpha should be measured *after* confirmation of unidimensionality. 
+
+A conventional method for assessing dimensionality is factor analysis. Figure \@ref(fig:factor8) shows the scree plot for the eight items. The result is ambiguous, since there is one main factor but a second factor which falls just below the traditional cut-off an eigenvalue of 1.
+
+```{r, factors8, fig.cap="Factor analysis for 8 items of the Faith in Reason scale", fig.align="center", out.width="100%"}
+knitr::include_graphics(here("plots","reason_scree8.png"))
+```
+
+### Mokken Analysis
+
+To understand the dimensional structure of our items, we turn to Mokken Analysis, part of the item response theory framework (TK). Very loosely, Mokken analysis tests scale items against a model which assumes that items exist together on a single dimension, with some affording higher responses and others affording lower responses, with this item property consistent across participants, who also vary in their propensity to give high or low responses. Violations of this model indicate that items do fit on a single dimension and so should not be combined in the same scale.
 
 ```{r mokkenanalysis, results='hide'}
 #https://cran.r-project.org/package=mokken
 #https://sites.google.com/a/tilburguniversity.edu/avdrark/mokken
 #install.packages("mokken")
-
-library(mokken) #for mokken scale analysis
-library(ltm) #for cronbach's alpha
-
-#select items
-Ritems <- dplyr::select(df,c(Q19_1:Q19_6,Q19_8:Q19_9))
-
-ltm::cronbach.alpha(Ritems, CI=TRUE)
-
-#cronbach leave one out
-cols <- colnames(Ritems)
-for (col in cols) {
-  sample <- cols[cols != col]
-  cat(col, "\n")
-  #cat(round(alpha(df[sample])$total$raw_alpha, 2), "\n")
-  cat(round(ltm::cronbach.alpha(Ritems[sample])$alpha,2),"\n")
-}
 
 # Compute scalability coefficients
 mokken::coefH(Ritems)
@@ -363,10 +383,44 @@ for (criterion in seq(0.05,0.55,by=0.05)){
 mokken::aisp(Ritems,0.3)
 ```
 
-```{r, analysis, include=FALSE}
-#In this repo we call an external file to run the analysis and generate the plots
-#if you want to regenerate plots, uncomment this line
-#source("fir_results.R", local = knitr::knit_global())
+
+#### Junyan
+
+We asked 8 questions about rationality in the survey. To determine the homogeneity and the
+fitness of the responses, I use Stata to perform Mokken scaling analysis. Testing all 8
+rationality variables, the Mokken analysis yields one scale of 6 items. The items with low
+Loevinger’s coefficient of homogeneity (H i ), a criterion for scalability, are dropped. If the
+overall H&lt;0.3, it means the items in the scale are unrelated, thus cannot be accepted to form a
+cumulative scale. As a rule of thumb, H i must be higher than 0.3 to be kept in the scale.
+Therefore, there are 6 fitting items in the scale: rationality_1, rationality_2, rationality_3,
+rationality_4, rationality_6, and rationality_7. The overall H coefficient is 0.41, indicating a
+medium-strong scalability. The individual critical values in the scale are all lower than 80, so
+the variables are double monotonous and there is no model violation.
+Code: loevh rationality_1 rationality_2 rationality_3 rationality_4 rationality_6 rationality_7,
+pair monotonicity(*) ppp pmm nipmatrix(minvi(0.03) siglevel(0.01))
+We can thus generate a rationality variable by aggregating those six variables. Cronbach’s $\alpha$
+is 0.78, indicating an acceptable internal consistency.
+
+Based on the statistical results, it looks to me that rationality_5 (The average person can be
+persuaded to change if given good reasons) is a real problem, it doesn’t fit at all with other items
+
+3
+and must be removed. Rationality_8 (People&#39;s behaviour is generally consistent with their beliefs)
+has a poor fitness, but it is not as bad as rationality_5.
+
+Next, I try to scale the remaining two items that are not included in the above scale –
+rationality_5 and rationality_8. As expected, these two items doesn’t form a separate scale.
+Empirically, these items are excluded from the rationality measure by Mokken scaling likely
+because persuasion effect is not a robust indication of rationality?
+
+### Exploratory graph analysis
+
+```{r egafull, fig.cap="Exploratory Graph Analysis (EGA) of all items.", fig.align="center", out.width="100%"}
+knitr::include_graphics(here("plots","reason_ega.png"))
+```
+
+```{r egasix, fig.cap="The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).", fig.align="center", out.width="100%"}
+knitr::include_graphics(here("plots","reason6_ega.png"))
 ```
 
 ```{r, factors, fig.cap="Factor analysis", fig.align="center", out.width="100%"}
@@ -378,16 +432,6 @@ cronbach <- ltm::cronbach.alpha(Ritems, CI=TRUE) #CI is bootstrapped https://rdr
 
 knitr::include_graphics(here("plots","reason_scree6.png"))
 
-```
-
-
-
-```{r egafull, fig.cap="Exploratory Graph Analysis (EGA) of all items.", fig.align="center", out.width="100%"}
-knitr::include_graphics(here("plots","reason_ega.png"))
-```
-
-```{r egasix, fig.cap="The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).", fig.align="center", out.width="100%"}
-knitr::include_graphics(here("plots","reason6_ega.png"))
 ```
 
 
@@ -424,9 +468,10 @@ mean_df <- df %>% group_by(Q11) %>% summarize(mean_fir = mean(mean))
 ggplot(mean_df, aes(Q11, mean_fir)) + 
   geom_bar(stat = "identity", fill = "blue") + 
   labs(x = "Education Level", y = "Mean FIR")
-  
+
+ggsave(here('plots','education-fir.png'),dpi=figdpi)  
 ```
-```{r democract, fig.cap="How important is it for you to live in a country that is governed democratically? and mean FIR", fig.align="center", out.width="75%",fig.height=4}
+```{r democract, fig.cap="How important is it for you to live in a country that is governed democratically? and mean FIR. Note 0.1 jitter applied to x-axes values to allow visualisation of point density.", fig.align="center", out.width="75%",fig.height=4}
 #df  <-  df%>% filter (Q16<6 # thisline shows that lack of correlation holds even for people who don't answer 7
 
 p <- ggplot(df,aes(x=mean,y=Q16))
@@ -436,9 +481,10 @@ p +
   labs(x = "Faith in reason",
        y = "Importance of democracy")
 
+ggsave(here('plots','fir-democracy.png'),dpi=figdpi)  
 ```
 
-```{r generalisetrust, fig.cap="Generally speaking, would you say that most people can be trusted? and mean FIR", fig.align="center", out.width="75%",fig.height=4}
+```{r generalisetrust, fig.cap="Generally speaking, would you say that most people can be trusted? and mean FIR. Note 0.1 jitter applied to x-axes values to allow visualisation of point density", fig.align="center", out.width="75%",fig.height=4}
 
 p <- ggplot(df,aes(x=mean,y=Q17))
 p + 
@@ -447,6 +493,7 @@ p +
     labs(x = "Faith in reason",
        y = "Generalised trust")
 
+ggsave(here('plots','fir-trust.png'),dpi=figdpi)  
 ```
 
 Relation to other variables
@@ -457,7 +504,11 @@ Regressions and corellations
 #recode education question to set "other" respnose to NA
 df <- df %>% mutate(Q11r = case_match(Q11,8 ~ NA, .default = Q11))
 
-cor_items <- df %>% dplyr::select(mean,Q16,Q17,Q11r)
+#calculate TPE_other as mean of all Q22 items
+df <- df %>% rowwise() %>% mutate(TPEother = mean(c_across(c(Q22_1,Q22_2,Q22_3,Q22_4,Q22_5,Q22_6))))
+
+
+cor_items <- df %>% dplyr::select(mean,Q16,Q17,Q11r,TPEother)
 
 # calculate correlation matrix
 cor_matrix <- round(cor(cor_items,method = "pearson", use = "pairwise.complete.obs"),2)
@@ -470,6 +521,20 @@ m <- lm(mean~1+Q16+Q17+Q11r,data=df)
 summary(m)
 
 ```
+
+```{r tpe, fig.cap="Scatterplot of Faith in Reason scores against Third Person Effect score. Note 0.1 jitter applied to x-axes values to allow visualisation of point density", fig.align="center", out.width="75%",fig.height=4}
+
+p <- ggplot(df,aes(x=mean,y=TPEother))
+p + 
+  geom_point(position = position_jitter(height = 0.1))+
+  geom_smooth(method=lm) +
+    labs(x = "Faith in reason",
+       y = "Third person effect")
+
+
+ggsave(here('plots','fir-tpe.png'),dpi=figdpi)
+```
+
 ## TODO
 
 
@@ -486,34 +551,7 @@ Write up all of them?
 Look at items and make sensible decisions. A single scale of 6 items and 2 subscales?
 
 
-## Junyan
 
-We asked 8 questions about rationality in the survey. To determine the homogeneity and the
-fitness of the responses, I use Stata to perform Mokken scaling analysis. Testing all 8
-rationality variables, the Mokken analysis yields one scale of 6 items. The items with low
-Loevinger’s coefficient of homogeneity (H i ), a criterion for scalability, are dropped. If the
-overall H&lt;0.3, it means the items in the scale are unrelated, thus cannot be accepted to form a
-cumulative scale. As a rule of thumb, H i must be higher than 0.3 to be kept in the scale.
-Therefore, there are 6 fitting items in the scale: rationality_1, rationality_2, rationality_3,
-rationality_4, rationality_6, and rationality_7. The overall H coefficient is 0.41, indicating a
-medium-strong scalability. The individual critical values in the scale are all lower than 80, so
-the variables are double monotonous and there is no model violation.
-Code: loevh rationality_1 rationality_2 rationality_3 rationality_4 rationality_6 rationality_7,
-pair monotonicity(*) ppp pmm nipmatrix(minvi(0.03) siglevel(0.01))
-We can thus generate a rationality variable by aggregating those six variables. Cronbach’s $\alpha$
-is 0.78, indicating an acceptable internal consistency.
-
-Based on the statistical results, it looks to me that rationality_5 (The average person can be
-persuaded to change if given good reasons) is a real problem, it doesn’t fit at all with other items
-
-3
-and must be removed. Rationality_8 (People&#39;s behaviour is generally consistent with their beliefs)
-has a poor fitness, but it is not as bad as rationality_5.
-
-Next, I try to scale the remaining two items that are not included in the above scale –
-rationality_5 and rationality_8. As expected, these two items doesn’t form a separate scale.
-Empirically, these items are excluded from the rationality measure by Mokken scaling likely
-because persuasion effect is not a robust indication of rationality?
 
 ## Tom
 
