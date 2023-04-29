@@ -193,7 +193,7 @@ Correspondence concerning this article should be addressed to Tom Stafford, Depa
 
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Department of Psychology, University of Sheffield, UK\\\textsuperscript{2} Department of Politics and International Relations, University of Sheffield, UK}
 
-\note{\textcolor{red}{Draft 2023-04-28}}
+\note{\textcolor{red}{Draft 2023-04-29}}
 
 \abstract{%
 What we believe about other people matters. It is not enough that others \emph{are} trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also \emph{perceive} others as trustworthy, reasonable or well intentioned. While standard measures of trust and benevolence exist, there is no standard measure of the generalised belief in the rationality or reasonableness of other people. Here, we present the development and testing of a scale to directly measure this attitude. Using a representative sample of 1869 UK adults, we test dimensionality and consistency of the scale items. We show that the refined, six-item, scale is associated with, but not entirely determined by, generalised trust in other people. Our ``Faith in Reason'' scale shows large individual differences, but the average tendency is slightly on the side of endorsing, rather than rejecting, sentiments such as ``The typical person is often irrational''.
@@ -346,7 +346,7 @@ This repository contains the files used to generate this report, which is in the
 \hypertarget{initial-characterisations}{%
 \subsection{Initial characterisations}\label{initial-characterisations}}
 
-Our data consist of 1875 participants who completed our online survey. 6 failed an attention check and were removed. Inital inspection suggested that a range of responses were obtain. For example, Figure \ref{fig:Q19item1} shows that the first item of the scale received the full range of responses from ``Strongly disagree'' to ``Strongly agree''.
+Our data consist of 1881 participants who completed our online survey. 6 failed an attention check and were removed, leaving a final sample of 1875. Inital inspection suggested that a range of responses were obtain. For example, Figure \ref{fig:Q19item1} shows that the first item of the scale received the full range of responses from ``Strongly disagree'' to ``Strongly agree''.
 
 \begin{figure}
 
@@ -360,35 +360,28 @@ Our data consist of 1875 participants who completed our online survey. 6 failed 
 \hypertarget{scale-development-assessing-dimensionality-item-selection}{%
 \subsection{Scale development: assessing dimensionality \& item selection}\label{scale-development-assessing-dimensionality-item-selection}}
 
-\begin{verbatim}
-## Q19_1 
-## 0.67 
-## Q19_2 
-## 0.67 
-## Q19_3 
-## 0.68 
-## Q19_4 
-## 0.68 
-## Q19_5 
-## 0.78 
-## Q19_6 
-## 0.67 
-## Q19_8 
-## 0.67 
-## Q19_9 
-## 0.7
-\end{verbatim}
+Cronbach's alpha for all eight items is 0.72, which is often taken to reflect good-to-acceptable scale consistency. A leave-one-out procedure suggests that Cronbach's Alpha decreases for omission of all items except item 5, without which the Cronbach's Alpha of the remaining 7 items is 0.78. The caveat to this is that, properly, Cronbach's Alpha should be measured \emph{after} confirmation of unidimensionality.
 
-Cronbach's alpha is 0.72
+A conventional method for assessing dimensionality is factor analysis. Figure \ref{fig:factor8} shows the scree plot for the eight items. The result is ambiguous, since there is one main factor but a second factor which falls just below the traditional cut-off an eigenvalue of 1.
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{plots/reason_scree6} 
+{\centering \includegraphics[width=1\linewidth]{plots/reason_scree8} 
 
 }
 
-\caption{Factor analysis}\label{fig:factors}
+\caption{Factor analysis for 8 items of the Faith in Reason scale}\label{fig:factor8}
 \end{figure}
+
+\hypertarget{mokken-analysis}{%
+\subsubsection{Mokken Analysis}\label{mokken-analysis}}
+
+To understand the dimensional structure of our items, we turn to Mokken Analysis, part of the item response theory framework (Sijtsma \& Ark, 2017; Van Schuur, 2011). Very loosely, Mokken analysis tests scale items against a model which assumes that items are monotonically ordered on a single dimension, with some affording higher responses and others affording lower responses, with this item property consistent across participants, who also vary in their propensity to give high or low responses. Violations of this model indicate that items do fit on a single dimension and so should not be combined in the same scale.
+
+In Mokken Analysis, the items with low Loevinger's coefficient of homogeneity (\(H i\)), a criterion for scalability, are dropped. A rule of thumb is that \(H i\) must be higher than 0.3 to be kept in the scale. Applying this criterion suggests items 1 to 4, 6 and 7 should be kept, and 5 and 8 dropped. This yields a scale of six items, with an overall H coefficient of 0.410, indicating a medium-strong scalability.
+
+\hypertarget{exploratory-graph-analysis}{%
+\subsubsection{Exploratory graph analysis}\label{exploratory-graph-analysis}}
 
 \begin{figure}
 
@@ -406,6 +399,15 @@ Cronbach's alpha is 0.72
 }
 
 \caption{The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).}\label{fig:egasix}
+\end{figure}
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{plots/reason_scree6} 
+
+}
+
+\caption{Factor analysis}\label{fig:factors}
 \end{figure}
 
 \hypertarget{scale-analysis}{%
@@ -474,36 +476,6 @@ EGA
 Write up all of them?
 
 Look at items and make sensible decisions. A single scale of 6 items and 2 subscales?
-
-\hypertarget{junyan}{%
-\subsection{Junyan}\label{junyan}}
-
-We asked 8 questions about rationality in the survey. To determine the homogeneity and the
-fitness of the responses, I use Stata to perform Mokken scaling analysis. Testing all 8
-rationality variables, the Mokken analysis yields one scale of 6 items. The items with low
-Loevinger's coefficient of homogeneity (H i ), a criterion for scalability, are dropped. If the
-overall H\textless0.3, it means the items in the scale are unrelated, thus cannot be accepted to form a
-cumulative scale. As a rule of thumb, H i must be higher than 0.3 to be kept in the scale.
-Therefore, there are 6 fitting items in the scale: rationality\_1, rationality\_2, rationality\_3,
-rationality\_4, rationality\_6, and rationality\_7. The overall H coefficient is 0.41, indicating a
-medium-strong scalability. The individual critical values in the scale are all lower than 80, so
-the variables are double monotonous and there is no model violation.
-Code: loevh rationality\_1 rationality\_2 rationality\_3 rationality\_4 rationality\_6 rationality\_7,
-pair monotonicity(*) ppp pmm nipmatrix(minvi(0.03) siglevel(0.01))
-We can thus generate a rationality variable by aggregating those six variables. Cronbach's \(\alpha\)
-is 0.78, indicating an acceptable internal consistency.
-
-Based on the statistical results, it looks to me that rationality\_5 (The average person can be
-persuaded to change if given good reasons) is a real problem, it doesn't fit at all with other items
-
-3
-and must be removed. Rationality\_8 (People\textquotesingle s behaviour is generally consistent with their beliefs)
-has a poor fitness, but it is not as bad as rationality\_5.
-
-Next, I try to scale the remaining two items that are not included in the above scale --
-rationality\_5 and rationality\_8. As expected, these two items doesn't form a separate scale.
-Empirically, these items are excluded from the rationality measure by Mokken scaling likely
-because persuasion effect is not a robust indication of rationality?
 
 \hypertarget{tom}{%
 \subsection{Tom}\label{tom}}
@@ -650,6 +622,9 @@ Putnam, R. D. (2000). \emph{Bowling alone: The collapse and revival of american 
 \leavevmode\vadjust pre{\hypertarget{ref-samuels2002}{}}%
 Samuels, R., Stich, S., \& Bishop, M. (2002). {236Ending the Rationality Wars How to Make Disputes about Human Rationality Disappear}. In \emph{{Common Sense, Reasoning, and Rationality}}. Oxford University Press. \url{https://doi.org/10.1093/0195147669.003.0011}
 
+\leavevmode\vadjust pre{\hypertarget{ref-sijtsma2017tutorial}{}}%
+Sijtsma, K., \& Ark, L. A. van der. (2017). A tutorial on how to do a mokken scale analysis on your test and questionnaire data. \emph{British Journal of Mathematical and Statistical Psychology}, \emph{70}(1), 137--158.
+
 \leavevmode\vadjust pre{\hypertarget{ref-sommer2022}{}}%
 Sommer, J., Musolino, J., \& Hemmer, P. (2022). A hobgoblin of large minds: Troubles with consistency in belief. \emph{Wiley Interdisciplinary Reviews: Cognitive Science}, e1639.
 
@@ -676,6 +651,9 @@ Sun, Y., Pan, Z., \& Shen, L. (2008). Understanding the third-person perception:
 
 \leavevmode\vadjust pre{\hypertarget{ref-swami2017}{}}%
 Swami, V., Barron, D., Weis, L., Voracek, M., Stieger, S., \& Furnham, A. (2017). An examination of the factorial and convergent validity of four measures of conspiracist ideation, with recommendations for researchers. \emph{PloS One}, \emph{12}(2), e0172617.
+
+\leavevmode\vadjust pre{\hypertarget{ref-van2011ordinal}{}}%
+Van Schuur, W. H. (2011). \emph{Ordinal item response theory: Mokken scale analysis}. Sage.
 
 \leavevmode\vadjust pre{\hypertarget{ref-zhu2023}{}}%
 Zhu, J., Dommett, K., \& Stafford, T. (submitted). \emph{What makes online political ads unacceptable? Interrogating public attitudes to inform regulatory responses}.

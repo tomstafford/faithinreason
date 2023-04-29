@@ -101,6 +101,7 @@ library(mokken) #for mokken scale analysis
 # parameters for figures etc
 figsize<-'68%'
 figdpi <- 320 #when saving
+makeegafigs <- FALSE #a toggle, whether to run fir_results.R or not
 ```
 
 # Introduction
@@ -293,7 +294,7 @@ df[ , i] <- apply(df[ , i], 2, function(x) as.numeric(x))
 df <- df %>% dplyr::mutate(across(Q19_1:Q19_4, ~ 8 - .))
 
 #TPE items are coded 1 (strongly disagree) to 7 (strongly agree), but qualtrics coded all 7s as 8s)
-df <- df %>% mutate_at(vars(Q22_1:Q22_6), recode, '8' = 7) #correct this
+df <- df %>% dplyr::mutate_at(vars(Q22_1:Q22_6), dplyr::recode, '8' = 7) #correct this
 
 #sanity check, there should be no 8s left
 df %>% count(Q22_6)
@@ -302,6 +303,19 @@ df %>% count(Q22_6)
 before=nrow(df)
 df <- df %>% dplyr::filter(Q19_7 == 4) #remove 6 people
 removed_by_attn_check=before-nrow(df)
+
+#finally, rename items R1:8
+df <- df %>% rename(R1 = Q19_1,
+                    R2 = Q19_2,
+                    R3 = Q19_3,
+                    R4 = Q19_4,
+                    R5 = Q19_5,
+                    R6 = Q19_6,
+                    R7 = Q19_8,
+                    R8 = Q19_9)
+
+#drop attention check column
+df <- dplyr::select(df,-Q19_7)
 
 write_csv(df,'data/our_items.csv') #export the items which are the focus of this paper
 
@@ -315,7 +329,7 @@ Our data consist of `r before` participants who completed our online survey. `r 
 
 #make histogram
 #cribbing from https://www.statmethods.net/graphs/density.html
-p <- ggplot(data = df,mapping= aes(Q19_1))
+p <- ggplot(data = df,mapping= aes(R1))
 #p + geom_bar(fill="red") + scale_x_binned()
 #p + geom_histogram(fill="red",color="black",binwidth=1) + scale_x_continuous(breaks=1:7)
 p + geom_histogram(fill="firebrick",color="black",binwidth=1) + scale_x_continuous(breaks = 1:7,
@@ -330,13 +344,15 @@ ggsave(here('plots','histogram_item1.png'),dpi=figdpi)
 ```{r, analysis, include=FALSE}
 #Some of the analysis we hand off to an external file, in particular to generate some of the plots
 
-#if you want to regenerate plots, uncomment this line
-#source("fir_results.R", local = knitr::knit_global())
+#if you want to regenerate EGA plots this line need to execute
+if (makeegafigs){
+  source("fir_results.R", local = knitr::knit_global())
+}
 ```
 
 ```{r, cronbach, results='hide'}
 #select items
-Ritems <- dplyr::select(df,c(Q19_1:Q19_6,Q19_8:Q19_9))
+Ritems <- dplyr::select(df,c(R1:R8))
 
 c <- ltm::cronbach.alpha(Ritems, CI=TRUE)
 
@@ -358,75 +374,69 @@ Cronbach's alpha for all eight items is `r c$alpha`, which is often taken to ref
 
 A conventional method for assessing dimensionality is factor analysis. Figure \@ref(fig:factor8) shows the scree plot for the eight items. The result is ambiguous, since there is one main factor but a second factor which falls just below the traditional cut-off an eigenvalue of 1.
 
-```{r, factors8, fig.cap="Factor analysis for 8 items of the Faith in Reason scale", fig.align="center", out.width="100%"}
+```{r, factor8, fig.cap="Factor analysis for 8 items of the Faith in Reason scale", fig.align="center", out.width="100%"}
 knitr::include_graphics(here("plots","reason_scree8.png"))
 ```
 
 ### Mokken Analysis
 
-To understand the dimensional structure of our items, we turn to Mokken Analysis, part of the item response theory framework (TK). Very loosely, Mokken analysis tests scale items against a model which assumes that items exist together on a single dimension, with some affording higher responses and others affording lower responses, with this item property consistent across participants, who also vary in their propensity to give high or low responses. Violations of this model indicate that items do fit on a single dimension and so should not be combined in the same scale.
+To understand the dimensional structure of our items, we turn to Mokken Analysis, part of the item response theory framework [@van2011ordinal;@sijtsma2017tutorial]. Very loosely, Mokken analysis tests scale items against a model which assumes that items are monotonically ordered on a single dimension, with some affording higher responses and others affording lower responses, with this item property consistent across participants, who also vary in their propensity to give high or low responses. Violations of this model indicate that items do fit on a single dimension and so should not be combined in the same scale.
 
 ```{r mokkenanalysis, results='hide'}
 #https://cran.r-project.org/package=mokken
 #https://sites.google.com/a/tilburguniversity.edu/avdrark/mokken
 #install.packages("mokken")
 
+#select 8
+Ritems <- dplyr::select(df,c(R1:R8))
+
 # Compute scalability coefficients
 mokken::coefH(Ritems)
 
-# Partition the the scale into mokken scales
+# Partition the the scale into mokken scales, 
+mokken::aisp(Ritems,0.3)
+
+#following
+# Sijtsma, K., & van der Ark, L. A. (2017). A tutorial on how to do a Mokken scale analysis on your test and questionnaire data. British Journal of Mathematical and Statistical Psychology, 70(1), 137-158.
 
 for (criterion in seq(0.05,0.55,by=0.05)){
   print(mokken::aisp(Ritems,criterion))
 }
 
-mokken::aisp(Ritems,0.3)
+# currently we do not discuss the outcome of this comparison
+
+
+#select 6
+Ritems <- dplyr::select(df,c(R1:R4,R6,R7))
+
+m <- mokken::coefH(Ritems)
+
+scaleH <- m$H[1]
+
 ```
+In Mokken Analysis, the items with low Loevinger’s coefficient of homogeneity ($H i$), a criterion for scalability, are dropped. A rule of thumb is that $H i$ must be higher than 0.3 to be kept in the scale. Applying this criterion suggests items 1 to 4, 6 and 7 should be kept, and 5 and 8 dropped. This yields a scale of six items, with an overall H coefficient of `r scaleH`, indicating a medium-strong scalability. 
 
+However, following @sijtsma2017tutorial it is possible to explore sensitivity of this result to different thresholds. Accordingly, with a threshold of $0.35$ Mokken scale analysis supports the grouping of the items into two scales (One, items 1,2,3,4 and Two, items 6,7,8, with item 5 fitting in neither scale). This is consonent with the factor analysis which identified a second factor of below threshold salience.
 
-#### Junyan
+<!-- Junyan wrote: "The individual critical values in the scale are all lower than 80, so
+the variables are double monotonous and there is no model violation."  I don't know how to calculate this -->
 
-We asked 8 questions about rationality in the survey. To determine the homogeneity and the
-fitness of the responses, I use Stata to perform Mokken scaling analysis. Testing all 8
-rationality variables, the Mokken analysis yields one scale of 6 items. The items with low
-Loevinger’s coefficient of homogeneity (H i ), a criterion for scalability, are dropped. If the
-overall H&lt;0.3, it means the items in the scale are unrelated, thus cannot be accepted to form a
-cumulative scale. As a rule of thumb, H i must be higher than 0.3 to be kept in the scale.
-Therefore, there are 6 fitting items in the scale: rationality_1, rationality_2, rationality_3,
-rationality_4, rationality_6, and rationality_7. The overall H coefficient is 0.41, indicating a
-medium-strong scalability. The individual critical values in the scale are all lower than 80, so
-the variables are double monotonous and there is no model violation.
-Code: loevh rationality_1 rationality_2 rationality_3 rationality_4 rationality_6 rationality_7,
-pair monotonicity(*) ppp pmm nipmatrix(minvi(0.03) siglevel(0.01))
-We can thus generate a rationality variable by aggregating those six variables. Cronbach’s $\alpha$
-is 0.78, indicating an acceptable internal consistency.
-
-Based on the statistical results, it looks to me that rationality_5 (The average person can be
-persuaded to change if given good reasons) is a real problem, it doesn’t fit at all with other items
-
-3
-and must be removed. Rationality_8 (People&#39;s behaviour is generally consistent with their beliefs)
-has a poor fitness, but it is not as bad as rationality_5.
-
-Next, I try to scale the remaining two items that are not included in the above scale –
-rationality_5 and rationality_8. As expected, these two items doesn’t form a separate scale.
-Empirically, these items are excluded from the rationality measure by Mokken scaling likely
-because persuasion effect is not a robust indication of rationality?
 
 ### Exploratory graph analysis
+
+Exploratory Graph Analysis [EGA; @golino2020investigating;@ega2020eganet] can also be applied to understand dimensional structure in our scale items. EGA allows a visualisation of the network formed by scale items, with items which correlate clustered together. EGA also identifies undelrying 'communities' of items. 
+
+Figure \@ref(Fig:egafull) shows an EGA for the 8 potential items. Like the use of leave-of-out Cronbach's alpha and the Mokken scale analysis, this suggests Item 5 is distant from the other items. The EGA identifies two communities, grouping Item 1 with Items 6, 7 and 8 and Items 2,3,4 and 5.
 
 ```{r egafull, fig.cap="Exploratory Graph Analysis (EGA) of all items.", fig.align="center", out.width="100%"}
 knitr::include_graphics(here("plots","reason_ega.png"))
 ```
 
-```{r egasix, fig.cap="The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).", fig.align="center", out.width="100%"}
-knitr::include_graphics(here("plots","reason6_ega.png"))
-```
 
 ```{r, factors, fig.cap="Factor analysis", fig.align="center", out.width="100%"}
 #suggests 1,2,3,4,6,8
 #select items
-Ritems <- dplyr::select(df,c(Q19_1:Q19_4,Q19_6,Q19_8))
+Ritems <- dplyr::select(df,c(R1:R4,R6:R7))
 
 cronbach <- ltm::cronbach.alpha(Ritems, CI=TRUE) #CI is bootstrapped https://rdrr.io/cran/ltm/man/cronbach.alpha.html
 
@@ -435,13 +445,18 @@ knitr::include_graphics(here("plots","reason_scree6.png"))
 ```
 
 
+```{r egasix, fig.cap="The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).", fig.align="center", out.width="100%"}
+Rknitr::include_graphics(here("plots","reason6_ega.png"))
+```
+
+
 ## Scale analysis
 
 ```{r meanhistogram, fig.cap="Histogram of mean of responses to all rationality items", fig.align="center", out.width="75%",fig.height=4}
 
 #select items
-Ritems <- dplyr::select(df,c(Q19_1:Q19_6,Q19_8:Q19_9))
-Ritems <- dplyr::select(df,c(Q19_1:Q19_4,Q19_6,Q19_8))
+Ritems <- dplyr::select(df,c(R1:R8))
+Ritems <- dplyr::select(df,c(R1:R4,R6,R7))
 
 Ritems <- Ritems %>% rowwise() %>% mutate(mean = mean(c_across(everything())))
 #make histogram
@@ -459,7 +474,7 @@ The average score across these six  items was `r round(mean(Ritems$mean),2)`, a 
 ```{r education, fig.cap="Education level and mean FIR", fig.align="center", out.width="75%",fig.height=4}
 
 #calculate mean from six items
-df <- df %>% rowwise() %>% mutate(mean = mean(c_across(c(Q19_1,Q19_2,Q19_3,Q19_4,Q19_6,Q19_8))))
+df <- df %>% rowwise() %>% mutate(mean = mean(c_across(c(R1:R4,R6,R7))))
 
 # calculate mean of y for each value of x
 mean_df <- df %>% group_by(Q11) %>% summarize(mean_fir = mean(mean))
