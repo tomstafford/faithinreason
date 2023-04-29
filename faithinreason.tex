@@ -296,15 +296,15 @@ In order to develop the scale items, we developed eight items, informed by the d
 \toprule
 Item & \multicolumn{1}{c}{Framing} & \multicolumn{1}{c}{Aspect} & \multicolumn{1}{c}{Wording}\\
 \midrule
-1 & negative & general & The typical person is often irrational\\
-2 & negative & corresponence & People are often misinformed on important issues\\
-3 & negative & influence & People are too easily manipulated\\
-4 & negative & insight & People often act for reasons they don’t understand or endorse\\
-5 & positive & influence & The average person can be persuaded to change their mind if given good reasons\\
-6 & positive & correspondence & Most people hold accurate views about the world\\
+R1 & negative & general & The typical person is often irrational\\
+R2 & negative & corresponence & People are often misinformed on important issues\\
+R3 & negative & influence & People are too easily manipulated\\
+R4 & negative & insight & People often act for reasons they don’t understand or endorse\\
+R5 & positive & influence & The average person can be persuaded to change their mind if given good reasons\\
+R6 & positive & correspondence & Most people hold accurate views about the world\\
 A & NA & ATTN CHECK & For this question please click the middle option, ‘neutral’, to show you are paying attention\\
-7 & positive & coherance & An individual's beliefs about the world are generally coherent\\
-8 & positive & coherance & People's behaviour is generally consistent with their beliefs\\
+R7 & positive & coherance & An individual's beliefs about the world are generally coherent\\
+R8 & positive & coherance & People's behaviour is generally consistent with their beliefs\\
 \bottomrule
 \addlinespace
 \end{tabular}
@@ -348,14 +348,37 @@ This repository contains the files used to generate this report, which is in the
 
 Our data consist of 1881 participants who completed our online survey. 6 failed an attention check and were removed, leaving a final sample of 1875. Inital inspection suggested that a range of responses were obtain. For example, Figure \ref{fig:Q19item1} shows that the first item of the scale received the full range of responses from ``Strongly disagree'' to ``Strongly agree''.
 
-\begin{figure}
+\begin{table}[tbp]
 
-{\centering \includegraphics[width=0.75\linewidth]{faithinreason_files/figure-latex/Q19item1-1} 
+\begin{center}
+\begin{threeparttable}
 
-}
+\caption{\label{tab:itemmeans}Summary statistics for each item}
 
-\caption{Histogram of responses to Item 1 ("The typical person is often irrational")}\label{fig:Q19item1}
-\end{figure}
+\begin{tabular}{llllll}
+\toprule
+Item & \multicolumn{1}{c}{mean} & \multicolumn{1}{c}{median} & \multicolumn{1}{c}{min} & \multicolumn{1}{c}{max} & \multicolumn{1}{c}{SD}\\
+\midrule
+R1 & 4.15 & 4.00 & 1.00 & 7.00 & 1.34\\
+R2 & 2.54 & 3.00 & 1.00 & 7.00 & 1.11\\
+R3 & 2.55 & 3.00 & 1.00 & 7.00 & 1.07\\
+R4 & 2.88 & 3.00 & 1.00 & 7.00 & 1.14\\
+R5 & 5.05 & 5.00 & 1.00 & 7.00 & 1.16\\
+R6 & 3.54 & 4.00 & 1.00 & 7.00 & 1.23\\
+R7 & 4.09 & 4.00 & 1.00 & 7.00 & 1.12\\
+R8 & 4.62 & 5.00 & 1.00 & 7.00 & 1.19\\
+\bottomrule
+\addlinespace
+\end{tabular}
+
+\begin{tablenotes}[para]
+\normalsize{\textit{Note.} Items 1,2,3 and 4 are reverse coded, so lower scores imply stronger endorsement of the question framing (but lower faith in reason)}
+\end{tablenotes}
+
+\end{threeparttable}
+\end{center}
+
+\end{table}
 
 \hypertarget{scale-development-assessing-dimensionality-item-selection}{%
 \subsection{Scale development: assessing dimensionality \& item selection}\label{scale-development-assessing-dimensionality-item-selection}}
@@ -380,8 +403,14 @@ To understand the dimensional structure of our items, we turn to Mokken Analysis
 
 In Mokken Analysis, the items with low Loevinger's coefficient of homogeneity (\(H i\)), a criterion for scalability, are dropped. A rule of thumb is that \(H i\) must be higher than 0.3 to be kept in the scale. Applying this criterion suggests items 1 to 4, 6 and 7 should be kept, and 5 and 8 dropped. This yields a scale of six items, with an overall H coefficient of 0.410, indicating a medium-strong scalability.
 
+However, following Sijtsma and Ark (2017) it is possible to explore sensitivity of this result to different thresholds. Accordingly, with a threshold of \(0.35\) Mokken scale analysis supports the grouping of the items into two scales (One, items 1,2,3,4 and Two, items 6,7,8, with item 5 fitting in neither scale). This is consonent with the factor analysis which identified a second factor of below threshold salience.
+
 \hypertarget{exploratory-graph-analysis}{%
 \subsubsection{Exploratory graph analysis}\label{exploratory-graph-analysis}}
+
+Exploratory Graph Analysis {[}EGA; Golino, Shi, et al. (2020);Golino, Christensen, and Moulder (2020){]} can also be applied to understand dimensional structure in our scale items. EGA allows a visualisation of the network formed by scale items, with items which correlate clustered together. EGA also identifies undelrying `communities' of items.
+
+Figure \ref{fig:egafull} shows an EGA for the 8 potential items. Like the use of leave-of-out Cronbach's alpha and the Mokken scale analysis, this suggests Item 5 is distant from the other items. The EGA identifies two communities, grouping Item 1 with Items 6, 7 and 8 and Items 2,3,4 and 5.
 
 \begin{figure}
 
@@ -392,26 +421,10 @@ In Mokken Analysis, the items with low Loevinger's coefficient of homogeneity (\
 \caption{Exploratory Graph Analysis (EGA) of all items.}\label{fig:egafull}
 \end{figure}
 
-\begin{figure}
+\hypertarget{the-faith-in-reason-scale}{%
+\subsection{The Faith in Reason scale}\label{the-faith-in-reason-scale}}
 
-{\centering \includegraphics[width=1\linewidth]{plots/reason6_ega} 
-
-}
-
-\caption{The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).}\label{fig:egasix}
-\end{figure}
-
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth]{plots/reason_scree6} 
-
-}
-
-\caption{Factor analysis}\label{fig:factors}
-\end{figure}
-
-\hypertarget{scale-analysis}{%
-\subsection{Scale analysis}\label{scale-analysis}}
+Taking these analyses into consideration, we opt to construct a single scale, dropping items 5 and 8. We do this with some hesitation, given that the results from all methods of dimensionality analysis (conventional factor analysis, Mokken scale analysis and EGA) all suggest that a two-dimensional structure may exist (and/or evidence for two dimensional structure is only just sub threshold, depending on how you wish to position the statement ontologically).
 
 \begin{figure}
 
@@ -422,7 +435,12 @@ In Mokken Analysis, the items with low Loevinger's coefficient of homogeneity (\
 \caption{Histogram of mean of responses to all rationality items}\label{fig:meanhistogram}
 \end{figure}
 
-The average score across these six items was 3.29, a summary statistic which suggests that the typical view of other people weighted to being slightly less, rather than slightly more, reasonable. The distribution is shown in Figure \ref{fig:meanhistogram}.
+Averaging across items 1,2,3,4,6 and 7 gives us our Faith in Reason scale. The average score across these six items was 3.29, a summary statistic which suggests that the typical view of other people weighted to being slightly less, rather than slightly more, reasonable. The distribution is shown in Figure \ref{fig:meanhistogram}.
+
+\hypertarget{relation-to-other-variables}{%
+\subsection{Relation to other variables}\label{relation-to-other-variables}}
+
+We now turn to ask how scores on this scale are associated with our other measures. Figure \ref{fig:education} shows there is no strong association with level of formal education.
 
 \begin{figure}
 
@@ -430,16 +448,21 @@ The average score across these six items was 3.29, a summary statistic which sug
 
 }
 
-\caption{Education level and mean FIR}\label{fig:education}
+\caption{Education level and Faith in Reason}\label{fig:education}
 \end{figure}
+
+Figure \ref{fig:democract} shows no strong relation between need for democracy and faith in reason.
+
 \begin{figure}
 
 {\centering \includegraphics[width=0.75\linewidth]{faithinreason_files/figure-latex/democract-1} 
 
 }
 
-\caption{How important is it for you to live in a country that is governed democratically? and mean FIR. Note 0.1 jitter applied to x-axes values to allow visualisation of point density.}\label{fig:democract}
+\caption{Scatterplot of Need for Democracy vs Faith in Reason. Linear fit shown. Note 0.1 jitter applied to x-axes values to allow visualisation of point density.}\label{fig:democract}
 \end{figure}
+
+Figure \ref{fig:generalisetrust} shows some association between generalised trust and faith in reason.
 
 \begin{figure}
 
@@ -447,11 +470,12 @@ The average score across these six items was 3.29, a summary statistic which sug
 
 }
 
-\caption{Generally speaking, would you say that most people can be trusted? and mean FIR. Note 0.1 jitter applied to x-axes values to allow visualisation of point density}\label{fig:generalisetrust}
+\caption{Scatterplot of Generalised Trust against Faith in Reason. Linear fit shown. Note 0.1 jitter applied to x-axes values to allow visualisation of point density}\label{fig:generalisetrust}
 \end{figure}
 
-Relation to other variables
-Regressions and corellations
+There is a convincing lack of association between the Third Person Effect and Faith in Reason (Figure \ref{fig:tpe}.
+
+To test these associations in conjunction we first review the correlations (Table @ref\{tab:regressions\}) and then construct a simple linear regression, which confirms that although all faith in reason can be predicted, to a modest amount, from these other variables (R\^{}2 = 0.18`). Education level and Need for Democracy predict, albeit with a small coefficient, faith in reason. Generalised trust has a modest association. The Third Person Effect has no association.
 
 \begin{figure}
 
@@ -462,46 +486,18 @@ Regressions and corellations
 \caption{Scatterplot of Faith in Reason scores against Third Person Effect score. Note 0.1 jitter applied to x-axes values to allow visualisation of point density}\label{fig:tpe}
 \end{figure}
 
-\hypertarget{todo}{%
-\subsection{TODO}\label{todo}}
-
-Analyse TPE
-
-Methods for assessing dimensionality
-cronbach's alpha + leave on out
-scree plots and EFA
-Mokken scale analysis
-EGA
-
-Write up all of them?
-
-Look at items and make sensible decisions. A single scale of 6 items and 2 subscales?
-
-\hypertarget{tom}{%
-\subsection{Tom}\label{tom}}
-
-Obviously 5 is weakly correlated. Omitting gives biggest boost to Cronbach's alpha, EEGnet suggests weakly related to all other items,
-
-EEGnet suggets two commuities
-Scree plot of factors suggests border of unidimension and bidimensional
-mokken analysis suggests 1 domension, BUT if you remove items 5 and 9 you then find 2 dim3nsions at 0.35
-
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
-This paper arose out of a note published online (Stafford, 2022) which we cite for completeness and by way of allowed it to be checked that the intention of the study has been consistent between conceptualisation and publication.
+This paper arose out of a note published online (Stafford, 2022) which we cite for completeness and by way of allowing it to be checked that the intention of the study has been consistent between conceptualisation and publication.
 
 \hypertarget{scale-development}{%
 \subsection{scale development}\label{scale-development}}
 
-Usefully reviewed in Flake and Fried (2020); Clark and Watson (2019); Boateng, Neilands, Frongillo, Melgar-Quiñonez, and Young (2018)
+Issues with scale development and validity testing are usefully reviewed in Flake and Fried (2020); Clark and Watson (2019); Boateng, Neilands, Frongillo, Melgar-Quiñonez, and Young (2018). With the current report we do not pretend to have completed scale development and testing. We merely report the beginnings of the development of a scale for measuring belief in the rationality or reasonableness of the typical citizen.
 
-We do not pretend to have completed scale development and testing, but aim to present the beginnings here.
-
-\hypertarget{normative-models}{%
-\subsection{Normative models}\label{normative-models}}
-
-arguably our scale doesn't touch on normative models of rationality as captured by T\&K. Bias, prejudice
+\hypertarget{wither-misinformation}{%
+\subsection{Wither misinformation}\label{wither-misinformation}}
 
 Deflationary accounts of misinformation (Mercier, 2020; Nyhan, 2020)
 
@@ -561,6 +557,12 @@ General Social Survey Team. (2023). \emph{General social survey}. Available at: 
 
 \leavevmode\vadjust pre{\hypertarget{ref-gigerenzer2011}{}}%
 Gigerenzer, G., \& Gaissmaier, W. (2011). Heuristic decision making. \emph{Annual Review of Psychology}, \emph{62}, 451--482.
+
+\leavevmode\vadjust pre{\hypertarget{ref-golino2020eganet}{}}%
+Golino, H. F., Christensen, A., \& Moulder, R. (2020). EGAnet: Exploratory graph analysis: A framework for estimating the number of dimensions in multivariate data using network psychometrics. \emph{R Package Version 0.9}, \emph{2}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-golino2020investigating}{}}%
+Golino, H. F., Shi, D., Christensen, A. P., Garrido, L. E., Nieto, M. D., Sadana, R., \ldots{} Martinez-Molina, A. (2020). Investigating the performance of exploratory graph analysis and traditional techniques to identify the number of latent factors: A simulation and tutorial. \emph{Psychological Methods}, \emph{25}(3), 292.
 
 \leavevmode\vadjust pre{\hypertarget{ref-hoes2022}{}}%
 Hoes, E., Clemm von Hohenberg, B., Gessler, T., Wojcieszak, M., \& Qian, S. (2022). \emph{The cure worse than the disease? How the media's attention to misinformation decreases trust}. PsyArXiv. \url{https://doi.org/10.31234/osf.io/4m92p}

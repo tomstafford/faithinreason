@@ -93,10 +93,12 @@ library(papaja) #need this for,e.g. apa_table to work later
 knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE, fig.height=2, fig.width=4)
 
 # this for the data analysis
-library(tidyverse)
 library(here)
 library(ltm) #for cronbach's alpha
 library(mokken) #for mokken scale analysis
+library(corrtable) #for correlation_matrix
+library(tidyverse)
+
 
 # parameters for figures etc
 figsize<-'68%'
@@ -185,7 +187,7 @@ Wording <- c("The typical person is often irrational",
            "An individual's beliefs about the world are generally coherent",
            "People's behaviour is generally consistent with their beliefs")
 
-Item <- c("1","2","3","4","5","6","A","7","8")
+Item <- c("R1","R2","R3","R4","R5","R6"," A","R7","R8")
 Framing <- c(rep('negative',4),rep('positive',2),'NA',rep('positive',2))
 Aspect <- c('general',
             'corresponence',
@@ -325,7 +327,36 @@ write_csv(df,'data/our_items.csv') #export the items which are the focus of this
 
 Our data consist of `r before` participants who completed our online survey. `r removed_by_attn_check` failed an attention check and were removed, leaving a final sample of `r nrow(df)`. Inital inspection suggested that a range of responses were obtain. For example, Figure \@ref(fig:Q19item1) shows that the first item of the scale received the full range of responses from "Strongly disagree" to "Strongly agree".
 
-```{r Q19item1, fig.cap="Histogram of responses to Item 1 (\"The typical person is often irrational\")", fig.align="center", out.width="75%",fig.height=4}
+```{r itemmeans, echo = FALSE, results = 'asis'}
+
+#Item <- c("1","2","3","4","5","6","7","8")
+
+#select items
+Ritems <- dplyr::select(df,c(R1:R8))
+
+stats <- Ritems %>%  
+  dplyr::summarise(across(everything(), list(mean = mean,
+                                             median = median,
+                                             min = min,
+                                             max = max,
+                                             SD = sd),
+                          .names = "{.fn}.{.col}")) %>%
+  pivot_longer(cols = everything(),
+               names_to = c(".value", "Item"),
+               names_sep = "\\.",
+               values_drop_na = TRUE)
+
+#does APA style allow left justify of column headers?
+apa_table(
+  stats
+  , caption = "Summary statistics for each item"
+  , note = "Items 1,2,3 and 4 are reverse coded, so lower scores imply stronger endorsement of the question framing (but lower faith in reason)"
+  , escape = TRUE
+  , span_text_columns = FALSE
+)
+
+```
+<!-- ```{r Q19item1, fig.cap="Histogram of responses to Item 1 (\"The typical person is often irrational\")", fig.align="center", out.width="75%",fig.height=4}
 
 #make histogram
 #cribbing from https://www.statmethods.net/graphs/density.html
@@ -337,7 +368,7 @@ p + geom_histogram(fill="firebrick",color="black",binwidth=1) + scale_x_continuo
     labs(x = "Response")
 
 ggsave(here('plots','histogram_item1.png'),dpi=figdpi)
-```
+``` -->
 
 ## Scale development: assessing dimensionality & item selection
 
@@ -424,16 +455,16 @@ the variables are double monotonous and there is no model violation."  I don't k
 
 ### Exploratory graph analysis
 
-Exploratory Graph Analysis [EGA; @golino2020investigating;@ega2020eganet] can also be applied to understand dimensional structure in our scale items. EGA allows a visualisation of the network formed by scale items, with items which correlate clustered together. EGA also identifies undelrying 'communities' of items. 
+Exploratory Graph Analysis [EGA; @golino2020investigating;@golino2020eganet] can also be applied to understand dimensional structure in our scale items. EGA allows a visualisation of the network formed by scale items, with items which correlate clustered together. EGA also identifies undelrying 'communities' of items. 
 
-Figure \@ref(Fig:egafull) shows an EGA for the 8 potential items. Like the use of leave-of-out Cronbach's alpha and the Mokken scale analysis, this suggests Item 5 is distant from the other items. The EGA identifies two communities, grouping Item 1 with Items 6, 7 and 8 and Items 2,3,4 and 5.
+Figure \@ref(fig:egafull) shows an EGA for the 8 potential items. Like the use of leave-of-out Cronbach's alpha and the Mokken scale analysis, this suggests Item 5 is distant from the other items. The EGA identifies two communities, grouping Item 1 with Items 6, 7 and 8 and Items 2,3,4 and 5.
 
-```{r egafull, fig.cap="Exploratory Graph Analysis (EGA) of all items.", fig.align="center", out.width="100%"}
+```{r, egafull, fig.cap="Exploratory Graph Analysis (EGA) of all items.", fig.align="center", out.width="100%"}
 knitr::include_graphics(here("plots","reason_ega.png"))
 ```
 
 
-```{r, factors, fig.cap="Factor analysis", fig.align="center", out.width="100%"}
+```{r, factors, fig.cap="Factor analysis", fig.align="center", out.width="100%", include=FALSE}
 #suggests 1,2,3,4,6,8
 #select items
 Ritems <- dplyr::select(df,c(R1:R4,R6:R7))
@@ -445,17 +476,19 @@ knitr::include_graphics(here("plots","reason_scree6.png"))
 ```
 
 
-```{r egasix, fig.cap="The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).", fig.align="center", out.width="100%"}
-Rknitr::include_graphics(here("plots","reason6_ega.png"))
+```{r egasix, fig.cap="The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).", fig.align="center", out.width="100%", include = FALSE}
+knitr::include_graphics(here("plots","reason6_ega.png"))
 ```
 
 
-## Scale analysis
+## The Faith in Reason scale
+
+Taking these analyses into consideration, we opt to construct a single scale, dropping items 5 and 8. We do this with some hesitation, given that the results from all methods of dimensionality analysis (conventional factor analysis, Mokken scale analysis and EGA) all suggest that a two-dimensional structure may exist (and/or evidence for two dimensional structure is only just sub threshold, depending on how you wish to position the statement ontologically).
 
 ```{r meanhistogram, fig.cap="Histogram of mean of responses to all rationality items", fig.align="center", out.width="75%",fig.height=4}
 
 #select items
-Ritems <- dplyr::select(df,c(R1:R8))
+#Ritems <- dplyr::select(df,c(R1:R8))
 Ritems <- dplyr::select(df,c(R1:R4,R6,R7))
 
 Ritems <- Ritems %>% rowwise() %>% mutate(mean = mean(c_across(everything())))
@@ -465,59 +498,79 @@ p <- ggplot(data = Ritems,mapping= aes(mean))
 #p + geom_bar(fill="red") + scale_x_binned()
 #p + geom_histogram(fill="red",color="black",binwidth=1) + scale_x_continuous(breaks=1:7)
 p + geom_histogram(fill="darkorchid2",color="black",binwidth=0.5) + scale_x_continuous(breaks = 1:7,
-    labels = c("1 Strongly disagree","2","3","4 neutral","5","6","7 Strongly agree")) +
+    labels = c("1\nStrongly\ndisagree","2","3","4\nneutral","5","6","7\nStrongly\nagree")) +
     labs(x = "Faith in reason")
 ```
 
-The average score across these six  items was `r round(mean(Ritems$mean),2)`, a summary statistic which suggests that the typical view of other people weighted to being slightly less, rather than slightly more, reasonable. The distribution is shown in Figure \@ref(fig:meanhistogram).
+Averaging across items 1,2,3,4,6 and 7 gives us our Faith in Reason scale. The average score across these six items was `r round(mean(Ritems$mean),2)`, a summary statistic which suggests that the typical view of other people weighted to being slightly less, rather than slightly more, reasonable. The distribution is shown in Figure \@ref(fig:meanhistogram).
 
-```{r education, fig.cap="Education level and mean FIR", fig.align="center", out.width="75%",fig.height=4}
+## Relation to other variables
+
+We now turn to ask how scores on this scale are associated with our other measures. Figure \@ref(fig:education) shows there is no strong association with level of formal education.
+
+```{r education, fig.cap="Education level and Faith in Reason", fig.align="center", out.width="75%",fig.height=4,warning=FALSE}
+
+#recode education question to set "other" respnose to NA
+df <- df %>% mutate(Q11r = case_match(Q11,8 ~ NA, .default = Q11))
 
 #calculate mean from six items
 df <- df %>% rowwise() %>% mutate(mean = mean(c_across(c(R1:R4,R6,R7))))
 
 # calculate mean of y for each value of x
-mean_df <- df %>% group_by(Q11) %>% summarize(mean_fir = mean(mean))
+mean_df <- df %>% group_by(Q11r) %>% summarize(mean_fir = mean(mean),
+                                               se_fir=sd(mean)/sqrt(n())
+                                               )
+# 5 Postgraduate (e.g. M.Sc, Ph.D)
+# 4 Undergraduate University (e.g. BA, B.Sc, B.Ed)
+# 3 A-level, or equivalent
+# 2 GCSE level, or equivalent
+# 1 No formal qualifications
 
 # create bar chart
-ggplot(mean_df, aes(Q11, mean_fir)) + 
+ggplot(mean_df, aes(Q11r, mean_fir)) + 
   geom_bar(stat = "identity", fill = "blue") + 
-  labs(x = "Education Level", y = "Mean FIR")
+  geom_errorbar(aes(ymin=mean_fir-se_fir, ymax=mean_fir+se_fir),
+                width=.2,
+                position=position_dodge(.9)) +
+  coord_cartesian(ylim=c(1,7)) +
+  scale_x_reverse(breaks=1:5,labels=c("PG","UG","A-level","GCSE","None")) +
+  labs(x = "Education Level", y = "Faith in Reason (+/- standard error")
+
 
 ggsave(here('plots','education-fir.png'),dpi=figdpi)  
 ```
-```{r democract, fig.cap="How important is it for you to live in a country that is governed democratically? and mean FIR. Note 0.1 jitter applied to x-axes values to allow visualisation of point density.", fig.align="center", out.width="75%",fig.height=4}
+Figure \@ref(fig:democract) shows no strong relation between need for democracy and faith in reason. 
+
+```{r democract, fig.cap="Scatterplot of Need for Democracy vs Faith in Reason. Linear fit shown. Note 0.1 jitter applied to x-axes values to allow visualisation of point density.", fig.align="center", out.width="75%",fig.height=4}
 #df  <-  df%>% filter (Q16<6 # thisline shows that lack of correlation holds even for people who don't answer 7
 
-p <- ggplot(df,aes(x=mean,y=Q16))
+p <- ggplot(df,aes(x=Q16,y=mean))
 p + 
-  geom_point(position = position_jitter(height = 0.1))+
+  geom_point(position = position_jitter(width = 0.1))+
   geom_smooth(method=lm) +
-  labs(x = "Faith in reason",
-       y = "Importance of democracy")
+  labs(x = "Importance of democracy",
+       y = "Faith in reason")
 
 ggsave(here('plots','fir-democracy.png'),dpi=figdpi)  
 ```
+Figure \@ref(fig:generalisetrust) shows some association between generalised trust and faith in reason.
 
-```{r generalisetrust, fig.cap="Generally speaking, would you say that most people can be trusted? and mean FIR. Note 0.1 jitter applied to x-axes values to allow visualisation of point density", fig.align="center", out.width="75%",fig.height=4}
+```{r generalisetrust, fig.cap="Scatterplot of Generalised Trust against Faith in Reason. Linear fit shown. Note 0.1 jitter applied to x-axes values to allow visualisation of point density", fig.align="center", out.width="75%",fig.height=4}
 
-p <- ggplot(df,aes(x=mean,y=Q17))
+p <- ggplot(df,aes(x=Q17,y=mean))
 p + 
-  geom_point(position = position_jitter(height = 0.1))+
+  geom_point(position = position_jitter(width = 0.1))+
   geom_smooth(method=lm) +
-    labs(x = "Faith in reason",
-       y = "Generalised trust")
+    labs(x = "Generalised trust",
+       y = "Faith in reason")
 
 ggsave(here('plots','fir-trust.png'),dpi=figdpi)  
 ```
 
-Relation to other variables
-Regressions and corellations
+There is a convincing lack of association between the Third Person Effect and Faith in Reason (Figure \@ref(fig:tpe)).
+
 
 ```{r, regressions, include=FALSE}
-
-#recode education question to set "other" respnose to NA
-df <- df %>% mutate(Q11r = case_match(Q11,8 ~ NA, .default = Q11))
 
 #calculate TPE_other as mean of all Q22 items
 df <- df %>% rowwise() %>% mutate(TPEother = mean(c_across(c(Q22_1,Q22_2,Q22_3,Q22_4,Q22_5,Q22_6))))
@@ -525,23 +578,30 @@ df <- df %>% rowwise() %>% mutate(TPEother = mean(c_across(c(Q22_1,Q22_2,Q22_3,Q
 
 cor_items <- df %>% dplyr::select(mean,Q16,Q17,Q11r,TPEother)
 
-# calculate correlation matrix
-cor_matrix <- round(cor(cor_items,method = "pearson", use = "pairwise.complete.obs"),2)
+colnames(cor_items)=c("FIR","NfD","Trust","Education","TPE")
 
-# display correlation matrix as table
-kable(cor_matrix, caption = "Correlation Matrix")
+# calculate correlation matrix
+#cor_matrix <- round(cor(cor_items,method = "pearson", use = "pairwise.complete.obs"),2)
+
+cor_matrix <- corrtable::correlation_matrix(cor_items,use="upper",show_significance = FALSE)
+
+kable(cor_matrix, caption = "Correlation Matrix. FIR : Faith in Reason. NfD : Need for Democracy. Trust : Generalised Trust. TPE : Third Person Effect.")
 
 #regression
-m <- lm(mean~1+Q16+Q17+Q11r,data=df)
+m <- lm(mean~1+Q16+Q17+Q11r+TPEother,data=df)
 summary(m)
 
+
 ```
+
+To test these associations in conjunction we first review the correlations (Table \@ref{tab:regressions}) and then construct a simple linear regression, which confirms that although all faith in reason can be predicted, to a modest amount, from these other variables (R^2 = `r summary(m)$r.squared``). Education level and Need for Democracy predict, albeit with a small coefficient, faith in reason. Generalised trust has a modest association. The Third Person Effect has no association.
+
 
 ```{r tpe, fig.cap="Scatterplot of Faith in Reason scores against Third Person Effect score. Note 0.1 jitter applied to x-axes values to allow visualisation of point density", fig.align="center", out.width="75%",fig.height=4}
 
 p <- ggplot(df,aes(x=mean,y=TPEother))
 p + 
-  geom_point(position = position_jitter(height = 0.1))+
+  geom_point(position = position_jitter(width = 0.1))+
   geom_smooth(method=lm) +
     labs(x = "Faith in reason",
        y = "Third person effect")
@@ -550,46 +610,15 @@ p +
 ggsave(here('plots','fir-tpe.png'),dpi=figdpi)
 ```
 
-## TODO
-
-
-Analyse TPE
-
-Methods for assessing dimensionality
-cronbach's alpha + leave on out
-scree plots and EFA
-Mokken scale analysis
-EGA
-
-Write up all of them?
-
-Look at items and make sensible decisions. A single scale of 6 items and 2 subscales?
-
-
-
-
-## Tom
-
-Obviously 5 is weakly correlated. Omitting gives biggest boost to Cronbach's alpha, EEGnet suggests weakly related to all other items, 
-
-EEGnet suggets two commuities
-Scree plot of factors suggests border of unidimension and bidimensional
-mokken analysis suggests 1 domension, BUT if you remove items 5 and 9 you then find 2 dim3nsions at 0.35
-
 # Discussion
 
-This paper arose out of a note published online [@stafford2022] which we cite for completeness and by way of allowed it to be checked that the intention of the study has been consistent between conceptualisation and publication.
+This paper arose out of a note published online [@stafford2022] which we cite for completeness and by way of allowing it to be checked that the intention of the study has been consistent between conceptualisation and publication.
 
 ## scale development
 
-Usefully reviewed in @flake2020; @clark2019; @boateng2018
+Issues with scale development and validity testing are usefully reviewed in @flake2020; @clark2019; @boateng2018. With the current report we do not pretend to have completed scale development and testing. We merely report the beginnings of the development of a scale for measuring belief in the rationality or reasonableness of the typical citizen.
 
-We do not pretend to have completed scale development and testing, but aim to present the beginnings here.
-
-## Normative models
-
-arguably our scale doesn't touch on normative models of rationality as captured by T&K. Bias, prejudice
-
+## Wither misinformation
 
 Deflationary accounts of misinformation [@nyhan2020facts; @mercier2020]
 
@@ -597,6 +626,7 @@ Deflationary accounts of misinformation [@nyhan2020facts; @mercier2020]
 ```{r results="hide"}
 #how to get a citation for packages you use
 citation('papaja')
+citation('corrtable')
 ```
 
 # References
