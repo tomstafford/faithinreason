@@ -53,7 +53,7 @@ abstract: |
  What we believe about other people matters. It is not enough that others *are* trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well intentioned. While standard measures of trust and benevolence exist, there is no standard measure of the generalised belief in the rationality or reasonableness of other people. Here, we present the development and testing of a scale to directly measure this attitude. Using a representative sample of 1869 UK adults, we test dimensionality and consistency of the scale items. We show that the refined, six-item, scale is associated with, but not entirely determined by, generalised trust in other people. Our "Faith in Reason" scale shows large individual differences, but the average tendency is slightly on the side of endorsing, rather than rejecting, sentiments such as "The typical person is often irrational".
 
 
-note              : \textcolor{red}{Draft `r Sys.Date()`}
+note              : \textcolor{red}{Draft, not for circulation `r Sys.Date()`}
 
 
 
@@ -125,7 +125,7 @@ Mercier and Sperber's [-@mercier2011] Argumentative Theory of Reason provides an
 
 So rationality is not a unitary concept, nor one around which there is consensus on the definition of, despite the way it is often evoked in discussion (and particularly in discussion of its negation e.g.  "they are being irrational"). That said, core features of rationality have been proposed, and it may be  possible to test these as aspects of the 'folk theory' of rationality that exists in the common understanding. 
 
-Two primary criteria are '**correspondence**', where beliefs are aligned with reality (in the form of the state of the world or their behaviour), and '**coherence**', where beliefs are aligned with each other (i.e. consistent, but see @sommer2022). For more on corresponence and coherance see @dawson2009.
+Two primary criteria are '**correspondence**', where beliefs are aligned with reality (in the form of the state of the world or their behaviour), and '**coherence**', where beliefs are aligned with each other [i.e. consistent, but see @sommer2022]. For more on corresponence and coherance see @dawson2009.
 
 Another criteria of rationalty which can be identified is **insight** into your own beliefs and how they guide behaviour. The rhetorical power of certain celebrated demonstrations of irrationality [e.g. @nisbett1977] relies on the surprise that people can act, supposedly, unaware of the causes of their behaviour [but see @stafford2020evidence].
 
@@ -143,13 +143,13 @@ The generalised belief that others are well informed and reasonable is foundatio
 
 ### Third person effect
 
-There is an established literature of the perception of media influence on others [@perloff2002; @sun2008]. The `third person effect', proposed by @davison1983, is the phenomenon whereby many people believe others are more susceptible to influence than themselves. The third person effect was proposed as a root cause of censorship instincts and this has been confirmed by subsequent empricial investigations [@olshansky2020; @feng2012].
+There is an established literature of the perception of media influence on others [@perloff2002; @sun2008]. The `third person effect', proposed by @davison1983, is the phenomenon whereby many people believe others are more susceptible to influence than themselves. The third person effect was proposed as a root cause of censorship instincts and this has been confirmed by subsequent empirical investigations [@olshansky2020; @feng2012].
 
 Two caveats around the third person effect. Lyons [-@lyons2022] has recently argued that - for many people - a third person effect of greater media influence on others rather than the self will be an accurate perception. @chung2016 have argued that the driving factor in many so-called third person effects is the perception of others (as highly influenced), rather than the discrepancy with first person perception per se.
 
 ## Generalised trust & value of democracy
 
-Generalised trust is the belief that, 'most people can be trusted' [@brehm1997; @paxton1999]. It is reflected in standard items in long running time series surveys such as the World Values Survey [@wvs] an the General Social Survey [@gss]. Generalised trust is an aspect of social capital, broadly conceived [@putnam2000] and as such as an important aspect of wellbeing and the health of society [@cohn2019]. Given the recognised importance of generalised trust, it is nature to ask how other beliefs feed into this belief. Why do we trust others? Do we trust them intellectually as well as morally? Do we think other people are able to work things out for themselves, to display good judgement? Do we trust the typical person to avoid being manipulated, to respond to arguments, to reason their way to good enough decisions? In short, is generalised trust informed by beliefs about the rationality or reasonableness of others?
+Generalised trust is the belief that, 'most people can be trusted' [@brehm1997; @paxton1999]. It is reflected in standard items in long running time series surveys such as the World Values Survey [@wvs] an the General Social Survey [@gss]. Generalised trust is an aspect of social capital, broadly conceived [@putnam2000] and as such as an important aspect of wellbeing and the health of society [@cohn2019]. Given the recognised importance of generalised trust, it is natural to ask how other beliefs feed into this belief. Why do we trust others? Do we trust them intellectually as well as morally? Do we think other people are able to work things out for themselves, to display good judgement? Do we trust the typical person to avoid being manipulated, to respond to arguments, to reason their way to good enough decisions? In short, is generalised trust informed by beliefs about the rationality or reasonableness of others?
 
 Similarly, attitudes to demoracy may mutually inform beliefs about the reasonableness of one's fellow citizens. One standardised measure of attitude to democracy is the item from the World Values Survey [@wvs] which asks 'How important is it for you to live in a country that is governed democratically?'.
 
@@ -219,7 +219,7 @@ In all analyses negatively framed items were reverse coded, so that numerically 
 
 ## Other items
 
-Other items we report from the original survey are a measure of generalised trust ('Generally speaking, would you say that most people can be trusted?'), support for democracy ('How important is it for you to live in a country that is governed democratically?') and a measure of the Third Person Effect in the context of political advertising. This was calculated as the average response to six linked items about the influence of election advertising on the typical voter, with wording of the form specifically "Thinking about the impact of political parties’ election messages on the typical voter, to what extent do you agree or disagree that it helps to: - Raise their awareness of political issues; Raise their awareness of political candidates or parties; Prompt them to share messages related to the election; Prompt them to vote/ register to vote; Persuade them to change who you are planning to vote for; Influence how they feel about political opponents'. We also report demographic questions (age, sex, education) 
+Other items we report from the original survey are a measure of generalised trust ('Generally speaking, would you say that most people can be trusted?'), support for democracy ('How important is it for you to live in a country that is governed democratically?') and a measure of percpetion of the Third Person Effect in the context of political advertising. This was calculated as the average response to six linked items about the influence of election advertising on the typical voter, with wording of the form specifically "Thinking about the impact of political parties’ election messages on the typical voter, to what extent do you agree or disagree that it helps to: - Raise their awareness of political issues; Raise their awareness of political candidates or parties; Prompt them to share messages related to the election; Prompt them to vote/ register to vote; Persuade them to change who you are planning to vote for; Influence how they feel about political opponents'. We also report demographic questions (age, sex, education) 
 
 ```{r notes}
 # Q17
@@ -264,7 +264,7 @@ Preregistration supports the accurate identification of confirmatory versus expl
 
 Data availability: The analysis code and anonymised response data which supports all results are openly available https://github.com/tomstafford/faithinreason
 
-This repository contains the files used to generate this report, which is in the form of a 'reproducible manuscript', a document which generates the analysis it reports, and so combines sharing, documenting and reporting an analysis in a single set of project files [@rmarkdowncite ;@aust2020].
+This repository contains the files used to generate this report, which is in the form of a 'reproducible manuscript', a document which generates the analysis it reports, and so combines sharing, documenting and reporting an analysis in a single set of project files [@rmarkdowncite ;@aust2020]. Details of the statistical software packages used can be found in the repository, and via these citations [@knitr;@aust2020;@here;@tidyverse;@ltm;@mokken;@corrtable;@qgraph;@EGAnet;@psych].
 
 # Results
 
@@ -325,7 +325,7 @@ write_csv(df,'data/our_items.csv') #export the items which are the focus of this
 
 ## Initial characterisations
 
-Our data consist of `r before` participants who completed our online survey. `r removed_by_attn_check` failed an attention check and were removed, leaving a final sample of `r nrow(df)`. Inital inspection suggested that a range of responses were obtain. For example, Figure \@ref(fig:Q19item1) shows that the first item of the scale received the full range of responses from "Strongly disagree" to "Strongly agree".
+Our data consist of `r before` participants who completed our online survey. `r removed_by_attn_check` failed an attention check and were removed, leaving a final sample of `r nrow(df)`. Inital inspection suggested that a range of responses were obtained. Table \@ref(tab:itemmeans) shows that the first item of the scale received the full range of responses from "Strongly disagree" to "Strongly agree".
 
 ```{r itemmeans, echo = FALSE, results = 'asis'}
 
@@ -570,7 +570,7 @@ ggsave(here('plots','fir-trust.png'),dpi=figdpi)
 There is a convincing lack of association between the Third Person Effect and Faith in Reason (Figure \@ref(fig:tpe)).
 
 
-```{r, regressions, include=FALSE}
+```{r regressions, results='hide'}
 
 #calculate TPE_other as mean of all Q22 items
 df <- df %>% rowwise() %>% mutate(TPEother = mean(c_across(c(Q22_1,Q22_2,Q22_3,Q22_4,Q22_5,Q22_6))))
@@ -578,33 +578,34 @@ df <- df %>% rowwise() %>% mutate(TPEother = mean(c_across(c(Q22_1,Q22_2,Q22_3,Q
 
 cor_items <- df %>% dplyr::select(mean,Q16,Q17,Q11r,TPEother)
 
-colnames(cor_items)=c("FIR","NfD","Trust","Education","TPE")
+colnames(cor_items)=c("FIR","NfD","Trust","Education","TPP")
 
 # calculate correlation matrix
 #cor_matrix <- round(cor(cor_items,method = "pearson", use = "pairwise.complete.obs"),2)
 
-cor_matrix <- corrtable::correlation_matrix(cor_items,use="upper",show_significance = FALSE)
-
-kable(cor_matrix, caption = "Correlation Matrix. FIR : Faith in Reason. NfD : Need for Democracy. Trust : Generalised Trust. TPE : Third Person Effect.")
+cor_matrix <- corrtable::correlation_matrix(cor_items,use="upper",digits=2,show_significance = FALSE)
 
 #regression
 m <- lm(mean~1+Q16+Q17+Q11r+TPEother,data=df)
 summary(m)
-
-
 ```
 
-To test these associations in conjunction we first review the correlations (Table \@ref{tab:regressions}) and then construct a simple linear regression, which confirms that although all faith in reason can be predicted, to a modest amount, from these other variables (R^2 = `r summary(m)$r.squared``). Education level and Need for Democracy predict, albeit with a small coefficient, faith in reason. Generalised trust has a modest association. The Third Person Effect has no association.
+```{r cortable}
+
+knitr::kable(cor_matrix, caption = "Correlation Matrix. FIR : Faith in Reason. NfD : Need for Democracy. Trust : Generalised Trust. TPP : Third Person Perception.")
+
+```
+To test these associations in conjunction we first review the correlations (Table \@ref(tab:cortable) and then construct a simple linear regression, which confirms that although all faith in reason can be predicted, to a modest amount, from these other variables (R^2 = `r summary(m)$r.squared``). Education level and Need for Democracy predict, albeit with a small coefficient, faith in reason. Generalised trust has a modest association. The Third Person Effect has no association.
 
 
-```{r tpe, fig.cap="Scatterplot of Faith in Reason scores against Third Person Effect score. Note 0.1 jitter applied to x-axes values to allow visualisation of point density", fig.align="center", out.width="75%",fig.height=4}
+```{r tpe, fig.cap="Scatterplot of Faith in Reason scores against Third Person Perception score. Note 0.1 jitter applied to x-axes values to allow visualisation of point density", fig.align="center", out.width="75%",fig.height=4}
 
 p <- ggplot(df,aes(x=mean,y=TPEother))
 p + 
   geom_point(position = position_jitter(width = 0.1))+
   geom_smooth(method=lm) +
-    labs(x = "Faith in reason",
-       y = "Third person effect")
+    labs(x = "Faith in Reason",
+       y = "Third Person Perception")
 
 
 ggsave(here('plots','fir-tpe.png'),dpi=figdpi)
@@ -614,19 +615,37 @@ ggsave(here('plots','fir-tpe.png'),dpi=figdpi)
 
 This paper arose out of a note published online [@stafford2022] which we cite for completeness and by way of allowing it to be checked that the intention of the study has been consistent between conceptualisation and publication.
 
+## Summary
+
+After developing eight items and gathering responses from a representative sample of UK adults, we assessed dimensionality using conventional factor analysis, Mokken scale analysis (from item response theory) and experimental graph analysis. Conventional factor analysis and Mokken scale analysis  suggested that a unidimensional solution was dominant, and six of the items could be used in coherent scale. EGA confirmed that one item - 5 - was least associated with all the others, but also suggested that a items might be grouped into two communities. Exploring the differences, similarities, costs and benefits of EGA for scale analysis is beyond the scope of this report. We note that it affords visual insight into the structure within dimensional groupings of items; showing, here, that item 5 is least associated with the network and item 1 - the item which assesses generic endorsement of the rationality of others - is most central.
+
+We combined items 1,2,3,4,6 and 7 into a single metric - the Faith in Reason scale. Scores on this indicated that a) a large variation exists in beliefs in the rationality or reasonableness of other people (Figure \@ref(fig:meanhistogram)) and b) the center of the distribution of these beliefs is slightly away from neutral, reflecting endorsement of the negative sentiment that other people tend to be misinformed, credible and irrational. This stands in contrast to other domains where attitudes have found to be optimistic or beliefs in a just world [@lerner1980belief]. It is consonant with a long standing programme fo research into the Third Person Effect.
+
+Scores on the Faith in Reason scale are not determined by education, need for democracy, generalised trust or our specific measure of the Third Person Perception in the context of electoral adverts. Generalised Trust has a moderate association with Faith in Reason, suggesting that they may tap similar underlying beliefs about other people (their trustworthiness and reasonableness). We do not provide any evidence of causal direction, how one set of beliefs may inform the other, nor evidence of how interventions which may affect Faith in Reason, for example, may in turn affect generalised trust. The lack of relation with Third Person Perception is notable, suggesting that domain specific beliefs about susceptibility to influence in a particular context do not strongly link to general beliefs about human reasonableness.
+
 ## scale development
 
 Issues with scale development and validity testing are usefully reviewed in @flake2020; @clark2019; @boateng2018. With the current report we do not pretend to have completed scale development and testing. We merely report the beginnings of the development of a scale for measuring belief in the rationality or reasonableness of the typical citizen.
 
 ## Wither misinformation
 
-Deflationary accounts of misinformation [@nyhan2020facts; @mercier2020]
+The nature of human rationality is a perenial concern, both in terms of what it means for our self-regard and societal projects like democracy. Recent concerns over misinformation have amplified these concerns, and often assumed a pessimistic view of human credulity and bias. Nonetheless, extensive evidence supports measured optimism about human rationality - that the capacity for due skeptism, warrented trust, and reason responsiveness is widespread [@nyhan2020facts; @mercier2020]. Responses to our survey appear to reflect these competing currents, with some endorsing extemely pessimistic views of human reason, other endorseing extemely optimistic views, and the majority represented in the middle. It remains to be seen how future world events and the dissemination of empricial results from the cognitive sciences might affect the population level Faith in Reason.
 
 
 ```{r results="hide"}
 #how to get a citation for packages you use
 citation('papaja')
-citation('corrtable')
+citation('knitr')
+
+citation('here')
+citation('ltm') #for cronbach's alpha
+citation('mokken') #for mokken scale analysis
+citation('corrtable') #for correlation_matrix
+citation('tidyverse')
+
+citation('qgraph')
+citation('EGAnet') # requires install.packages('sna')
+citation('psych')
 ```
 
 # References
