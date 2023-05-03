@@ -500,6 +500,8 @@ p <- ggplot(data = Ritems,mapping= aes(mean))
 p + geom_histogram(fill="darkorchid2",color="black",binwidth=0.5) + scale_x_continuous(breaks = 1:7,
     labels = c("1\nStrongly\ndisagree","2","3","4\nneutral","5","6","7\nStrongly\nagree")) +
     labs(x = "Faith in reason")
+
+ggsave(here('plots','fir-histogram.png'),dpi=figdpi)
 ```
 
 Averaging across items 1,2,3,4,6 and 7 gives us our Faith in Reason scale. The average score across these six items was `r round(mean(Ritems$mean),2)`, a summary statistic which suggests that the typical view of other people weighted to being slightly less, rather than slightly more, reasonable. The distribution is shown in Figure \@ref(fig:meanhistogram).
@@ -644,8 +646,8 @@ citation('corrtable') #for correlation_matrix
 citation('tidyverse')
 
 citation('qgraph')
-citation('EGAnet') # requires install.packages('sna')
-citation('psych')
+#citation('EGAnet') # requires install.packages('sna')
+#citation('psych')
 ```
 
 # References
