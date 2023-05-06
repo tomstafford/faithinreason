@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.19)  3 MAY 2023 18:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.3.19)  6 MAY 2023 18:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -574,24 +574,24 @@ Package csquotes Info: Redefining alias 'default' -> 'english'.
 (./faithinreason.aux)
 \openout1 = `faithinreason.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 204.
-LaTeX Font Info:    ... okay on input line 204.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 204.
-LaTeX Font Info:    ... okay on input line 204.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 204.
-LaTeX Font Info:    ... okay on input line 204.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 204.
-LaTeX Font Info:    ... okay on input line 204.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 204.
-LaTeX Font Info:    ... okay on input line 204.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 204.
-LaTeX Font Info:    ... okay on input line 204.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 204.
-LaTeX Font Info:    ... okay on input line 204.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 204.
-LaTeX Font Info:    ... okay on input line 204.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 204.
-LaTeX Font Info:    ... okay on input line 204.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 206.
+LaTeX Font Info:    ... okay on input line 206.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -641,104 +641,109 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 204.
+Package hyperref Info: Link coloring OFF on input line 206.
 (./faithinreason.out) (./faithinreason.out)
 \@outlinefile=\write3
 \openout3 = `faithinreason.out'.
 
-Class apa6 Info: Keywords not defined on input line 206.
-LaTeX Font Info:    Trying to load font information for OT1+ptmcm on input line 206.
+Class apa6 Info: Keywords not defined on input line 208.
+LaTeX Font Info:    Trying to load font information for OT1+ptmcm on input line 208.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/psnfss/ot1ptmcm.fd
 File: ot1ptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ptmcm.
 )
-LaTeX Font Info:    Trying to load font information for OML+ptmcm on input line 206.
+LaTeX Font Info:    Trying to load font information for OML+ptmcm on input line 208.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/psnfss/omlptmcm.fd
 File: omlptmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ptmcm.
 )
-LaTeX Font Info:    Trying to load font information for OMS+pzccm on input line 206.
+LaTeX Font Info:    Trying to load font information for OMS+pzccm on input line 208.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/psnfss/omspzccm.fd
 File: omspzccm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/pzccm.
 )
-LaTeX Font Info:    Trying to load font information for OMX+psycm on input line 206.
+LaTeX Font Info:    Trying to load font information for OMX+psycm on input line 208.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/psnfss/omxpsycm.fd
 File: omxpsycm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/psycm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 206.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 208.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 206.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 208.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 206.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 208.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 206.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 206.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 208.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 208.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 206.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 208.
 (/home/tom/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 206.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 208.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 206.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 208.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 206.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 208.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 206.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 208.
 [1{/home/tom/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ] [2]
-Overfull \hbox (25.98111pt too wide) in paragraph at lines 292--317
+Underfull \vbox (badness 1178) has occurred while \output is active []
+
+
+Overfull \hbox (25.98111pt too wide) in paragraph at lines 294--319
  [] 
  []
 
 [3]
-<plots/reason_scree8.png, id=153, 481.8pt x 301.125pt>
-File: plots/reason_scree8.png Graphic file (type png)
-<use plots/reason_scree8.png>
-Package pdftex.def Info: plots/reason_scree8.png  used on input line 392.
-(pdftex.def)             Requested size: 241.73749pt x 151.08592pt.
-
-Underfull \vbox (badness 4739) has occurred while \output is active []
+Underfull \vbox (badness 1365) has occurred while \output is active []
 
 [4]
-<plots/reason_ega.png, id=169, 481.8pt x 301.125pt>
+<plots/reason_scree8.png, id=165, 481.8pt x 301.125pt>
+File: plots/reason_scree8.png Graphic file (type png)
+<use plots/reason_scree8.png>
+Package pdftex.def Info: plots/reason_scree8.png  used on input line 394.
+(pdftex.def)             Requested size: 241.73749pt x 151.08592pt.
+<plots/reason_ega.png, id=167, 481.8pt x 301.125pt>
 File: plots/reason_ega.png Graphic file (type png)
 <use plots/reason_ega.png>
-Package pdftex.def Info: plots/reason_ega.png  used on input line 417.
+Package pdftex.def Info: plots/reason_ega.png  used on input line 419.
 (pdftex.def)             Requested size: 241.73749pt x 151.08592pt.
-<faithinreason_files/figure-latex/meanhistogram-1.pdf, id=170, 289.08pt x 289.08pt>
+<faithinreason_files/figure-latex/meanhistogram-1.pdf, id=168, 289.08pt x 289.08pt>
 File: faithinreason_files/figure-latex/meanhistogram-1.pdf Graphic file (type pdf)
 <use faithinreason_files/figure-latex/meanhistogram-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/meanhistogram-1.pdf  used on input line 431.
+Package pdftex.def Info: faithinreason_files/figure-latex/meanhistogram-1.pdf  used on input line 433.
 (pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-[5 <./plots/reason_scree8.png> <./plots/reason_ega.png (PNG copy)> <./faithinreason_files/figure-latex/meanhistogram-1.pdf>]
-<faithinreason_files/figure-latex/education-1.pdf, id=189, 289.08pt x 289.08pt>
+<faithinreason_files/figure-latex/education-1.pdf, id=171, 289.08pt x 289.08pt>
 File: faithinreason_files/figure-latex/education-1.pdf Graphic file (type pdf)
 <use faithinreason_files/figure-latex/education-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/education-1.pdf  used on input line 447.
+Package pdftex.def Info: faithinreason_files/figure-latex/education-1.pdf  used on input line 449.
 (pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-<faithinreason_files/figure-latex/democract-1.pdf, id=191, 289.08pt x 289.08pt>
+<faithinreason_files/figure-latex/democract-1.pdf, id=173, 289.08pt x 289.08pt>
 File: faithinreason_files/figure-latex/democract-1.pdf Graphic file (type pdf)
 <use faithinreason_files/figure-latex/democract-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/democract-1.pdf  used on input line 458.
+Package pdftex.def Info: faithinreason_files/figure-latex/democract-1.pdf  used on input line 460.
 (pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-<faithinreason_files/figure-latex/generalisetrust-1.pdf, id=193, 289.08pt x 289.08pt>
+[5 <./plots/reason_scree8.png> <./plots/reason_ega.png (PNG copy)>]
+<faithinreason_files/figure-latex/generalisetrust-1.pdf, id=190, 289.08pt x 289.08pt>
 File: faithinreason_files/figure-latex/generalisetrust-1.pdf Graphic file (type pdf)
 <use faithinreason_files/figure-latex/generalisetrust-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/generalisetrust-1.pdf  used on input line 469.
+Package pdftex.def Info: faithinreason_files/figure-latex/generalisetrust-1.pdf  used on input line 471.
 (pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-<faithinreason_files/figure-latex/tpe-1.pdf, id=196, 289.08pt x 289.08pt>
+<faithinreason_files/figure-latex/tpe-1.pdf, id=193, 289.08pt x 289.08pt>
 File: faithinreason_files/figure-latex/tpe-1.pdf Graphic file (type pdf)
 <use faithinreason_files/figure-latex/tpe-1.pdf>
-Package pdftex.def Info: faithinreason_files/figure-latex/tpe-1.pdf  used on input line 503.
+Package pdftex.def Info: faithinreason_files/figure-latex/tpe-1.pdf  used on input line 505.
 (pdftex.def)             Requested size: 181.30531pt x 181.30531pt.
-[6 <./faithinreason_files/figure-latex/education-1.pdf> <./faithinreason_files/figure-latex/democract-1.pdf> <./faithinreason_files/figure-latex/generalisetrust-1.pdf>] [7 <./faithinreason_files/figure-latex/tpe-1.pdf>]
+
+Underfull \vbox (badness 2393) has occurred while \output is active []
+
+[6 <./faithinreason_files/figure-latex/meanhistogram-1.pdf> <./faithinreason_files/figure-latex/education-1.pdf> <./faithinreason_files/figure-latex/democract-1.pdf> <./faithinreason_files/figure-latex/generalisetrust-1.pdf>] [7 <./faithinreason_files/figure-latex/tpe-1.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -754,16 +759,16 @@ Package rerunfilecheck Info: File `faithinreason.out' has not changed.
 Here is how much of TeX's memory you used:
  15752 strings out of 477984
  257158 string characters out of 5839381
- 1873388 words of memory out of 5000000
+ 1872388 words of memory out of 5000000
  35508 multiletter control sequences out of 15000+600000
  566758 words of font info for 117 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,11n,77p,1138b,548s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,77p,1136b,548s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/home/tom/.TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}</home/tom/.TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></home/tom/.TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on faithinreason.pdf (9 pages, 729840 bytes).
+Output written on faithinreason.pdf (9 pages, 729369 bytes).
 PDF statistics:
- 400 PDF objects out of 1000 (max. 8388607)
- 364 compressed objects within 4 object streams
+ 406 PDF objects out of 1000 (max. 8388607)
+ 370 compressed objects within 4 object streams
  139 named destinations out of 1000 (max. 500000)
  252 words of extra memory for PDF output out of 10000 (max. 10000000)
 
