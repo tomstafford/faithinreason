@@ -137,6 +137,14 @@ mean_df <- df %>% group_by(sum_electpar) %>% summarize(mean_fir = mean(fir),
                                                se_fir=sd(fir)/sqrt(n())
 )
 
+
+# Calculate Spearman rank correlation
+correlation <- cor.test(df$sum_electpar, df$mean_fir, method = "pearson")
+
+print(correlation)
+
+n <- nrow(df)
+
 # create bar chart
 ggplot(mean_df, aes(sum_electpar, mean_fir)) + 
   geom_bar(stat = "identity", fill = "blue") + 
@@ -145,9 +153,16 @@ ggplot(mean_df, aes(sum_electpar, mean_fir)) +
                 position=position_dodge(.9)) +
   coord_cartesian(ylim=c(1,7)) +
   scale_x_continuous(breaks=0:6,) +
-  labs(x = "Election participation", y = "Faith in Reason (+/- standard error")
+  labs(x = "Election participation", y = "Mean Faith in Reason (+/- standard error") +
+  annotate("text", x = Inf, y = Inf, label = paste0("n = ", n,
+                                                    "\nPearson correlation = ",round(correlation$estimate,2),
+                                                    "\n95% CI [",round(correlation$conf.int[1],1),",",round(correlation$conf.int[1],2),"]"), 
+             hjust = 1, vjust = 1, size = 5, color = "red")
+
 
 
 ggsave(here('plots','fir2_electionpar-fir.png'),dpi=figdpi)  
 
-
+mean_df <- df %>% group_by(ELECT_PAR_6) %>% summarize(mean_fir = mean(fir),
+                                                       se_fir=sd(fir)/sqrt(n())
+)

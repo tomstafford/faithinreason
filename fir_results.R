@@ -16,6 +16,7 @@ dev.off()
 
 boot.all <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
                             type = "resampling", typicalStructure = TRUE, 
+                            uni.method='LE',
                             plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
 
 png(here('plots','reason_ega.png'),height=1500, width=2400,res=360)
@@ -27,6 +28,12 @@ plot(boot.all,
      plot.args=list(alpha=1,edge.color = c("black","black")))
 dev.off()
 
+boot.all$summary.table
+
+boot.all$frequency
+
+#ic.HSQ <- itemStability(boot.all) #item stablity analysis, not reported
+
 
 #reduced set
 Ritems <- dplyr::select(df,c(R1:R4,R6:R7))
@@ -37,6 +44,7 @@ dev.off()
 
 boot.six <- EGAnet::bootEGA(data = Ritems, model = "glasso", iter = 1000,
                             type = "resampling", typicalStructure = TRUE, 
+                            uni.method = 'LE',
                             plot.typicalStructure = TRUE, ncores = parallel::detectCores()-1)
 
 png(here('plots','reason6_ega.png'),height=1500, width=2400,res=360)
@@ -47,3 +55,9 @@ plot(boot.six,
      width = 8,
      plot.args=list(alpha=1,edge.color = c("black","black")))
 dev.off()
+
+boot.six$summary.table
+
+boot.six$frequency
+
+#ic.HSQ <- itemStability(boot.all) #item stablity analysis, not reported

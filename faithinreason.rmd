@@ -460,7 +460,7 @@ the variables are double monotonous and there is no model violation."  I don't k
 
 Exploratory Graph Analysis [EGA; @golino2020investigating;@golino2020eganet] can also be applied to understand dimensional structure in our scale items. EGA allows a visualisation of the network formed by scale items, with items which correlate clustered together. EGA also identifies underlying 'communities' of items. 
 
-Figure \@ref(fig:egafull) shows an EGA for the 8 potential items. Like the use of leave-one-out Cronbach's alpha and the Mokken scale analysis, this suggests Item 5 is distant from the other items. The EGA identifies two communities, grouping Item 1 with Items 6, 7 and 8 and Items 2,3,4 and 5.
+Figure \@ref(fig:egafull) shows an EGA for the 8 potential items. Like the use of leave-one-out Cronbach's alpha and the Mokken scale analysis, this suggests Item 5 is distant from the other items. The EGA identifies two communities, grouping Item 1 with Items 6, 7 and 8 and Items 2,3,4 and 5. To check the stability of the community structure a bootstrap procedure was performed, which suggested that 2 community structure was overwhelmingly the most likely and stable solution (frequency = 1).
 
 ```{r, egafull, fig.cap="Exploratory Graph Analysis (EGA) of all items.", fig.align="center", out.width="100%"}
 knitr::include_graphics(here("plots","reason_ega.png"))
