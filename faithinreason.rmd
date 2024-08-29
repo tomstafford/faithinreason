@@ -1,5 +1,6 @@
 ---
 title             : "Quantifying belief in the rationality of others: the Faith in Reason scale"
+#title             : "Faith in Reason? Quantifying belief in the rationality of others"
 shorttitle        : "Faith in Reason"
 
 author:
@@ -120,7 +121,7 @@ alphaval=0.3
 
 ## Rationality
 
-The nature of human reason is a perennial topic. The human potential for rationality has often been praised, as have its many failures also been condemned. 
+The nature of human reason is a perennial topic. The human potential for rationality has often been praised, just as the costs of failing to reason well have been condemned. It matters how rational we are, and it also matter how rational we believe ourselves, and each other, to be.
 
 An influential account of human reasoning is provided by the heuristics and biases programme [@kahneman1982], which uses the ideal of economic rationality as a standard against which to define actual human reasoning. From this perspective human reasoning appears riddled with biases, but much of this effect is due to the adoption of the standards of utility theory, formal logic and statistical reasoning against which to define error. Critics have questioned the appropriateness of these standards [e.g. @gigerenzer2011]. The logic of controlled experiments allows researchers to isolate and emphasise quirks in human reasoning, while backgrounding reason-responsiveness [@stafford2014]. Accordingly, the psychology literature may overemphasise the role of error, bias and motivated reasoning [@stafford2020evidence]. The debate has been so heated in the cognitive sciences that 'Rationality Wars' [@samuels2002] have been declared over the definition of rationality that might reasonably used as a standard against which to judge human reasoning.
 
@@ -261,11 +262,11 @@ Other items we report from the original survey are a measure of generalised trus
 ## Preregistration
 
 Data was collected as apart of a wider project (reported in @zhu2023) which was supported by formal preregistration of hypothesis and data analyses practices
-(OSF pre-registration link: https://osf.io/y9kjg/?view_only=609cd46aab534e4c866c16b3ef29c510). Preregistration supports the accurate identification of confirmatory versus exploratory analyses. The nature of scale development is necessarily exploratory, and the bulk of the preregistration concerns the analyses in @zhu2023. We raise the preregistration here to allow readers to confirm what was intended and expected before data was collected. Informally, the line of research reported here was set out in this essay @stafford2022.
+(OSF pre-registration link: <https://osf.io/y9kjg/?view_only=609cd46aab534e4c866c16b3ef29c510>). Preregistration supports the accurate identification of confirmatory versus exploratory analyses. The nature of scale development is necessarily exploratory, and the bulk of the preregistration concerns the analyses in @zhu2023. We raise the preregistration here to allow readers to confirm what was intended and expected before data was collected. Informally, the line of research reported here was set out in this essay @stafford2022.
 
 ## Reproducibility
 
-Data availability: The analysis code and anonymised response data which supports all results are openly available https://github.com/tomstafford/faithinreason
+Data availability: The analysis code and anonymised response data which supports all results are openly available <https://github.com/tomstafford/faithinreason>
 
 This repository contains the files used to generate this report, which is in the form of a 'reproducible manuscript', a document which generates the analysis it reports, and so combines sharing, documenting and reporting an analysis in a single set of project files [@rmarkdowncite ;@aust2020]. Details of the statistical software packages used can be found in the repository, and via these citations [@knitr;@aust2020;@here;@tidyverse;@ltm;@mokken;@corrtable;@qgraph;@EGAnet;@psych].
 
@@ -474,25 +475,27 @@ Ritems <- dplyr::select(df,c(R1:R4,R6:R7))
 
 cronbach <- ltm::cronbach.alpha(Ritems, CI=TRUE) #CI is bootstrapped https://rdrr.io/cran/ltm/man/cronbach.alpha.html
 
+#NOT SHOWN BECAUSE include = FALSE
 knitr::include_graphics(here("plots","reason_scree6.png"))
 
 ```
 
 
 ```{r egasix, fig.cap="The items of the full ASRS scale displayed following Exploratory Graph Analysis (EGA).", fig.align="center", out.width="100%", include = FALSE}
+#NOT SHOWN BECAUSE include = FALSE
 knitr::include_graphics(here("plots","reason6_ega.png"))
 ```
 
 
 ## The Faith in Reason scale
 
-Taking these analyses into consideration, we opt to construct a single scale, dropping items 5 and 8. We do this with some hesitation, given that the results from all methods of dimensionality analysis (conventional factor analysis, Mokken scale analysis and EGA) all suggest that a two-dimensional structure may exist (and/or evidence for two dimensional structure is only just sub threshold, depending on how you wish to position the statement ontologically).
+Taken together, these three approaches to dimensionality assessment suggest two things. First, that item 5 aligns least well with the other items. Second, that a 1 or 2 (but not higher) dimension solution would be legitimate. The results from all methods of dimensionality analysis (conventional factor analysis, Mokken scale analysis and EGA)  suggest that a two-dimensional structure *may* exist (and/or evidence for two dimensional structure is only just sub threshold, depending on how you wish to position the statement ontologically). However, at this stage of scale development we are hesitant to explore subscales. For the analysis that follows we present a *Faith in Reason* scale which incorporates all items. A reduced scale, comprising items 1,2,3,4,6 and 7 was used as a sensitivity analysis with qualitatively similar results. 
 
-```{r meanhistogram, fig.cap="Histogram of mean score on finalised Faith in Reason scale (items 1,2,3,4,6 and 7", fig.align="center", out.width="75%",fig.height=4}
+```{r meanhistogram, fig.cap="Histogram of mean score on Faith in Reason scale (all items)", fig.align="center", out.width="75%",fig.height=4}
 
 #select items
-#Ritems <- dplyr::select(df,c(R1:R8))
-Ritems <- dplyr::select(df,c(R1:R4,R6,R7))
+Ritems <- dplyr::select(df,c(R1:R8))
+#Ritems <- dplyr::select(df,c(R1:R4,R6,R7))
 
 Ritems <- Ritems %>% rowwise() %>% mutate(mean = mean(c_across(everything())))
 #make histogram
@@ -507,7 +510,7 @@ p + geom_histogram(fill="darkorchid2",color="black",binwidth=0.5) + scale_x_cont
 ggsave(here('plots','fir-histogram.png'),dpi=figdpi)
 ```
 
-Averaging across items 1,2,3,4,6 and 7 gives us our Faith in Reason scale. The average score across these six items was `r round(mean(Ritems$mean),2)`, a summary statistic which suggests that the typical view of other people is weighted to being slightly less, rather than slightly more, reasonable. The distribution is shown in Figure \@ref(fig:meanhistogram).
+Averaging across all items gives us our Faith in Reason scale. The average score across these eight items was `r round(mean(Ritems$mean),2)`, a summary statistic which suggests that the typical view of other people is weighted to being slightly less, rather than slightly more, reasonable. The distribution is shown in Figure \@ref(fig:meanhistogram).
 
 ## Relation to other variables
 
@@ -519,7 +522,11 @@ We now turn to ask how scores on this scale are associated with our other measur
 df <- df %>% mutate(Q11r = case_match(Q11,8 ~ NA, .default = Q11))
 
 #calculate mean from six items
-df <- df %>% rowwise() %>% mutate(mean = mean(c_across(c(R1:R4,R6,R7))))
+#df <- df %>% rowwise() %>% mutate(mean = mean(c_across(c(R1:R4,R6,R7))))
+
+#calculate mean from eight items
+df <- df %>% rowwise() %>% mutate(mean = mean(c_across(c(R1:R8))))
+
 
 # calculate mean of y for each value of x
 mean_df <- df %>% group_by(Q11r) %>% summarize(mean_fir = mean(mean),
@@ -622,9 +629,11 @@ This paper arose out of a note published online [@stafford2022] which we cite fo
 
 ## Summary
 
-After developing eight items and gathering responses from a representative sample of UK adults, we assessed dimensionality using conventional factor analysis, Mokken scale analysis (from item response theory) and Experimental Graph Analysis. Conventional factor analysis and Mokken scale analysis  suggested that a unidimensional solution was dominant, and six of the items could be used in coherent scale. EGA confirmed that one item - \#5 - was least associated with all the others, but also suggested that all items might be grouped into two communities. Exploring the differences, similarities, costs and benefits of EGA for scale analysis is beyond the scope of this report [but see @panagiotidi2024]. We note that it affords visual insight into the structure within dimensional groupings of items; showing, here, that item 5 is least associated with the network and item 1 - the item which assesses generic endorsement of the rationality of others - is most central.
+After developing eight items and gathering responses from a representative sample of UK adults, we assessed dimensionality using conventional factor analysis, Mokken scale analysis (from item response theory) and Experimental Graph Analysis. Conventional factor analysis and Mokken scale analysis  suggested that a unidimensional solution was dominant. EGA, and Mokken scale analysis with an altered threshold, suggested that the items might be grouped into two dimensions ("communities" in EGA terms). All analyses suggested that item 5 was least well aligned with the other items. We opted not to pursue subscale identification and combined all items into a single scale, using a reduced item scale a sensitivity analysis (the qualitative pattern of all result presented holds when using the scale incorporating a reduced item set).
 
-We combined items 1,2,3,4,6 and 7 into a single metric - the Faith in Reason scale. Scores on this indicated that a) a large variation exists in beliefs in the rationality or reasonableness of other people (Figure \@ref(fig:meanhistogram)) and b) the center of the distribution of these beliefs is slightly away from neutral, reflecting endorsement of the negative sentiment that other people tend to be misinformed, credible and irrational. This stands in contrast to other domains, where attitudes have found to be generally overly optimistic [e.g. so called Belief ina Just World @lerner1980belief]. It is consonant with a long standing programme fo research into the Third Person Effect.
+Exploring the differences, similarities, costs and benefits of EGA for scale analysis is beyond the scope of this report [but see @panagiotidi2024]. We note that it affords visual insight into the structure within dimensional groupings of items; showing, here, that item 5 is least associated with the network and item 1 - the item which assesses generic endorsement of the rationality of others - is most central.
+
+Combining all items into a single metric resulted in the *Faith in Reason* scale. Scores on this indicated that a) a large variation exists in beliefs in the rationality or reasonableness of other people (Figure \@ref(fig:meanhistogram)) and b) the center of the distribution of these beliefs is slightly away from neutral, reflecting endorsement of the negative sentiment that other people tend to be misinformed, credible and irrational. This stands in contrast to other domains, where attitudes have found to be generally overly optimistic [e.g. so called Belief i na Just World @lerner1980belief]. It  however consonant with a long standing programme of research into the Third Person Effect.
 
 Scores on the Faith in Reason scale are not determined by education, need for democracy, generalised trust or our specific measure of the Third Person Perception in the context of electoral adverts. Generalised Trust has a moderate association with Faith in Reason, suggesting that they may tap similar underlying beliefs about other people (their trustworthiness and reasonableness). We do not provide any evidence of causal direction, how one set of beliefs may inform the other, nor evidence of how interventions which may affect Faith in Reason, for example, may in turn affect generalised trust. The lack of relation with Third Person Perception is notable, suggesting that domain specific beliefs about susceptibility to influence in a particular context do not strongly link to general beliefs about human reasonableness.
 

@@ -1,35 +1,22 @@
 # Write up
 
-## intro
+Change title? BIRO?
 
-discuss BiJW
-discuss cooperation ("instrumental reason"??)
 
-# CogSci R1
+# Results /  Additional Analysis
 
-However, there are some issues with the work as it is currently presented. With
-    regard to (3) theoretical merit, the authors fail to clarify the distinction
-    between epistemic rationality (which their work focuses on exclusively) and
-    instrumental rationality (the importance of which is discussed broadly by, e.g.,
-    Baron, 2008, Ch.3; Evans, 2012, Chater & Oaksford, 1999). In the motivation of
-    their paper, the authors should, I think, directly engage with how they think this
-    scale measures something different than a general willingess to cooperate with,
-    and expect cooperation from, others. Obviously the questions are not worded like
-    this, but the scale isn't a measure of an enduring trait (and the authors do not
-    claim it is), but rather of a current (cluster of) attitude(s) about 'other
-    people'. In this sense, what subjects are expressing when they answer may be
-    psychologically quite different, and I think the authors need to motivate why
-    trying to tap into beliefs/attitudes about the reasonableness of others is an
-    importantly different thing than beliefs/attitudes about cooperativity. A minor
-    point here is that the scale should more correctly be referred to as something
-    like 'Belief in Reasonableness of Others' scale, since it is not about people's
-    beliefs about reason itself.
-
-# Results
-
-be clearer on arbitrartation of dimensionality methods "following mokken"
+full items or just subscales? Explicitly present reduced set scale as sensitivity analaysis
 
 discuss role of 4 aspects of reason in final scale (coherance etc)
+
+age and gender effects (cohorts)
+
+left / right wing view and scores?
+
+electorial participation
+
+is FiR still below average for positively framed items?
+
 
 
 ## CogSci R1
@@ -52,43 +39,66 @@ discuss role of 4 aspects of reason in final scale (coherance etc)
     the winner?
 
 
-# Analysis
+# Discussion
 
-age and gender effects (cohorts)
-
-electorial participation
-
-EGA bootstrap CI for number of communities
-
-
-# Discuss
-
-negative / positive items and subscales
+Relation between negative / positive items and subscales
 
 framing of hypoesis
 - doesn't affect NFD, TPE, election participation
 
-# Hypothesis quesitons
+Relation with beliefs about cooperaiton -  CogSci R1:
 
-- is stable
-- is manipulatable
-- relation to geeneralised trust
-- upstream of attitudes to democracy (polic??)
+However, there are some issues with the work as it is currently presented. With
+    regard to (3) theoretical merit, the authors fail to clarify the distinction
+    between epistemic rationality (which their work focuses on exclusively) and
+    instrumental rationality (the importance of which is discussed broadly by, e.g.,
+    Baron, 2008, Ch.3; Evans, 2012, Chater & Oaksford, 1999). In the motivation of
+    their paper, the authors should, I think, directly engage with how they think this
+    scale measures something different than a general willingess to cooperate with,
+    and expect cooperation from, others. Obviously the questions are not worded like
+    this, but the scale isn't a measure of an enduring trait (and the authors do not
+    claim it is), but rather of a current (cluster of) attitude(s) about 'other
+    people'. In this sense, what subjects are expressing when they answer may be
+    psychologically quite different, and I think the authors need to motivate why
+    trying to tap into beliefs/attitudes about the reasonableness of others is an
+    importantly different thing than beliefs/attitudes about cooperativity. A minor
+    point here is that the scale should more correctly be referred to as something
+    like 'Belief in Reasonableness of Others' scale, since it is not about people's
+    beliefs about reason itself.
 
 
-# Additional data
+# Additional data collection
 
 test-retest
 
 randomise order
 
 improve items (remove double barell etc)
+R4: People often act for reasons they don’t understand or endorse
+
+R5 (The average person can
+    be persuaded to change their mind if given good reasons) maybe change to
+    “convincing” rather than “good”? Saying “good” might promote moralistic ways of
+    thinking, potentially adding an unnecessary layer of complication
+
+Balance items by aspect
 
 
-instrumental variable study
+# Theoretical developent
+
+- is stable?
+
+- is manipulatable?
+
+- relation to geeneralised trust or cooperation?
+
+- upstream of attitudes to democracy (polic??)
+
+instrumental variable study?
 - test -retest + election result (right wing left wing and predictions)
 
-# ??
+
+# Notes / relevant literature
 
 Fieldhouse, E., J. Green, G. Evans, J. Mellon & C. Prosser, J. Bailey (2022) British Election Study Internet Panel Waves 1-23. DOI: 10.5255/UKDA-SN-8810-1
 https://www.britishelectionstudy.com/data-objects/panel-study-data/
@@ -97,3 +107,10 @@ Trust in democracy measures
 
     Matthes, J., Hirsch, M., Stubenvoll, M., Binder, A., Kruikemeier, S., Lecheler, S., & Otto, L. (2022). Understanding the democratic role of perceived online political micro-targeting: longitudinal effects on trust in democracy and political interest. Journal of Information Technology & Politics, 19(4), 435-448.
     We measured participants trust in democract with standard items adapted from Wagner et al (2018), namely "I trust democracy in Austria" and "I am satisfied with democracy in Austria"
+    
+    
+    
+      Streiner, D. L.,&  Geoffrey R. N. (2008). Selecting the items. Health Measurement
+    Scales: A practical guide to their development and use, 4. Oxford Academic, Oxford
+    UK.
+    https://www.pewresearch.org/our-methods/u-s-surveys/writing-survey-questions/
