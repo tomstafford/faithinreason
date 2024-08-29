@@ -41,6 +41,10 @@ is FiR still below average for positively framed items?
 
 # Discussion
 
+Sacha: 
+I’d cite this paper perhaps if you want to talk about the limitations of the third person effect: https://www.tandfonline.com/doi/full/10.1080/15205436.2023.2193512
+ 
+
 Relation between negative / positive items and subscales
 
 framing of hypoesis
@@ -67,6 +71,49 @@ However, there are some issues with the work as it is currently presented. With
     beliefs about reason itself.
 
 
+# Election participation data collection
+
+From Wave 23 of the British Election Survey
+
+    Fieldhouse, E., J. Green, G. Evans, J. Mellon & C. Prosser, J. Bailey (2022) British Election Study Internet Panel Waves 1-23. DOI: 10.5255/UKDA-SN-8810-1
+    https://www.britishelectionstudy.com/data-objects/panel-study-data/
+
+//
+During the last 12 months, have you done any of the following? -
+
+Done any work on behalf of a political party or political action group.
+Given any money to a political party, organisation or cause.
+Displayed an election poster.
+Listened to or watched a party election broadcast.
+Read a campaign leaflet/letter, text message or email from a political party.
+Tried to persuade somebody which party they should vote for.
+//
+
+https://drive.google.com/drive/folders/1-CJ22dkTvcF8shFZMuKwZ-7eVmd9DASF?usp=sharing
+
+I've put it in this folder. This dataset still includes responses that need to be excluded for completing in half median time (270 seconds):
+
+%>% filter(Duration..in.seconds.<270)
+
+Faith in reason items (FIR): columns 71 - 78
+Election participation items (ELECT_PAR): columns 85 - 90
+
+
+
+May 2023
+
+~1200 UK voters). I'm also going to include the political participation items from the British Electoral Survey (things like "I voted in the last five years"). What bets will you give me on the correlation??
+
+Election participation items are
+
+
+
+Almost nobody had done any of the first three
+
+Arguably there are better measures of investment in democrat activity, but for now I think we can mark this preregistered bet as lost
+
+
+
 # Additional data collection
 
 test-retest
@@ -83,6 +130,8 @@ R5 (The average person can
 
 Balance items by aspect
 
+Tom: do you use tripadvisor, trust amazon reviews
+Sacha: You could almost do these behavioral tasks of social information use to see if faith in reason is associated with e.g. less advice use when it’s the average of all other participants (https://www.sciencedirect.com/science/article/pii/S1090513819300030). 
 
 # Theoretical developent
 
@@ -93,6 +142,9 @@ Balance items by aspect
 - relation to geeneralised trust or cooperation?
 
 - upstream of attitudes to democracy (polic??)
+
+Sacha "Overall it may be worth focusing on participative democracy in particular rather than democracy in general—which may just be understood as not having a dictator and being able to vote from time to time. And I think we have reason to think that more participative democracy would be better to make the best of collective intelligence, etc.""
+"
 
 instrumental variable study?
 - test -retest + election result (right wing left wing and predictions)
