@@ -120,7 +120,7 @@ alphaval=0.3
 
 The nature of human reason is a perennial topic. Human rationality has often been praised ["Man is but a reed, the most feeble thing in nature, but he is a thinking reed", @pascal1910], but its failures have also been condemned been by many different thinkers. 
 
-An influential account of human reasoning is provided by the heuristics and biases programme [@kahneman1982], which uses the ideal of economic rationality as a standard against which to define actual human reasoning. From this perspective human reasoning appears riddled with biases, but much of this effect is due to the adoption of the standards of utility theory, formal logic and statistical reasoning against which to define error. Critics have questions the appropriateness of these standards [e.g. @gigerenzer2011]. The logic of controlled experiments allows researchers to isolate and emphasise quirks in human reasoning, while backgrounding reason-responsiveness [@stafford2014]. Accordingly, the psychology literature may overemphasise the role of error, bias and motivated reasoning [@stafford2020evidence]. The debate has been so heated in the cognitive sciences that 'Rationality Wars' [@samuels2002] have been declared over the definition of rationality that might reasonably used as a standard against which to judge human reasoning.
+An influential account of human reasoning is provided by the heuristics and biases programme [@kahneman1982], which uses the ideal of economic rationality as a standard against which to define actual human reasoning. From this perspective human reasoning appears riddled with biases, but much of this effect is due to the adoption of the standards of utility theory, formal logic and statistical reasoning against which to define error. Critics have questioned the appropriateness of these standards [e.g. @gigerenzer2011]. The logic of controlled experiments allows researchers to isolate and emphasise quirks in human reasoning, while backgrounding reason-responsiveness [@stafford2014]. Accordingly, the psychology literature may overemphasise the role of error, bias and motivated reasoning [@stafford2020evidence]. The debate has been so heated in the cognitive sciences that 'Rationality Wars' [@samuels2002] have been declared over the definition of rationality that might reasonably used as a standard against which to judge human reasoning.
 
 Mercier and Sperber's [-@mercier2011] Argumentative Theory of Reason provides an interactionist, rather than individualist, account of human reasoning, which emphasises the social context in which human reasoning evolved. This account suggests, among other things, the importance of dialogue based argumentation in changing beliefs [@brand2022;@karadzhov2022] and the validity of incorporating social factors like the status, trustworthiness or expertise of a source of information in the reasoning process [@eiser2009].  
 
@@ -488,7 +488,7 @@ knitr::include_graphics(here("plots","reason6_ega.png"))
 
 Taking these analyses into consideration, we opt to construct a single scale, dropping items 5 and 8. We do this with some hesitation, given that the results from all methods of dimensionality analysis (conventional factor analysis, Mokken scale analysis and EGA) all suggest that a two-dimensional structure may exist (and/or evidence for two dimensional structure is only just sub threshold, depending on how you wish to position the statement ontologically).
 
-```{r meanhistogram, fig.cap="Histogram of mean of responses to all rationality items", fig.align="center", out.width="75%",fig.height=4}
+```{r meanhistogram, fig.cap="Histogram of mean score on finalised Faith in Reason scale (items 1,2,3,4,6 and 7", fig.align="center", out.width="75%",fig.height=4}
 
 #select items
 #Ritems <- dplyr::select(df,c(R1:R8))
@@ -622,7 +622,7 @@ This paper arose out of a note published online [@stafford2022] which we cite fo
 
 ## Summary
 
-After developing eight items and gathering responses from a representative sample of UK adults, we assessed dimensionality using conventional factor analysis, Mokken scale analysis (from item response theory) and Experimental Graph Analysis. Conventional factor analysis and Mokken scale analysis  suggested that a unidimensional solution was dominant, and six of the items could be used in coherent scale. EGA confirmed that one item - \#5 - was least associated with all the others, but also suggested that all items might be grouped into two communities. Exploring the differences, similarities, costs and benefits of EGA for scale analysis is beyond the scope of this report. We note that it affords visual insight into the structure within dimensional groupings of items; showing, here, that item 5 is least associated with the network and item 1 - the item which assesses generic endorsement of the rationality of others - is most central.
+After developing eight items and gathering responses from a representative sample of UK adults, we assessed dimensionality using conventional factor analysis, Mokken scale analysis (from item response theory) and Experimental Graph Analysis. Conventional factor analysis and Mokken scale analysis  suggested that a unidimensional solution was dominant, and six of the items could be used in coherent scale. EGA confirmed that one item - \#5 - was least associated with all the others, but also suggested that all items might be grouped into two communities. Exploring the differences, similarities, costs and benefits of EGA for scale analysis is beyond the scope of this report [but see @panagiotidi2024]. We note that it affords visual insight into the structure within dimensional groupings of items; showing, here, that item 5 is least associated with the network and item 1 - the item which assesses generic endorsement of the rationality of others - is most central.
 
 We combined items 1,2,3,4,6 and 7 into a single metric - the Faith in Reason scale. Scores on this indicated that a) a large variation exists in beliefs in the rationality or reasonableness of other people (Figure \@ref(fig:meanhistogram)) and b) the center of the distribution of these beliefs is slightly away from neutral, reflecting endorsement of the negative sentiment that other people tend to be misinformed, credible and irrational. This stands in contrast to other domains, where attitudes have found to be generally overly optimistic [e.g. so called Belief ina Just World @lerner1980belief]. It is consonant with a long standing programme fo research into the Third Person Effect.
 
@@ -648,7 +648,7 @@ citation('mokken') #for mokken scale analysis
 citation('corrtable') #for correlation_matrix
 citation('tidyverse')
 
-citation('qgraph')
+#citation('qgraph')
 #citation('EGAnet') # requires install.packages('sna')
 #citation('psych')
 ```

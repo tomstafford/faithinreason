@@ -5,16 +5,19 @@
 \documentclass[
   ,jou,floatsintext]{apa6}
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -135,13 +138,13 @@
   {\normalfont\normalsize\itshape\hspace{\parindent}{#1}\textit{\addperi}}{\relax}}
 \makeatother
 
-% \usepackage{etoolbox}
 \makeatletter
-\patchcmd{\HyOrg@maketitle}
+\usepackage{etoolbox}
+\patchcmd{\maketitle}
   {\section{\normalfont\normalsize\abstractname}}
   {\section*{\normalfont\normalsize\abstractname}}
   {}{\typeout{Failed to patch abstract.}}
-\patchcmd{\HyOrg@maketitle}
+\patchcmd{\maketitle}
   {\section{\protect\normalfont{\@title}}}
   {\section*{\protect\normalfont{\@title}}}
   {}{\typeout{Failed to patch title.}}
@@ -164,7 +167,7 @@
 \fi
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{same} % disable monospaced font for URLs
+\urlstyle{same}
 \hypersetup{
   pdftitle={Quantifying belief in the rationality of others: the Faith in Reason scale},
   pdfauthor={Tom Stafford1, Junyan Zhu2, \& Katharine Dommett2},
@@ -195,7 +198,7 @@ Correspondence concerning this article should be addressed to Tom Stafford, Depa
 
 \affiliation{\vspace{0.5cm}\textsuperscript{1} Department of Psychology, University of Sheffield, UK\\\textsuperscript{2} Department of Politics and International Relations, University of Sheffield, UK}
 
-\note{\textcolor{red}{Draft, not for circulation 2023-05-06}}
+\note{\textcolor{red}{Draft, not for circulation 2024-08-29}}
 
 \abstract{%
 What we believe about other people matters. It is not enough that others \emph{are} trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also \emph{perceive} others as trustworthy, reasonable or well intentioned. While standard measures of trust and benevolence exist, there is no standard measure of the generalised belief in the rationality or reasonableness of other people. Here, we present the development and testing of a scale to directly measure this attitude. Using a representative sample of 1869 UK adults, we test dimensionality and consistency of the scale items. We show that the refined, six-item, scale is associated with, but not entirely determined by, generalised trust in other people. Our ``Faith in Reason'' scale shows large individual differences, but the average tendency is slightly on the side of endorsing, rather than rejecting, sentiments such as ``The typical person is often irrational''.
@@ -219,7 +222,7 @@ Pascal (1669/1910)
 
 The nature of human reason is a perennial topic. Human rationality has often been praised (``Man is but a reed, the most feeble thing in nature, but he is a thinking reed,'' Pascal, 1669/1910), but its failures have also been condemned been by many different thinkers.
 
-An influential account of human reasoning is provided by the heuristics and biases programme (Kahneman, Slovic, \& Tversky, 1982), which uses the ideal of economic rationality as a standard against which to define actual human reasoning. From this perspective human reasoning appears riddled with biases, but much of this effect is due to the adoption of the standards of utility theory, formal logic and statistical reasoning against which to define error. Critics have questions the appropriateness of these standards (e.g. Gigerenzer \& Gaissmaier, 2011). The logic of controlled experiments allows researchers to isolate and emphasise quirks in human reasoning, while backgrounding reason-responsiveness (Stafford, 2014). Accordingly, the psychology literature may overemphasise the role of error, bias and motivated reasoning (Stafford, 2020). The debate has been so heated in the cognitive sciences that `Rationality Wars' (Samuels, Stich, \& Bishop, 2002) have been declared over the definition of rationality that might reasonably used as a standard against which to judge human reasoning.
+An influential account of human reasoning is provided by the heuristics and biases programme (Kahneman, Slovic, \& Tversky, 1982), which uses the ideal of economic rationality as a standard against which to define actual human reasoning. From this perspective human reasoning appears riddled with biases, but much of this effect is due to the adoption of the standards of utility theory, formal logic and statistical reasoning against which to define error. Critics have questioned the appropriateness of these standards (e.g. Gigerenzer \& Gaissmaier, 2011). The logic of controlled experiments allows researchers to isolate and emphasise quirks in human reasoning, while backgrounding reason-responsiveness (Stafford, 2014). Accordingly, the psychology literature may overemphasise the role of error, bias and motivated reasoning (Stafford, 2020). The debate has been so heated in the cognitive sciences that `Rationality Wars' (Samuels, Stich, \& Bishop, 2002) have been declared over the definition of rationality that might reasonably used as a standard against which to judge human reasoning.
 
 Mercier and Sperber's (2011) Argumentative Theory of Reason provides an interactionist, rather than individualist, account of human reasoning, which emphasises the social context in which human reasoning evolved. This account suggests, among other things, the importance of dialogue based argumentation in changing beliefs (Brand \& Stafford, 2022; Karadzhov, Stafford, \& Vlachos, 2022) and the validity of incorporating social factors like the status, trustworthiness or expertise of a source of information in the reasoning process (Eiser, Stafford, Henneberry, \& Catney, 2009).
 
@@ -412,7 +415,7 @@ However, following Sijtsma and Ark (2017) it is possible to explore sensitivity 
 
 Exploratory Graph Analysis {[}EGA; Golino, Shi, et al. (2020);Golino, Christensen, and Moulder (2020){]} can also be applied to understand dimensional structure in our scale items. EGA allows a visualisation of the network formed by scale items, with items which correlate clustered together. EGA also identifies underlying `communities' of items.
 
-Figure \ref{fig:egafull} shows an EGA for the 8 potential items. Like the use of leave-one-out Cronbach's alpha and the Mokken scale analysis, this suggests Item 5 is distant from the other items. The EGA identifies two communities, grouping Item 1 with Items 6, 7 and 8 and Items 2,3,4 and 5.
+Figure \ref{fig:egafull} shows an EGA for the 8 potential items. Like the use of leave-one-out Cronbach's alpha and the Mokken scale analysis, this suggests Item 5 is distant from the other items. The EGA identifies two communities, grouping Item 1 with Items 6, 7 and 8 and Items 2,3,4 and 5. To check the stability of the community structure a bootstrap procedure was performed, which suggested that 2 community structure was overwhelmingly the most likely and stable solution (frequency = 1).
 
 \begin{figure}
 
@@ -434,7 +437,7 @@ Taking these analyses into consideration, we opt to construct a single scale, dr
 
 }
 
-\caption{Histogram of mean of responses to all rationality items}\label{fig:meanhistogram}
+\caption{Histogram of mean score on finalised Faith in Reason scale (items 1,2,3,4,6 and 7}\label{fig:meanhistogram}
 \end{figure}
 
 Averaging across items 1,2,3,4,6 and 7 gives us our Faith in Reason scale. The average score across these six items was 3.29, a summary statistic which suggests that the typical view of other people is weighted to being slightly less, rather than slightly more, reasonable. The distribution is shown in Figure \ref{fig:meanhistogram}.
@@ -517,7 +520,7 @@ This paper arose out of a note published online (Stafford, 2022) which we cite f
 \hypertarget{summary-1}{%
 \subsection{Summary}\label{summary-1}}
 
-After developing eight items and gathering responses from a representative sample of UK adults, we assessed dimensionality using conventional factor analysis, Mokken scale analysis (from item response theory) and Experimental Graph Analysis. Conventional factor analysis and Mokken scale analysis suggested that a unidimensional solution was dominant, and six of the items could be used in coherent scale. EGA confirmed that one item - \#5 - was least associated with all the others, but also suggested that all items might be grouped into two communities. Exploring the differences, similarities, costs and benefits of EGA for scale analysis is beyond the scope of this report. We note that it affords visual insight into the structure within dimensional groupings of items; showing, here, that item 5 is least associated with the network and item 1 - the item which assesses generic endorsement of the rationality of others - is most central.
+After developing eight items and gathering responses from a representative sample of UK adults, we assessed dimensionality using conventional factor analysis, Mokken scale analysis (from item response theory) and Experimental Graph Analysis. Conventional factor analysis and Mokken scale analysis suggested that a unidimensional solution was dominant, and six of the items could be used in coherent scale. EGA confirmed that one item - \#5 - was least associated with all the others, but also suggested that all items might be grouped into two communities. Exploring the differences, similarities, costs and benefits of EGA for scale analysis is beyond the scope of this report (but see Panagiotidi, Zavlis, Jones, \& Stafford, 2024). We note that it affords visual insight into the structure within dimensional groupings of items; showing, here, that item 5 is least associated with the network and item 1 - the item which assesses generic endorsement of the rationality of others - is most central.
 
 We combined items 1,2,3,4,6 and 7 into a single metric - the Faith in Reason scale. Scores on this indicated that a) a large variation exists in beliefs in the rationality or reasonableness of other people (Figure \ref{fig:meanhistogram}) and b) the center of the distribution of these beliefs is slightly away from neutral, reflecting endorsement of the negative sentiment that other people tend to be misinformed, credible and irrational. This stands in contrast to other domains, where attitudes have found to be generally overly optimistic (e.g.~so called Belief ina Just World Lerner \& Lerner, 1980). It is consonant with a long standing programme fo research into the Third Person Effect.
 
@@ -652,6 +655,9 @@ Nyhan, B. (2020). Facts and myths about misperceptions. \emph{Journal of Economi
 
 \leavevmode\vadjust pre{\hypertarget{ref-olshansky2020}{}}%
 Olshansky, A., \& Landrum, A. R. (2020). Third-person perceptions and calls for censorship of flat earth videos on YouTube. \emph{Media and Communication}, \emph{8}(2), 387--400.
+
+\leavevmode\vadjust pre{\hypertarget{ref-panagiotidi2024}{}}%
+Panagiotidi, M., Zavlis, O., Jones, M., \& Stafford, T. (2024). The three-dimensional community structure of attention-deficit hyperactivity disorder (ADHD) traits captured by the adult ADHD self-report scale: An exploratory graph analysis. \emph{International Journal of Methods in Psychiatric Research}, \emph{33}(1), e1997. https://doi.org/\url{https://doi.org/10.1002/mpr.1997}
 
 \leavevmode\vadjust pre{\hypertarget{ref-pascal1910}{}}%
 Pascal, B. (1669/1910). \emph{Thoughts} (Vol. 48). PF Collier \& son. Retrieved from \url{http://entersection.com/posts/1189-blaise-pascal-on-man-as-a-thinking-reed}
