@@ -2,20 +2,28 @@
 
 Change title? BIRO?
 
+Options
+- submit as is, somewhere minor
+- working paper, focussing on scale development
+- experimental study using election
+
+Conclusions
+- wide variability, but not strongly predictive of anything (except trust?)
+
 
 # Results /  Additional Analysis
 
-full items or just subscales? Explicitly present reduced set scale as sensitivity analaysis
+OPTIONAL full items or just subscales? Explicitly present reduced set scale as sensitivity analaysis
 
-discuss role of 4 aspects of reason in final scale (coherance etc)
+OPTIONAL discuss role of 4 aspects of reason in final scale (coherance etc)
 
-age and gender effects (cohorts)
+DO age and gender effects (cohorts)
 
-left / right wing view and scores?
+DO left / right wing view and scores?
 
-electorial participation
+RE-DO electorial participation
 
-is FiR still below average for positively framed items?
+DO is FiR still below average for positively framed items?
 
 
 
@@ -41,14 +49,12 @@ is FiR still below average for positively framed items?
 
 # Discussion
 
-Sacha: 
-I’d cite this paper perhaps if you want to talk about the limitations of the third person effect: https://www.tandfonline.com/doi/full/10.1080/15205436.2023.2193512
  
-
 Relation between negative / positive items and subscales
 
 framing of hypoesis
-- doesn't affect NFD, TPE, election participation
+- doesn't affect NFD, TPE, election participation,
+- weak relations to age, gender, right wing nesss
 
 Relation with beliefs about cooperaiton -  CogSci R1:
 
@@ -116,6 +122,8 @@ Arguably there are better measures of investment in democrat activity, but for n
 
 # Additional data collection
 
+## Scale development
+
 test-retest
 
 randomise order
@@ -129,6 +137,8 @@ R5 (The average person can
     thinking, potentially adding an unnecessary layer of complication
 
 Balance items by aspect
+
+## External validity
 
 Tom: do you use tripadvisor, trust amazon reviews
 Sacha: You could almost do these behavioral tasks of social information use to see if faith in reason is associated with e.g. less advice use when it’s the average of all other participants (https://www.sciencedirect.com/science/article/pii/S1090513819300030). 

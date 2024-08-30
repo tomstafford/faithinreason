@@ -151,7 +151,7 @@ The generalised belief that others are well informed and reasonable is foundatio
 
 There is an established literature of the perception of media influence on others [@perloff2002; @sun2008]. The `third person effect', proposed by @davison1983, is the phenomenon whereby many people believe others are more susceptible to influence than themselves. The third person effect was proposed as a root cause of censorship instincts and this has been confirmed by subsequent empirical investigations [@olshansky2020; @feng2012]. 
 
-Two caveats around the third person effect. Lyons [-@lyons2022] has recently argued that - for many people - a third person effect of greater media influence on others rather than the self will be an accurate perception. @chung2016 have argued that the driving factor in many so-called third person effects is the perception of others (as highly influenced), rather than the discrepancy with first person perception per se.
+Two caveats around the third person effect. Lyons [-@lyons2022] has recently argued that - for many people - a third person effect of greater media influence on others rather than the self will be an accurate perception. @chung2016 have argued that the driving factor in many so-called third person effects is the perception of others (as highly influenced), rather than the discrepancy with first person perception per se. For recent reflections on the concept see @schmierbach2023.
 
 ## Generalised trust & value of democracy
 

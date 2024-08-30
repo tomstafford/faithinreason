@@ -90,6 +90,36 @@ df <- df %>%
   mutate(sum_electpar = sum(c_across(starts_with("ELECT_PAR")), na.rm = TRUE))
 
 
+# LEFT_RIGHT
+
+# get unique values in column LEFT_RIGHT
+unique(df$LEFT_RIGHT)
+
+
+                    
+
+# Create a recode function
+recode_response <- function(x) {
+  recode(x, 
+         "Strongly left leaning" = 1, 
+         "Fairly left leaning" = 2, 
+         "Slightly left leaning" = 3, 
+         "Neither left nor right leaning" = 4, 
+         "Slightly right leaning" = 5, 
+         "Fairly right leaning" = 6, 
+         "Strongly right leaning" = 7,
+         "I don't know" = NaN)
+}
+
+# Use mutate_at to apply the recode function to multiple columns
+df <- df %>% 
+  mutate_at(vars(starts_with("LEFT_RIGHT")), recode_response)
+
+# convert age to numeric
+df <- df %>% 
+  mutate(AGE = as.numeric(AGE))
+
+
 # plots
 
 p <- ggplot(data = df,mapping= aes(mean_fir))
@@ -111,6 +141,13 @@ p +
   geom_smooth(method=lm) +
   labs(x = "Faith in reason",
        y = "Election participation")
+
+p <- ggplot(data = df,mapping= aes(x=AGE,y=mean_fir))
+p + 
+  geom_point(position = position_jitter(height= 0.05,width = 0.0),alpha=alphaval)+
+  geom_smooth(method=lm) +
+  labs(x = "Faith in reason",
+       y = "LEFT_RIGHT")
 
 
 p <- ggplot(data =df, mapping = aes(x=sum_electpar,y=mean_fir))
@@ -139,9 +176,13 @@ mean_df <- df %>% group_by(sum_electpar) %>% summarize(mean_fir = mean(fir),
 
 
 # Calculate Spearman rank correlation
-correlation <- cor.test(df$sum_electpar, df$mean_fir, method = "pearson")
+correlation <- cor.test(df$sum_electpar, df$mean_fir, method = "spearman")
 
 print(correlation)
+
+
+# Calculate Spearman rank correlation
+correlation <- cor.test(df$LEFT_RIGHT, df$mean_fir, method = "pearson")
 
 n <- nrow(df)
 
@@ -166,3 +207,8 @@ ggsave(here('plots','fir2_electionpar-fir.png'),dpi=figdpi)
 mean_df <- df %>% group_by(ELECT_PAR_6) %>% summarize(mean_fir = mean(fir),
                                                        se_fir=sd(fir)/sqrt(n())
 )
+
+
+
+# Correlation table for all items beginning with FIR
+correlation_table <- cor(df %>% select(starts_with("FIR")), method = "spearman")
