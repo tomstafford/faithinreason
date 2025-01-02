@@ -58,10 +58,10 @@ authornote: |
 
 
 abstract: |
- What we believe about other people matters. It is not enough that others *are* trustworthy, reasonable or well intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well intentioned. While standard measures of trust and benevolence exist, there is no standard measure of the generalised belief in the rationality or reasonableness of other people. Here, we present the development and testing of a scale to directly measure this attitude. Using a representative sample of 1869 UK adults, we test dimensionality and consistency of the scale items. We show that the refined, six-item, scale is associated with, but not entirely determined by, generalised trust in other people. Our "Faith in Reason" scale shows large individual differences, but the average tendency is slightly on the side of endorsing, rather than rejecting, sentiments such as "The typical person is often irrational".
+ What we believe about other people matters. It is not enough that others *are* trustworthy, reasonable or well-intentioned. Successful coordination, as well as individual wellbeing, benefit when we also *perceive* others as trustworthy, reasonable or well-intentioned. While standard measures of trust and benevolence exist, there is no standard measure of the generalised belief in the rationality or reasonableness of other people. Here, we present the development and testing of a scale to directly measure this attitude. Using a representative sample of 1869 UK adults, we test dimensionality and consistency of the scale items. We show that the refined, six-item, scale is associated with, but not entirely determined by, generalised trust in other people. Our "Faith in Reason" scale shows large individual differences, but the average tendency is slightly on the side of endorsing, rather than rejecting, sentiments such as "The typical person is often irrational".
 
 
-note              : \textcolor{red}{Draft `r Sys.Date()`} \clearpage
+note              : \textcolor{red}{Working paper `r Sys.Date()`} \clearpage
 
 bibliography      : ["references.bib"]
 
@@ -80,6 +80,11 @@ output            : papaja::apa6_pdf
 
 ```{r setup,}
 # ENVIRONMENT
+#For PDFs you need to install tex/latex
+# Ubuntu: sudo apt install texlive-latex-extra
+#And the apa6.cls file from https://www.ctan.org/pkg/apa6
+# This was helpful, thanks Martina! https://www.martinasladek.co.uk/content/blog/2022_feb_how-to-set-up-papaja-to-work-with-apa-7-format
+
 #Once you've installed R/RStudio
 #install.packages('tinytex')
 #tinytex::install_tinytex()
@@ -637,7 +642,7 @@ Combining all items into a single metric resulted in the *Faith in Reason* scale
 
 Scores on the Faith in Reason scale are not determined by education, need for democracy, generalised trust or our specific measure of the Third Person Perception in the context of electoral adverts. Generalised Trust has a moderate association with Faith in Reason, suggesting that they may tap similar underlying beliefs about other people (their trustworthiness and reasonableness). We do not provide any evidence of causal direction, how one set of beliefs may inform the other, nor evidence of how interventions which may affect Faith in Reason, for example, may in turn affect generalised trust. The lack of relation with Third Person Perception is notable, suggesting that domain specific beliefs about susceptibility to influence in a particular context do not strongly link to general beliefs about human reasonableness.
 
-## scale development
+## Scale development
 
 Issues with scale development and validity testing are usefully reviewed in @flake2020; @clark2019; @boateng2018. With the current report we do not pretend to have completed scale development and testing. We merely report the beginnings of the development of a scale for measuring belief in the rationality or reasonableness of the typical citizen.
 
