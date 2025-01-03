@@ -570,6 +570,34 @@ p +
 
 ggsave(here('plots','fir-democracy.png'),dpi=figdpi)  
 ```
+<!---
+
+# This code confirms the lack of association with need for democracy if we look at proportion of peoplke who say democracy is "essential"
+# Compute quintiles
+quintiles <- quantile(df$mean, probs = seq(0, 1, 0.2), na.rm = TRUE)
+
+
+df <- df %>%
+  mutate(
+    quintile = cut(mean, breaks = quintiles, labels = FALSE, include.lowest = TRUE)
+  )
+
+# Calculate the proportion of rows in each quintile where Q16 == 7
+proportion_data <- df %>%
+  group_by(quintile) %>%
+  summarise(
+    total_rows = n(),
+    Q16_eq_7 = sum(Q16 == 7),
+    proportion = Q16_eq_7 / total_rows
+  )
+
+# View the results
+print(proportion_data)
+
+--->
+
+
+
 Figure \@ref(fig:generalisetrust) shows some association between Generalised Trust and Faith in Reason.
 
 ```{r generalisetrust, fig.cap="Scatterplot of Generalised Trust against Faith in Reason. Linear fit shown. Note 0.1 jitter applied to x-axis values to allow visualisation of point density", fig.align="center", out.width="75%",fig.height=4}
